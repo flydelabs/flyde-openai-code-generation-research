@@ -1,0 +1,25 @@
+{
+  "name": "flyde-openai-benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "generate:versions": "ts-node src/generate-versions.ts",
+    "prepare:dataset": "ts-node src/prepare-dataset.ts",
+    "prepare:training-jsonl": "openai tools fine_tunes.prepare_data -f training.json",
+    "prepare:validation-jsonl": "openai tools fine_tunes.prepare_data -f validation.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@flyde/core": "^0.1.34",
+    "@flyde/stdlib": "^0.1.32",
+    "@types/node": "^20.2.3",
+    "dotenv": "^16.0.3",
+    "openai": "^3.2.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
