@@ -1,0 +1,9 @@
+{
+  "result": "Emit Times | item,delay,times | emitted | emitted | item\nfunction ({item, delay, times}, {emitted}, {state, onCleanup}) {\n  const count = state.get(\"count\") || 0;\n  if (count < times) {\n    setTimeout(() => {\n      emitted.next(item);\n      state.set(\"count\", count + 1);\n    }, delay);\n  }\n  onCleanup(() => clearTimeout());\n}",
+  "tokens": 651,
+  "completionTime": 16420,
+  "generatorName": "chat-completion-gpt-4-very-condensed",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 1,
+  "remarks": "Invalid metadata row Emit Times | item,delay,times | emitted | emitted | item"
+}

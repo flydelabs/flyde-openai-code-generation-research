@@ -1,0 +1,34 @@
+{
+  "stringified": "Prepend | list,item | list | IMPLICIT | NONE\n({ list, item }, { list: outputList }) => {\n    outputList.next([item, ...list]);\n  }",
+  "original": {
+    "id": "Prepend",
+    "namespace": "Lists",
+    "description": "Prepends an item to a list",
+    "inputs": {
+      "list": {
+        "description": "The list"
+      },
+      "item": {
+        "description": "The item to prepend"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "The resulting list"
+      }
+    },
+    "defaultStyle": {
+      "icon": "fa-arrow-up"
+    },
+    "runFnString": "({ list, item }, { list: outputList }) => {\n    outputList.next([item, ...list]);\n  }"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n  const { list, item } = inputs;\n  const { list: outputList } = outputs;\n\n  const newList = [item, ...list];\n  outputList.next(newList);\n}",
+  "alternativeMetaData": "Prepend Item | list, item | list | IMPLICIT | NONE",
+  "prompts": [
+    "Add item to beginning of list",
+    "Prepend item to list",
+    "Add to start of list",
+    "Insert item at beginning of list"
+  ],
+  "tokensUsed": 831
+}

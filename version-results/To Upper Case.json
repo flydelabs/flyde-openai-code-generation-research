@@ -1,0 +1,31 @@
+{
+  "stringified": "To Upper Case | string | value | IMPLICIT | NONE\n({ string }, { value }) => value.next(string.toUpperCase())",
+  "original": {
+    "id": "To Upper Case",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Converts a string to upper case",
+    "inputs": {
+      "string": {
+        "description": "String to convert to upper case"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Converted value"
+      }
+    },
+    "runFnString": "({ string }, { value }) => value.next(string.toUpperCase())"
+  },
+  "alternativeFunction": "function ({ inputString }, { outputValue }) {\n  const { inputString } = inputs;\n  const { outputValue } = outputs;\n  outputValue.next(inputString.toUpperCase());\n}",
+  "alternativeMetaData": "UpperCase | inputString | outputValue | IMPLICIT | NONE",
+  "prompts": [
+    "Convert string to uppercase",
+    "Uppercase string",
+    "Convert text to uppercase letters",
+    "Transform string to all uppercase"
+  ],
+  "tokensUsed": 800
+}

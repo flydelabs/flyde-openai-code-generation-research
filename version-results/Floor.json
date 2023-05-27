@@ -1,0 +1,31 @@
+{
+  "stringified": "Floor | n | floor | IMPLICIT | NONE\n({ n }, { floor }) => floor.next(Math.floor(n))",
+  "original": {
+    "id": "Floor",
+    "defaultStyle": {
+      "icon": "fa-floor"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the floor of a number",
+    "inputs": {
+      "n": {
+        "description": "Number to take the floor of"
+      }
+    },
+    "outputs": {
+      "floor": {
+        "description": "The floor of n"
+      }
+    },
+    "runFnString": "({ n }, { floor }) => floor.next(Math.floor(n))"
+  },
+  "alternativeFunction": "function ({ inputNumber }, { outputFloor }) {\n  outputFloor.next(Math.floor(inputNumber));\n}",
+  "alternativeMetaData": "Integer Part | inputNumber | outputFloor | IMPLICIT | NONE",
+  "prompts": [
+    "Round down number",
+    "Calculate floor value",
+    "Get integer part of number",
+    "Find the largest integer less than or equal to a number"
+  ],
+  "tokensUsed": 784
+}

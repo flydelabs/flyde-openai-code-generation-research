@@ -1,0 +1,38 @@
+{
+  "stringified": "Accumulate Values by Trigger | value,reset | accumulated | IMPLICIT | value,reset\n(inputs, outputs, adv) => {\n    const { item, until } = inputs;\n    const { r } = outputs;\n    const { state } = adv;\n\n    let list = state.get(\"list\") || [];\n\n    if (typeof item !== \"undefined\") {\n      list.push(item);\n      state.set(\"list\", list);\n    }\n\n    if (typeof until !== \"undefined\") {\n      r.next(list);\n    }\n  }",
+  "original": {
+    "id": "Accumulate Values by Trigger",
+    "defaultStyle": {
+      "icon": "fa-basket-shopping"
+    },
+    "namespace": "Lists",
+    "description": "Accumulates values sent to the \"value\" input, until the \"reset\" input is triggered. Then it emits the accumulated values and resets the accumulator.",
+    "inputs": {
+      "value": {
+        "description": "The value to accumulate"
+      },
+      "reset": {
+        "description": "Resets the accumulator"
+      }
+    },
+    "reactiveInputs": [
+      "value",
+      "reset"
+    ],
+    "outputs": {
+      "accumulated": {
+        "description": "The accumulated values"
+      }
+    },
+    "runFnString": "(inputs, outputs, adv) => {\n    const { item, until } = inputs;\n    const { r } = outputs;\n    const { state } = adv;\n\n    let list = state.get(\"list\") || [];\n\n    if (typeof item !== \"undefined\") {\n      list.push(item);\n      state.set(\"list\", list);\n    }\n\n    if (typeof until !== \"undefined\") {\n      r.next(list);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n  const { val, reset } = inputs;\n  const { acc } = outputs;\n  const { state } = adv;\n\n  let list = state.get('list') || [];\n\n  if (typeof val !== 'undefined') {\n    list.push(val);\n    state.set('list', list);\n  }\n\n  if (reset) {\n    state.set('list', []);\n  }\n\n  acc.next(list);\n}",
+  "alternativeMetaData": "Accumulate | val,reset | acc | IMPLICIT | val,reset",
+  "prompts": [
+    "Accumulate values until trigger",
+    "Collect values until trigger",
+    "Part that stores values until trigger",
+    "Store values until trigger event"
+  ],
+  "tokensUsed": 959
+}

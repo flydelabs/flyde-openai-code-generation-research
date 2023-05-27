@@ -1,0 +1,9 @@
+{
+  "result": " Debounce | value,wait | result | result | value\nfunction (inputs, outputs, adv) {\n    const { value, wait } = inputs;\n    const { result } = outputs;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      clearTimeout(timer);\n    }\n\n    const newTimer = setTimeout(() => {\n      result.next(value);\n    }, wait);\n\n    adv.state.set(\"timer\", newTimer);\n\n    adv.onCleanup(() => {\n      clearTimeout(timer);\n    });\n  }",
+  "tokens": 175,
+  "completionTime": 1746,
+  "generatorName": "fine-tuned-babbage:ft-personal-2023-05-24-22-40-27",
+  "prompt": "Debounce a value",
+  "score": 1,
+  "remarks": "Invalid metadata row  Debounce | value,wait | result | result | value"
+}

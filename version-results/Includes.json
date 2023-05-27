@@ -1,0 +1,37 @@
+{
+  "stringified": "Includes | string,searchValue,fromIndex | value | IMPLICIT | NONE\n({ string, searchValue, fromIndex }, { value }) =>\n    value.next(string.includes(searchValue, fromIndex))",
+  "original": {
+    "id": "Includes",
+    "namespace": "Strings",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "description": "Determines whether one string may be found within another string, returning true or false as appropriate",
+    "inputs": {
+      "string": {
+        "description": "String to search in"
+      },
+      "searchValue": {
+        "description": "Value to search for"
+      },
+      "fromIndex": {
+        "description": "Index to start searching from"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Result"
+      }
+    },
+    "runFnString": "({ string, searchValue, fromIndex }, { value }) =>\n    value.next(string.includes(searchValue, fromIndex))"
+  },
+  "alternativeFunction": "function ({ inputString, searchValue, startIndex }, { result }) {\n    const includesValue = inputString.includes(searchValue, startIndex);\n    result.next(includesValue);\n}",
+  "alternativeMetaData": "Includes Check | inputString, searchValue, startIndex | result | IMPLICIT | NONE",
+  "prompts": [
+    "Check if string includes value",
+    "String contains value?",
+    "Part that checks if string includes value",
+    "A component that verifies if a string includes a specific value"
+  ],
+  "tokensUsed": 824
+}

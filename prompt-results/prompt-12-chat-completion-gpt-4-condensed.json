@@ -1,0 +1,9 @@
+{
+  "result": "Repeat With Delay | item,delay,times | repeatedItem | repeatedItem | NONE\nfunction ({item, delay, times}, {repeatedItem}, {state, onCleanup}) {\n  const count = state.get(\"count\") || 0;\n  if (count < times) {\n    setTimeout(() => {\n      repeatedItem.next(item);\n      state.set(\"count\", count + 1);\n    }, delay);\n  }\n  onCleanup(() => clearTimeout());\n}",
+  "tokens": 801,
+  "completionTime": 14739,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 1,
+  "remarks": "Invalid metadata row Repeat With Delay | item,delay,times | repeatedItem | repeatedItem | NONE"
+}

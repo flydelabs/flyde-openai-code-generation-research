@@ -1,0 +1,39 @@
+{
+  "stringified": "Interval | value,interval | value |  | value,interval\n(inputs, outputs, adv) => {\n    if (adv.state.get(\"timer\")) {\n      clearInterval(adv.state.get(\"timer\"));\n    }\n\n    const timer = setInterval(() => {\n      outputs.value.next(inputs.value);\n    }, inputs.interval);\n\n    adv.state.set(\"timer\", timer);\n\n    adv.onCleanup(() => {\n      clearInterval(timer);\n    });\n  }",
+  "original": {
+    "id": "Interval",
+    "namespace": "Control Flow",
+    "defaultStyle": {
+      "icon": "fa-clock"
+    },
+    "description": "Emits a value every interval",
+    "inputs": {
+      "value": {
+        "description": "Value to emit"
+      },
+      "interval": {
+        "description": "Interval in milliseconds"
+      }
+    },
+    "reactiveInputs": [
+      "value",
+      "interval"
+    ],
+    "outputs": {
+      "value": {
+        "description": "Emitted value"
+      }
+    },
+    "completionOutputs": [],
+    "runFnString": "(inputs, outputs, adv) => {\n    if (adv.state.get(\"timer\")) {\n      clearInterval(adv.state.get(\"timer\"));\n    }\n\n    const timer = setInterval(() => {\n      outputs.value.next(inputs.value);\n    }, inputs.interval);\n\n    adv.state.set(\"timer\", timer);\n\n    adv.onCleanup(() => {\n      clearInterval(timer);\n    });\n  }"
+  },
+  "alternativeFunction": "function (input, output, adv) {\n  const { val, int } = input;\n  const { value } = output;\n  let count = 0;\n  const timer = setInterval(() => {\n    value.next(count);\n    count++;\n  }, int);\n\n  adv.state.set('timer', timer);\n\n  adv.onCleanup(() => {\n    clearInterval(timer);\n  });\n}",
+  "alternativeMetaData": "Interval Part | val, int | value |  | val, int",
+  "prompts": [
+    "A part that emits a value at a fixed interval",
+    "Emit a value at a fixed interval",
+    "Emit a value at a set interval",
+    "A part that repeatedly emits a value at a fixed interval"
+  ],
+  "tokensUsed": 933
+}

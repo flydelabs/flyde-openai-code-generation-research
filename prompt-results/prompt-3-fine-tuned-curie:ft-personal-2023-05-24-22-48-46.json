@@ -1,0 +1,9 @@
+{
+  "result": " Execute SQL Statement | connection,collection,query,options | result | IMPLICIT | NONE\nasync ({ connection, collection, query, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .countDocuments(query, options);\n    result.next(res);\n  }",
+  "tokens": 101,
+  "completionTime": 1133,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "Run SQL query",
+  "score": 1,
+  "remarks": "Invalid metadata row  Execute SQL Statement | connection,collection,query,options | result | IMPLICIT | NONE"
+}

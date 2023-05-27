@@ -1,0 +1,28 @@
+import { CodePart } from "@flyde/core";
+export declare const Add: CodePart;
+export declare const Subtract: CodePart;
+export declare const Multiply: CodePart;
+export declare const Divide: CodePart;
+export declare const Modulo: CodePart;
+export declare const Power: CodePart;
+export declare const SquareRoot: CodePart;
+export declare const AbsoluteValue: CodePart;
+export declare const Floor: CodePart;
+export declare const Ceiling: CodePart;
+export declare const Round: CodePart;
+export declare const Truncate: CodePart;
+export declare const Sin: CodePart;
+export declare const Cos: CodePart;
+export declare const Min: CodePart;
+export declare const Max: CodePart;
+export declare const ParseInt: CodePart;
+export declare const ParseFloat: CodePart;
+export declare const ToFixed: CodePart;
+export declare const ToExponential: CodePart;
+export declare const ToPrecision: CodePart;
+export declare const GreaterThan: CodePart;
+export declare const GreaterThanOrEqual: CodePart;
+export declare const LessThan: CodePart;
+export declare const LessThanOrEqual: CodePart;
+export declare const SumList: CodePart;
+//# sourceMappingURL=Numbers.flyde.d.ts.map

@@ -1,0 +1,34 @@
+{
+  "stringified": "Divide | n1,n2 | quotient | IMPLICIT | NONE\n({ n1, n2 }, { quotient }) => quotient.next(n1 / n2)",
+  "original": {
+    "id": "Divide",
+    "defaultStyle": {
+      "icon": "fa-divide"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the quotient of two numbers",
+    "inputs": {
+      "n1": {
+        "description": "First number to divide"
+      },
+      "n2": {
+        "description": "Second number to divide"
+      }
+    },
+    "outputs": {
+      "quotient": {
+        "description": "The quotient of n1 and n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { quotient }) => quotient.next(n1 / n2)"
+  },
+  "alternativeFunction": "function ({ dividend, divisor }, { quotient }) { quotient.next(dividend / divisor); }",
+  "alternativeMetaData": "Quotient Calculator | dividend,divisor | quotient | IMPLICIT | NONE",
+  "prompts": [
+    "Divide two numbers",
+    "Calculate quotient of two numbers",
+    "Part that divides two numbers",
+    "A node that outputs the quotient of two numbers"
+  ],
+  "tokensUsed": 794
+}

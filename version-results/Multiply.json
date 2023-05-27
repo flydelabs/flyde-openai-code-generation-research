@@ -1,0 +1,34 @@
+{
+  "stringified": "Multiply | n1,n2 | product | IMPLICIT | NONE\n({ n1, n2 }, { product }) => product.next(n1 * n2)",
+  "original": {
+    "id": "Multiply",
+    "defaultStyle": {
+      "icon": "fa-times"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the product of two numbers",
+    "inputs": {
+      "n1": {
+        "description": "First number to multiply"
+      },
+      "n2": {
+        "description": "Second number to multiply"
+      }
+    },
+    "outputs": {
+      "product": {
+        "description": "The product of n1 and n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { product }) => product.next(n1 * n2)"
+  },
+  "alternativeFunction": "function ({ num1, num2 }, { result }) { result.next(num1 * num2); }",
+  "alternativeMetaData": "Product | num1,num2 | result | IMPLICIT | NONE",
+  "prompts": [
+    "Multiply two numbers",
+    "Calculate product of two numbers",
+    "Simple multiplication",
+    "Multiply inputs to get product"
+  ],
+  "tokensUsed": 785
+}

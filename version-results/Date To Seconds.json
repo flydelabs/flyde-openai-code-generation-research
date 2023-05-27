@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To Seconds | date | seconds | IMPLICIT | NONE\n({ date }, { seconds }) => seconds.next(date.getSeconds())",
+  "original": {
+    "id": "Date To Seconds",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to seconds",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "seconds": {
+        "description": "Seconds"
+      }
+    },
+    "runFnString": "({ date }, { seconds }) => seconds.next(date.getSeconds())"
+  },
+  "alternativeFunction": "function ({ inputDate }, { outputSeconds }) {\n  const { date } = inputDate;\n  const { seconds } = outputSeconds;\n  seconds.next(date.getSeconds());\n}",
+  "alternativeMetaData": "Seconds from Date | inputDate | outputSeconds | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to seconds",
+    "Get seconds from date",
+    "Convert date to seconds output",
+    "Get seconds output"
+  ],
+  "tokensUsed": 797
+}

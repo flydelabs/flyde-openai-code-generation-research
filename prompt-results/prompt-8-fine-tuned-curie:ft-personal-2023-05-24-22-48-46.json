@@ -1,0 +1,9 @@
+{
+  "result": " Sum Price | object | sum | IMPLICIT | NONE\nfunction (inputObj, outputSum) {\n  const { object } = inputObj;\n  const { sum } = outputSum;\n  const listOfObjects = Object.values(inputObj);\n  sum.next(listOfObjects.reduce((a, b) => a + b, 0));\n}",
+  "tokens": 104,
+  "completionTime": 1039,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "Receive a list of objects and sum the 'price' property of each",
+  "score": 1,
+  "remarks": "Invalid metadata row  Sum Price | object | sum | IMPLICIT | NONE"
+}

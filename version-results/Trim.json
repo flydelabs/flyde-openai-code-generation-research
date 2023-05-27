@@ -1,0 +1,31 @@
+{
+  "stringified": "Trim | string | value | IMPLICIT | NONE\n({ string }, { value }) => value.next(string.trim())",
+  "original": {
+    "id": "Trim",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Trims a string",
+    "inputs": {
+      "string": {
+        "description": "String to trim"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Trimmed value"
+      }
+    },
+    "runFnString": "({ string }, { value }) => value.next(string.trim())"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { string } = input;\n  const { value } = output;\n  const trimmedString = string.trim();\n  value.next(trimmedString);\n}",
+  "alternativeMetaData": "Trimmed String | inputString | trimmedValue | IMPLICIT | NONE",
+  "prompts": [
+    "Remove whitespace from string",
+    "Trim string",
+    "Trim leading/trailing spaces",
+    "Clean up string"
+  ],
+  "tokensUsed": 798
+}

@@ -1,0 +1,40 @@
+{
+  "stringified": "Limit Times | item,times,reset | ok |  | item,reset\nfunction (inputs, outputs, adv) {\n    // magic here\n    const { state } = adv;\n    const { item, times, reset } = inputs;\n    const { ok } = outputs;\n\n    if (typeof reset !== \"undefined\") {\n      state.set(\"val\", 0);\n      return;\n    }\n\n    let curr = state.get(\"val\") || 0;\n    curr++;\n    state.set(\"val\", curr);\n    if (curr >= times) {\n      adv.onError(new Error(`Limit of ${times} reached`));\n    } else {\n      ok.next(item);\n    }\n  }",
+  "original": {
+    "id": "Limit Times",
+    "namespace": "Control Flow",
+    "description": "Item will be emitted until the limit is reached",
+    "inputs": {
+      "item": {
+        "mode": "required",
+        "description": "The item to emit"
+      },
+      "times": {
+        "mode": "required",
+        "description": "The number of times to emit the item"
+      },
+      "reset": {
+        "mode": "optional",
+        "description": "Reset the counter"
+      }
+    },
+    "outputs": {
+      "ok": {}
+    },
+    "reactiveInputs": [
+      "item",
+      "reset"
+    ],
+    "completionOutputs": [],
+    "runFnString": "function (inputs, outputs, adv) {\n    // magic here\n    const { state } = adv;\n    const { item, times, reset } = inputs;\n    const { ok } = outputs;\n\n    if (typeof reset !== \"undefined\") {\n      state.set(\"val\", 0);\n      return;\n    }\n\n    let curr = state.get(\"val\") || 0;\n    curr++;\n    state.set(\"val\", curr);\n    if (curr >= times) {\n      adv.onError(new Error(`Limit of ${times} reached`));\n    } else {\n      ok.next(item);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n    const { state } = adv;\n    const { input, count, reset } = inputs;\n    const { output } = outputs;\n\n    if (typeof reset !== \"undefined\") {\n      state.set(\"val\", 0);\n      return;\n    }\n\n    let curr = state.get(\"val\") || 0;\n    curr++;\n    state.set(\"val\", curr);\n    if (curr >= count) {\n      adv.onError(new Error(`Limit of ${count} reached`));\n    } else {\n      output.next(input);\n    }\n  }",
+  "alternativeMetaData": "LimitedInput | input,count,reset | output |  | input,reset",
+  "prompts": [
+    "Limit input to certain number of times",
+    "Limit input to specific count",
+    "Limit input to a certain number of occurrences",
+    "Limit input to a specific number of times"
+  ],
+  "tokensUsed": 1028
+}

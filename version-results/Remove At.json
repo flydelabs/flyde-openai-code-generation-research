@@ -1,0 +1,34 @@
+{
+  "stringified": "Remove At | list,index | list | IMPLICIT | NONE\n({ list, index }, { list: outputList }) => {\n    outputList.next(list.filter((_, idx) => idx !== index));\n  }",
+  "original": {
+    "id": "Remove At",
+    "namespace": "Lists",
+    "description": "Removes an item from a list at the specified index",
+    "inputs": {
+      "list": {
+        "description": "The list"
+      },
+      "index": {
+        "description": "The index of the item to remove"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "The resulting list"
+      }
+    },
+    "defaultStyle": {
+      "icon": "fa-times"
+    },
+    "runFnString": "({ list, index }, { list: outputList }) => {\n    outputList.next(list.filter((_, idx) => idx !== index));\n  }"
+  },
+  "alternativeFunction": "function ({ list, index }, { list: outputList }) {\n    const newList = [...list.slice(0, index), ...list.slice(index + 1)];\n    outputList.next(newList);\n}",
+  "alternativeMetaData": "List Item Remover | list,index | list | IMPLICIT | NONE",
+  "prompts": [
+    "Remove an item from a list",
+    "Delete an element from a list",
+    "List item remover",
+    "Remove an element from a list by index"
+  ],
+  "tokensUsed": 827
+}

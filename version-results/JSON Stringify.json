@@ -1,0 +1,31 @@
+{
+  "stringified": "JSON Stringify | object | json | IMPLICIT | NONE\n({ object }, { json }) => json.next(JSON.stringify(object))",
+  "original": {
+    "id": "JSON Stringify",
+    "defaultStyle": {
+      "icon": "fa-pen-fancy"
+    },
+    "namespace": "Objects",
+    "description": "Stringifies an object into a JSON string",
+    "inputs": {
+      "object": {
+        "description": "Object to stringify"
+      }
+    },
+    "outputs": {
+      "json": {
+        "description": "The stringified JSON"
+      }
+    },
+    "runFnString": "({ object }, { json }) => json.next(JSON.stringify(object))"
+  },
+  "alternativeFunction": "function ({ inputObject }, { outputJSON }) {\n  const jsonString = JSON.stringify(inputObject);\n  outputJSON.next(jsonString);\n}",
+  "alternativeMetaData": "JSON Stringifier | inputObject | outputJSON | IMPLICIT | NONE",
+  "prompts": [
+    "Convert object to JSON string",
+    "Create JSON string from object",
+    "JSON stringifier",
+    "Object to JSON converter"
+  ],
+  "tokensUsed": 789
+}

@@ -1,0 +1,36 @@
+{
+  "stringified": "Read File | path,encoding | contents | IMPLICIT | NONE\nasync ({ connection, collection, fieldOrSpec, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .createIndex(fieldOrSpec, options);\n    result.next(res);\n  }",
+  "original": {
+    "id": "Read File",
+    "defaultStyle": {
+      "icon": "fa-file"
+    },
+    "namespace": "File System",
+    "description": "Reads a file from the file system",
+    "inputs": {
+      "path": {
+        "description": "Path to the file"
+      },
+      "encoding": {
+        "description": "Encoding of the file",
+        "mode": "optional",
+        "defaultValue": "utf8"
+      }
+    },
+    "outputs": {
+      "contents": {
+        "description": "Contents of the file"
+      }
+    },
+    "runFnString": "async ({ connection, collection, fieldOrSpec, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .createIndex(fieldOrSpec, options);\n    result.next(res);\n  }"
+  },
+  "alternativeFunction": "function (fileData, fileEncoding, fileContents) {\n  const fs = require('fs');\n  fs.readFile(fileData, fileEncoding, (err, data) => {\n    if (err) throw err;\n    fileContents.next(data);\n  });\n}",
+  "alternativeMetaData": "File Reader | filePath, fileEncoding | fileContents | IMPLICIT | NONE",
+  "prompts": [
+    "Read contents of file",
+    "Get file contents",
+    "Read file data",
+    "Retrieve file contents"
+  ],
+  "tokensUsed": 855
+}

@@ -1,0 +1,9 @@
+{
+  "result": "JSON String to Object | jsonString | jsonObject | IMPLICIT | NONE\nfunction ({jsonString}, {jsonObject}, {onError}) {\n  try {\n    const obj = JSON.parse(jsonString);\n    jsonObject.next(obj);\n  } catch (error) {\n    onError(error);\n  }\n}",
+  "tokens": 752,
+  "completionTime": 11263,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "JSON string to object converter",
+  "score": 1,
+  "remarks": "Invalid metadata row JSON String to Object | jsonString | jsonObject | IMPLICIT | NONE"
+}

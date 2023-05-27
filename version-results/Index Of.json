@@ -1,0 +1,37 @@
+{
+  "stringified": "Index Of | string,searchValue,fromIndex | value | IMPLICIT | NONE\n({ string, searchValue, fromIndex }, { value }) =>\n    value.next(string.indexOf(searchValue, fromIndex))",
+  "original": {
+    "id": "Index Of",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex",
+    "inputs": {
+      "string": {
+        "description": "String to search in"
+      },
+      "searchValue": {
+        "description": "Value to search for"
+      },
+      "fromIndex": {
+        "description": "Index to start searching from"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Index"
+      }
+    },
+    "runFnString": "({ string, searchValue, fromIndex }, { value }) =>\n    value.next(string.indexOf(searchValue, fromIndex))"
+  },
+  "alternativeFunction": "function ({ inputString, searchValue, startIndex }, { result }) { result.next(inputString.indexOf(searchValue, startIndex)); }",
+  "alternativeMetaData": "Substring Index | inputString, searchValue, startIndex | result | IMPLICIT | NONE",
+  "prompts": [
+    "Find index of substring",
+    "Get index of substring",
+    "Locate substring index",
+    "Search for substring index"
+  ],
+  "tokensUsed": 803
+}

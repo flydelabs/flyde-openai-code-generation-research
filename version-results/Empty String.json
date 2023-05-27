@@ -1,0 +1,28 @@
+{
+  "stringified": "Empty String |  | string | IMPLICIT | NONE\n({}, { string }) => string.next(\"\")",
+  "original": {
+    "id": "Empty String",
+    "namespace": "Strings",
+    "defaultStyle": {
+      "icon": "fa-font",
+      "size": "small"
+    },
+    "description": "Creates an empty string",
+    "inputs": {},
+    "outputs": {
+      "string": {
+        "description": "The empty string"
+      }
+    },
+    "runFnString": "({}, { string }) => string.next(\"\")"
+  },
+  "alternativeFunction": "function (inputs, outputs) {\n  const { string } = outputs;\n  string.next(\"\");\n}",
+  "alternativeMetaData": "Empty String Part |  | outputString | IMPLICIT | NONE",
+  "prompts": [
+    "Create an empty string",
+    "Generate an empty string",
+    "Produce an empty string",
+    "Create a blank string"
+  ],
+  "tokensUsed": 778
+}

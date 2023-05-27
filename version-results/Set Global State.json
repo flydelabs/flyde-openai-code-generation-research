@@ -1,0 +1,31 @@
+{
+  "stringified": "Set Global State | key,value | setValue | IMPLICIT | NONE\n({ key, value }, { setValue }, { globalState }) => {\n    globalState.set(key, value);\n    setValue.next(value);\n  }",
+  "original": {
+    "id": "Set Global State",
+    "namespace": "State",
+    "description": "Sets a value in the global state",
+    "inputs": {
+      "key": {
+        "description": "Key to set"
+      },
+      "value": {
+        "description": "Value to set"
+      }
+    },
+    "outputs": {
+      "setValue": {
+        "description": "Value that was set"
+      }
+    },
+    "runFnString": "({ key, value }, { setValue }, { globalState }) => {\n    globalState.set(key, value);\n    setValue.next(value);\n  }"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n  const { key, value } = inputs;\n  const { setValue } = outputs;\n\n  const newGlobalState = {...adv.state.globalState, [key]: value};\n  adv.state.globalState = newGlobalState;\n  setValue.next(value);\n}",
+  "alternativeMetaData": "Update Global State | key,value | setValue | IMPLICIT | NONE",
+  "prompts": [
+    "Set a global state value",
+    "Update global state",
+    "Set a value in global state",
+    "Update global state value"
+  ],
+  "tokensUsed": 844
+}

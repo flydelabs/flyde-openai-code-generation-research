@@ -1,0 +1,35 @@
+{
+  "stringified": "Write File | path,contents,encoding |  | IMPLICIT | NONE\nasync ({ connection, collection, indexes, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .createIndexes(indexes, options);\n    result.next(res);\n  }",
+  "original": {
+    "id": "Write File",
+    "defaultStyle": {
+      "icon": "fa-file"
+    },
+    "namespace": "File System",
+    "description": "Writes a file to the file system",
+    "inputs": {
+      "path": {
+        "description": "Path to the file"
+      },
+      "contents": {
+        "description": "Contents of the file"
+      },
+      "encoding": {
+        "description": "Encoding of the file",
+        "mode": "optional",
+        "defaultValue": "utf8"
+      }
+    },
+    "outputs": {},
+    "runFnString": "async ({ connection, collection, indexes, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .createIndexes(indexes, options);\n    result.next(res);\n  }"
+  },
+  "alternativeFunction": "function ({ filePath, fileContents, encoding }, { success }) {\n  const fs = require('fs');\n  fs.writeFile(filePath, fileContents, encoding, (err) => {\n    if (err) {\n      success.error(err);\n    } else {\n      success.next('File saved successfully!');\n    }\n  });\n}",
+  "alternativeMetaData": "Save to File | filePath, fileContents, encoding |  | IMPLICIT | NONE",
+  "prompts": [
+    "Write contents to file",
+    "Save data to file",
+    "Write to file",
+    "Store data in file"
+  ],
+  "tokensUsed": 874
+}

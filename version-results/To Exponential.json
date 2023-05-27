@@ -1,0 +1,31 @@
+{
+  "stringified": "To Exponential | number,places | exponential | IMPLICIT | NONE\n({ number, places }, { exponential }) =>\n    exponential.next(number.toExponential(places))",
+  "original": {
+    "id": "To Exponential",
+    "namespace": "Numbers",
+    "description": "Emits the specified number of decimal places of a number in exponential notation",
+    "inputs": {
+      "number": {
+        "description": "Number to format"
+      },
+      "places": {
+        "description": "Number of decimal places to format to"
+      }
+    },
+    "outputs": {
+      "exponential": {
+        "description": "The number with the specified number of decimal places in exponential notation"
+      }
+    },
+    "runFnString": "({ number, places }, { exponential }) =>\n    exponential.next(number.toExponential(places))"
+  },
+  "alternativeFunction": "function ({ num, dec }, { exp }) { exp.next(num.toExponential(dec)) }",
+  "alternativeMetaData": "To Scientific Notation | num,dec | exp | IMPLICIT | NONE",
+  "prompts": [
+    "Convert number to exponential notation",
+    "Convert number to scientific notation",
+    "Get exponential notation of number",
+    "Transform number to exponential notation"
+  ],
+  "tokensUsed": 791
+}

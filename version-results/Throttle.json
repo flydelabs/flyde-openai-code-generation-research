@@ -1,0 +1,40 @@
+{
+  "stringified": "Throttle | value,wait | result | result | value\nfunction (inputs, outputs, adv) {\n    const { value, wait } = inputs;\n    const { result } = outputs;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      adv.onError(new ThrottleError(value));\n      return;\n    } else {\n      result.next(value);\n      const newTimer = setTimeout(() => {\n        adv.state.set(\"timer\", null);\n      }, wait);\n      adv.state.set(\"timer\", newTimer);\n    }\n  }",
+  "original": {
+    "id": "Throttle",
+    "namespace": "Control Flow",
+    "inputs": {
+      "value": {
+        "mode": "required",
+        "description": "The data that needs to be throttled"
+      },
+      "wait": {
+        "mode": "required",
+        "defaultValue": 250,
+        "description": "Time (in millis) to wait until 'value' is emitted"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": "The throttled value"
+      }
+    },
+    "completionOutputs": [
+      "result"
+    ],
+    "reactiveInputs": [
+      "value"
+    ],
+    "description": "Emits the first value received after being idle for \"wait\" amount of milliseconds",
+    "runFnString": "function (inputs, outputs, adv) {\n    const { value, wait } = inputs;\n    const { result } = outputs;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      adv.onError(new ThrottleError(value));\n      return;\n    } else {\n      result.next(value);\n      const newTimer = setTimeout(() => {\n        adv.state.set(\"timer\", null);\n      }, wait);\n      adv.state.set(\"timer\", newTimer);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputValues, outputValues, state) {\n  const { input, waitTime } = inputValues;\n  const { output } = outputValues;\n  \n  const timer = state.get('timer');\n  if (timer) {\n    state.set('lastInput', input);\n    return;\n  }\n  \n  output.next(input);\n  const newTimer = setTimeout(() => {\n    state.set('timer', null);\n    const lastInput = state.get('lastInput');\n    if (lastInput) {\n      output.next(lastInput);\n      state.set('lastInput', null);\n    }\n  }, waitTime);\n  state.set('timer', newTimer);\n}",
+  "alternativeMetaData": "Input Throttler | input,waitTime | output | output | input",
+  "prompts": [
+    "Limit input frequency",
+    "Control input rate",
+    "Throttle input values",
+    "Limit input speed"
+  ],
+  "tokensUsed": 1002
+}

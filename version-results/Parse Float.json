@@ -1,0 +1,28 @@
+{
+  "stringified": "Parse Float | str | float | IMPLICIT | NONE\n({ str }, { float }) => float.next(parseFloat(str))",
+  "original": {
+    "id": "Parse Float",
+    "namespace": "Numbers",
+    "description": "Emits the float value of a string",
+    "inputs": {
+      "str": {
+        "description": "String to parse"
+      }
+    },
+    "outputs": {
+      "float": {
+        "description": "The float value of str"
+      }
+    },
+    "runFnString": "({ str }, { float }) => float.next(parseFloat(str))"
+  },
+  "alternativeFunction": "function (inputData, outputData) {\n  const { str } = inputData;\n  const { float } = outputData;\n  \n  const parsedFloat = parseFloat(str);\n  float.next(parsedFloat);\n}",
+  "alternativeMetaData": "Float Parser | string | floatNumber | IMPLICIT | NONE",
+  "prompts": [
+    "Convert string to float",
+    "Parse string as float",
+    "String to float converter",
+    "Convert a string to a floating point number"
+  ],
+  "tokensUsed": 807
+}

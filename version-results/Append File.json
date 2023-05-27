@@ -1,0 +1,35 @@
+{
+  "stringified": "Append File | path,contents,encoding |  | IMPLICIT | NONE\nasync ({ path, encoding }, { contents }) => {\n    return contents.next(await fs.promises.readFile(path, encoding));\n  }",
+  "original": {
+    "id": "Append File",
+    "defaultStyle": {
+      "icon": "fa-file"
+    },
+    "namespace": "File System",
+    "description": "Appends a file to the file system",
+    "inputs": {
+      "path": {
+        "description": "Path to the file"
+      },
+      "contents": {
+        "description": "Contents of the file"
+      },
+      "encoding": {
+        "description": "Encoding of the file",
+        "mode": "optional",
+        "defaultValue": "utf8"
+      }
+    },
+    "outputs": {},
+    "runFnString": "async ({ path, encoding }, { contents }) => {\n    return contents.next(await fs.promises.readFile(path, encoding));\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData, adv) {\n  const { filePath, fileContent, fileEncoding } = inputData;\n  const { success } = outputData;\n  \n  fs.appendFile(filePath, fileContent, { encoding: fileEncoding }, (err) => {\n    if (err) {\n      success.next(false);\n    } else {\n      success.next(true);\n    }\n  });\n}",
+  "alternativeMetaData": "File Appender | filePath,fileContent,fileEncoding | success | IMPLICIT | NONE",
+  "prompts": [
+    "Append to file",
+    "Add content to file",
+    "Write to file",
+    "Save to file"
+  ],
+  "tokensUsed": 866
+}

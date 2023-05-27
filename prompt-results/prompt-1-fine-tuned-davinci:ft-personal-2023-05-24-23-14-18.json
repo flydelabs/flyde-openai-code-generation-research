@@ -1,0 +1,9 @@
+{
+  "result": " Concat | n1,n2 | concatenated | IMPLICIT | NONE\nfunction (inputs, outputs) {\n  const { num1, num2 } = inputs;\n  const { concatenated } = outputs;\n\n  const newArray = [num1, num2];\n  concatenated.next(newArray);\n}",
+  "tokens": 88,
+  "completionTime": 2431,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "Concatenate two inputs",
+  "score": 2,
+  "remarks": "Wrong input names, unnecessary array creation"
+}

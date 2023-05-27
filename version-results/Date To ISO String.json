@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To ISO String | date | string | IMPLICIT | NONE\n({ date }, { string }) => string.next(date.toISOString())",
+  "original": {
+    "id": "Date To ISO String",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to an ISO string",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "string": {
+        "description": "String"
+      }
+    },
+    "runFnString": "({ date }, { string }) => string.next(date.toISOString())"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { date } = input;\n  const { string } = output;\n  \n  const isoString = date.toISOString();\n  string.next(isoString);\n}",
+  "alternativeMetaData": "ISO String Generator | inputDate | outputString | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to ISO string",
+    "Get ISO string from date",
+    "Date to string converter",
+    "ISO string generator from date"
+  ],
+  "tokensUsed": 811
+}

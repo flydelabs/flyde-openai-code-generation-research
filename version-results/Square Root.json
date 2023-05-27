@@ -1,0 +1,31 @@
+{
+  "stringified": "Square Root | n | root | IMPLICIT | NONE\n({ n }, { root }) => root.next(Math.sqrt(n))",
+  "original": {
+    "id": "Square Root",
+    "defaultStyle": {
+      "icon": "fa-square-root-alt"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the square root of a number",
+    "inputs": {
+      "n": {
+        "description": "Number to take the square root of"
+      }
+    },
+    "outputs": {
+      "root": {
+        "description": "The square root of n"
+      }
+    },
+    "runFnString": "({ n }, { root }) => root.next(Math.sqrt(n))"
+  },
+  "alternativeFunction": "function ({ number }, { result }) {\n  return result.next(Math.sqrt(number));\n}",
+  "alternativeMetaData": "Root Calculation | number | result | IMPLICIT | NONE",
+  "prompts": [
+    "Calculate square root",
+    "Find root of a number",
+    "Calculate the square root of a number",
+    "Get the square root of a number"
+  ],
+  "tokensUsed": 780
+}

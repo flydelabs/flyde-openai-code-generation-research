@@ -1,0 +1,27 @@
+{
+  "stringified": "Now |  | now | IMPLICIT | NONE\n(_, { now }) => now.next(new Date())",
+  "original": {
+    "id": "Now",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Returns the current date and time",
+    "inputs": {},
+    "outputs": {
+      "now": {
+        "description": "Current date and time"
+      }
+    },
+    "runFnString": "(_, { now }) => now.next(new Date())"
+  },
+  "alternativeFunction": "function (inputs, outputs) {\n  const { now } = outputs;\n  setInterval(() => {\n    now.next(new Date());\n  }, 1000);\n}",
+  "alternativeMetaData": "Real-time Clock |  | current_time | IMPLICIT | NONE",
+  "prompts": [
+    "Current Date",
+    "Get Current Time",
+    "Real-time Clock",
+    "Part that outputs current date/time"
+  ],
+  "tokensUsed": 789
+}

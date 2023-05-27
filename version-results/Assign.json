@@ -1,0 +1,34 @@
+{
+  "stringified": "Assign | target,sources | object | IMPLICIT | NONE\n({ target, sources }, { object }) =>\n    object.next(Object.assign(target, ...sources))",
+  "original": {
+    "id": "Assign",
+    "namespace": "Objects",
+    "defaultStyle": {
+      "icon": "fa-box"
+    },
+    "description": "Assigns properties from one or more objects to a target object",
+    "inputs": {
+      "target": {
+        "description": "Target object to assign properties to"
+      },
+      "sources": {
+        "description": "One or more objects to assign properties from"
+      }
+    },
+    "outputs": {
+      "object": {
+        "description": "The target object"
+      }
+    },
+    "runFnString": "({ target, sources }, { object }) =>\n    object.next(Object.assign(target, ...sources))"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n  const { target, sources } = inputs;\n  const { object } = outputs;\n\n  const newObj = Object.assign(target, ...sources);\n  object.next(newObj);\n}",
+  "alternativeMetaData": "MergeObjects | obj1,obj2,obj3 | mergedObj | IMPLICIT | NONE",
+  "prompts": [
+    "Combine objects",
+    "Merge objects together",
+    "Combine multiple objects into one",
+    "Assign values from multiple objects"
+  ],
+  "tokensUsed": 817
+}

@@ -1,0 +1,43 @@
+{
+  "stringified": "Connect | host,port,database,user,password | connection | IMPLICIT | NONE\nasync ({ path }, {}) => {\n    await fs.promises.unlink(path);\n  }",
+  "original": {
+    "id": "Connect",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "Postgres",
+    "description": "Connects to a Postgres database and returns a client. Uses the \"pg\" package.",
+    "inputs": {
+      "host": {
+        "description": "Host"
+      },
+      "port": {
+        "description": "Port"
+      },
+      "database": {
+        "description": "Database"
+      },
+      "user": {
+        "description": "User"
+      },
+      "password": {
+        "description": "Password"
+      }
+    },
+    "outputs": {
+      "connection": {
+        "description": "Postgres connected client"
+      }
+    },
+    "runFnString": "async ({ path }, {}) => {\n    await fs.promises.unlink(path);\n  }"
+  },
+  "alternativeFunction": "function ({ host, port, database, user, password }, { connection }) {\n  const db = new Database({\n    host,\n    port,\n    database,\n    user,\n    password\n  });\n  await db.connect();\n  connection.next(db);\n}",
+  "alternativeMetaData": "Database Connection | host,port,database,user,password | connection | IMPLICIT | NONE",
+  "prompts": [
+    "Connect to database",
+    "Establish database connection",
+    "Create database connection",
+    "Connect to database server"
+  ],
+  "tokensUsed": 827
+}

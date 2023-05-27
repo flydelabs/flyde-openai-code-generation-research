@@ -1,0 +1,34 @@
+{
+  "stringified": "Append | list,item | list | IMPLICIT | NONE\n({ list, item }, { list: outputList }) => {\n    outputList.next([...list, item]);\n  }",
+  "original": {
+    "id": "Append",
+    "namespace": "Lists",
+    "description": "Appends an item to a list",
+    "inputs": {
+      "list": {
+        "description": "The list"
+      },
+      "item": {
+        "description": "The item to append"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "The resulting list"
+      }
+    },
+    "defaultStyle": {
+      "icon": "fa-plus"
+    },
+    "runFnString": "({ list, item }, { list: outputList }) => {\n    outputList.next([...list, item]);\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData, adv) {\n  const { existingList, newItem } = inputData;\n  const { updatedList } = outputData;\n\n  const newList = [...existingList, newItem];\n  updatedList.next(newList);\n}",
+  "alternativeMetaData": "AppendToList | existingList,newItem | updatedList | IMPLICIT | NONE",
+  "prompts": [
+    "Add item to list",
+    "Append to list",
+    "Add to existing list",
+    "Add new item to existing list"
+  ],
+  "tokensUsed": 827
+}

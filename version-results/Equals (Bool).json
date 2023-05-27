@@ -1,0 +1,34 @@
+{
+  "stringified": "Equals (Bool) | a,b | result | IMPLICIT | NONE\n({ a, b }, { result }) => result.next(a === b)",
+  "original": {
+    "id": "Equals (Bool)",
+    "defaultStyle": {
+      "icon": "fa-equals"
+    },
+    "namespace": "Control Flow",
+    "description": "Emits true if two values are equal (=== equality). Otherwise emits false.",
+    "inputs": {
+      "a": {
+        "description": "First value"
+      },
+      "b": {
+        "description": "Second value"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": "true if a is equal to b"
+      }
+    },
+    "runFnString": "({ a, b }, { result }) => result.next(a === b)"
+  },
+  "alternativeFunction": "function (input, output, adv) {\n  const { firstValue, secondValue } = input;\n  const { result } = output;\n  result.next(firstValue === secondValue);\n}",
+  "alternativeMetaData": "Equals (Bool) | firstValue,secondValue | result | IMPLICIT | NONE",
+  "prompts": [
+    "Compare two values",
+    "Check if two values are equal",
+    "Boolean comparison",
+    "Determine if two values are equal"
+  ],
+  "tokensUsed": 810
+}

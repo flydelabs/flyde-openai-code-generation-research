@@ -1,0 +1,31 @@
+{
+  "stringified": "To Lower Case | string | value | IMPLICIT | NONE\n({ string }, { value }) => value.next(string.toLowerCase())",
+  "original": {
+    "id": "To Lower Case",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Converts a string to lower case",
+    "inputs": {
+      "string": {
+        "description": "String to convert to lower case"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Converted value"
+      }
+    },
+    "runFnString": "({ string }, { value }) => value.next(string.toLowerCase())"
+  },
+  "alternativeFunction": "function ({ inputString }, { outputValue }) {\n  const { string } = inputString;\n  const { value } = outputValue;\n  value.next(string.toLowerCase());\n}",
+  "alternativeMetaData": "LowerCase | inputString | outputValue | IMPLICIT | NONE",
+  "prompts": [
+    "Convert string to lowercase",
+    "Lowercase string",
+    "Transform string to lowercase",
+    "Change string to lowercase"
+  ],
+  "tokensUsed": 794
+}

@@ -1,0 +1,9 @@
+{
+  "result": "SQL Query | query,connection | result | IMPLICIT | NONE\nasync function ({query, connection}, {result}, {externalContext}) {\n  const db = externalContext.get(\"db\");\n  if (!db) {\n    throw new Error(\"Database connection not found in externalContext\");\n  }\n\n  try {\n    const queryResult = await db.query(query, connection);\n    result.next(queryResult);\n  } catch (error) {\n    throw new Error(`Error executing SQL query: ${error.message}`);\n  }\n}",
+  "tokens": 650,
+  "completionTime": 14971,
+  "generatorName": "chat-completion-gpt-4-very-condensed",
+  "prompt": "Run SQL query",
+  "score": 1,
+  "remarks": "Invalid metadata row SQL Query | query,connection | result | IMPLICIT | NONE"
+}

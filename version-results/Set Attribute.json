@@ -1,0 +1,41 @@
+{
+  "stringified": "Set Attribute | object,attribute,value | object | IMPLICIT | NONE\n({ object, attribute, value }, { object: outputObject }) => {\n    const attributes = attribute.split(\".\");\n    const last = attributes.pop();\n    const target = attributes.reduce((obj, i) => obj[i], object);\n    target[last] = value;\n    return outputObject.next(object);\n  }",
+  "original": {
+    "id": "Set Attribute",
+    "searchKeywords": [
+      "dot"
+    ],
+    "namespace": "Objects",
+    "defaultStyle": {
+      "icon": "fa-box"
+    },
+    "description": "Sets an attribute on an object",
+    "inputs": {
+      "object": {
+        "description": "Object to set attribute on"
+      },
+      "attribute": {
+        "description": "Attribute to set"
+      },
+      "value": {
+        "description": "Value to set attribute to"
+      }
+    },
+    "outputs": {
+      "object": {
+        "description": "The object with the attribute set"
+      }
+    },
+    "customViewCode": "<% if (inputs.attribute) { %> Set \"<%- inputs.attribute %>\"<% } else { %> Set Attribute <% } %>",
+    "runFnString": "({ object, attribute, value }, { object: outputObject }) => {\n    const attributes = attribute.split(\".\");\n    const last = attributes.pop();\n    const target = attributes.reduce((obj, i) => obj[i], object);\n    target[last] = value;\n    return outputObject.next(object);\n  }"
+  },
+  "alternativeFunction": "function ({ inputObject, attributeName, attributeValue }, { outputObject }) {\n    inputObject[attributeName] = attributeValue;\n    outputObject.next(inputObject);\n}",
+  "alternativeMetaData": "Update Attribute | inputObject,attributeName,attributeValue | outputObject | IMPLICIT | NONE",
+  "prompts": [
+    "Set object attribute value",
+    "Change object attribute",
+    "Update object attribute",
+    "Modify object attribute"
+  ],
+  "tokensUsed": 848
+}

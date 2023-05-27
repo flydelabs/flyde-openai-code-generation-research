@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To Day | date | day | IMPLICIT | NONE\n({ date }, { day }) => day.next(date.getDate())",
+  "original": {
+    "id": "Date To Day",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to a day",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "day": {
+        "description": "Day"
+      }
+    },
+    "runFnString": "({ date }, { day }) => day.next(date.getDate())"
+  },
+  "alternativeFunction": "function ({ dateInput }, { dayOutput }) {\n  const { date } = dateInput;\n  const { day } = dayOutput;\n  const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getDay()];\n  day.next(dayOfWeek);\n}",
+  "alternativeMetaData": "Day Extractor | dateInput | dayOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to day",
+    "Get day from date",
+    "Extract day from date",
+    "Transform date to day"
+  ],
+  "tokensUsed": 828
+}

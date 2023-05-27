@@ -1,0 +1,31 @@
+{
+  "stringified": "Entries | object | entries | IMPLICIT | NONE\n({ object }, { entries }) => entries.next(Object.entries(object))",
+  "original": {
+    "id": "Entries",
+    "defaultStyle": {
+      "icon": "fa-box"
+    },
+    "namespace": "Objects",
+    "description": "Emits the entries of an object",
+    "inputs": {
+      "object": {
+        "description": "Object to get entries of"
+      }
+    },
+    "outputs": {
+      "entries": {
+        "description": "The entries of object"
+      }
+    },
+    "runFnString": "({ object }, { entries }) => entries.next(Object.entries(object))"
+  },
+  "alternativeFunction": "function (inputObj, outputEntries) {\n  const { object } = inputObj;\n  const { entries } = outputEntries;\n  const objectEntries = Object.entries(object);\n  entries.next(objectEntries);\n}",
+  "alternativeMetaData": "Object to Entries | obj | entries | IMPLICIT | NONE",
+  "prompts": [
+    "Extract object entries",
+    "Convert object to entries",
+    "Get object key-value pairs",
+    "Create entries from object"
+  ],
+  "tokensUsed": 802
+}

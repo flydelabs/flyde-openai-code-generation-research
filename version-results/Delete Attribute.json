@@ -1,0 +1,35 @@
+{
+  "stringified": "Delete Attribute | object,attribute | object | IMPLICIT | NONE\n({ object, attribute }, { object: outputObject }) => {\n    // delete attribute from object while supporting dot notation\n    const attributes = attribute.value.split(\".\");\n    const last = attributes.pop();\n    const target = attributes.reduce((obj, i) => obj[i], object.value);\n    delete target[last];\n    outputObject.next(object.value);\n  }",
+  "original": {
+    "id": "Delete Attribute",
+    "defaultStyle": {
+      "icon": "fa-box"
+    },
+    "namespace": "Objects",
+    "description": "Deletes an attribute from an object",
+    "inputs": {
+      "object": {
+        "description": "Object to delete attribute from"
+      },
+      "attribute": {
+        "description": "Attribute to delete"
+      }
+    },
+    "customViewCode": "<% if (inputs.attribute?.value) { %> Delete \"<%- inputs.attribute.value %>\"<% } else { %> Delete Attribute <% } %>",
+    "outputs": {
+      "object": {
+        "description": "The object with the attribute deleted"
+      }
+    },
+    "runFnString": "({ object, attribute }, { object: outputObject }) => {\n    // delete attribute from object while supporting dot notation\n    const attributes = attribute.value.split(\".\");\n    const last = attributes.pop();\n    const target = attributes.reduce((obj, i) => obj[i], object.value);\n    delete target[last];\n    outputObject.next(object.value);\n  }"
+  },
+  "alternativeFunction": "function ({ obj, attr }, { obj: outputObj }) {\n    const { [attr]: _, ...rest } = obj.value;\n    outputObj.next(rest);\n}",
+  "alternativeMetaData": "RemoveProperty | obj,attr | obj | IMPLICIT | NONE",
+  "prompts": [
+    "Remove object attribute",
+    "Delete object property",
+    "Remove property from object",
+    "Delete object attribute using dot notation"
+  ],
+  "tokensUsed": 853
+}

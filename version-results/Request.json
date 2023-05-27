@@ -1,0 +1,46 @@
+{
+  "stringified": "Request | url,method,headers,params,data | data | IMPLICIT | NONE\n({ url, method, headers, params, data: body }, { data }) => {\n    const config: AxiosRequestConfig = { method, headers, params };\n    return axios\n      .request({ url, data: body, ...config })\n      .then((res) => data.next(res.data));\n  }",
+  "original": {
+    "id": "Request",
+    "defaultStyle": {
+      "icon": "fa-server"
+    },
+    "namespace": "HTTP",
+    "description": "Performs a HTTP request to a URL and emits the response data",
+    "inputs": {
+      "url": {
+        "description": "URL to fetch data from"
+      },
+      "method": {
+        "description": "HTTP method to use"
+      },
+      "headers": {
+        "description": "Headers to send with the request",
+        "mode": "required-if-connected"
+      },
+      "params": {
+        "description": "Query parameters to send with the request",
+        "mode": "required-if-connected"
+      },
+      "data": {
+        "description": "Data to send with the request",
+        "mode": "required-if-connected"
+      }
+    },
+    "outputs": {
+      "data": {
+        "description": "The response data"
+      }
+    },
+    "runFnString": "({ url, method, headers, params, data: body }, { data }) => {\n    const config: AxiosRequestConfig = { method, headers, params };\n    return axios\n      .request({ url, data: body, ...config })\n      .then((res) => data.next(res.data));\n  }"
+  },
+  "alternativeFunction": "function (request, response, state) {\n  const { url, method, headers, params, data: body } = request;\n  const { data } = response;\n\n  const config: AxiosRequestConfig = { method, headers, params };\n  return axios\n    .request({ url, data: body, ...config })\n    .then((res) => data.next(res.data));\n}",
+  "alternativeMetaData": "HTTP Request | url,method,headers,params,data | data | IMPLICIT | NONE",
+  "prompts": [
+    "HTTP Request Sender",
+    "Send HTTP Request",
+    "HTTP Request with Axios",
+    "Send HTTP Request with Axios"
+  ],
+  "tokensUsed": 905
+}

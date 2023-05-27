@@ -1,0 +1,36 @@
+{
+  "stringified": "Equals | a,b | true,false | IMPLICIT | NONE\n(inputs, outputs) => {\n    const { a, b } = inputs;\n    const { true: trueOutput, false: falseOutput } = outputs;\n\n    if (a === b) {\n      trueOutput.next(a);\n    } else {\n      falseOutput.next(a);\n    }\n  }",
+  "original": {
+    "id": "Equals",
+    "namespace": "Control Flow",
+    "description": "Emits the value of \"a\" to output \"true\" if \"a\" is equal to \"b\". Otherwise emits the value of \"a\" to output \"false\".",
+    "inputs": {
+      "a": {
+        "mode": "required",
+        "description": "First value"
+      },
+      "b": {
+        "mode": "required",
+        "description": "Second value"
+      }
+    },
+    "outputs": {
+      "true": {
+        "description": "Emits the value of a if a is equal to b"
+      },
+      "false": {
+        "description": "Emits the value of a if a is not equal to b"
+      }
+    },
+    "runFnString": "(inputs, outputs) => {\n    const { a, b } = inputs;\n    const { true: trueOutput, false: falseOutput } = outputs;\n\n    if (a === b) {\n      trueOutput.next(a);\n    } else {\n      falseOutput.next(a);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData) {\n  const { value1, value2 } = inputData;\n  const { true: trueOutput, false: falseOutput } = outputData;\n\n  if (value1 === value2) {\n    trueOutput.next(value1);\n  } else {\n    falseOutput.next(value1);\n  }\n}",
+  "alternativeMetaData": "Equality | value1,value2 | true,false | IMPLICIT | NONE",
+  "prompts": [
+    "Compare two values",
+    "Check if two values are equal",
+    "Equality checker",
+    "Determine if two values are equal"
+  ],
+  "tokensUsed": 885
+}

@@ -1,0 +1,40 @@
+{
+  "stringified": "FindOne | connection,collection,query,options | result | IMPLICIT | NONE\nasync ({ connection, collection, query, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .find(query, options)\n      .toArray();\n    result.next(res);\n  }",
+  "original": {
+    "id": "FindOne",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "MongoDB",
+    "description": "Queries a Mongo database. FindOne receives a valid \"mongodb\" FindOneOptions object.",
+    "inputs": {
+      "connection": {
+        "description": "Mongo connection"
+      },
+      "collection": {
+        "description": "Collection"
+      },
+      "query": {
+        "description": "Query"
+      },
+      "options": {
+        "description": "Options"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": ""
+      }
+    },
+    "runFnString": "async ({ connection, collection, query, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .find(query, options)\n      .toArray();\n    result.next(res);\n  }"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n  const { conn, coll, q, opt } = inputs;\n  const { res } = outputs;\n\n  const result = await conn\n    .db()\n    .collection(coll)\n    .findOne(q, opt);\n  res.next(result);\n}",
+  "alternativeMetaData": "FindDocument | conn,coll,q,opt | res | IMPLICIT | NONE",
+  "prompts": [
+    "Find a single document in a MongoDB collection",
+    "Search for a document in a MongoDB collection",
+    "Retrieve a single document from a MongoDB collection",
+    "Find a document in a MongoDB collection with specific criteria"
+  ],
+  "tokensUsed": 885
+}

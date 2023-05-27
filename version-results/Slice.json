@@ -1,0 +1,37 @@
+{
+  "stringified": "Slice | list,start,end | list | IMPLICIT | NONE\n({ list, start, end }, { list: outputList }) => {\n    outputList.next(list.slice(start, end));\n  }",
+  "original": {
+    "id": "Slice",
+    "namespace": "Lists",
+    "description": "Returns a slice of a list from the specified start index to the specified end index",
+    "inputs": {
+      "list": {
+        "description": "The list"
+      },
+      "start": {
+        "description": "The index to start slicing from"
+      },
+      "end": {
+        "description": "The index to end slicing at"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "The resulting list"
+      }
+    },
+    "defaultStyle": {
+      "icon": "fa-cut"
+    },
+    "runFnString": "({ list, start, end }, { list: outputList }) => {\n    outputList.next(list.slice(start, end));\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData) {\n  const { list: inputList, start: startIndex, end: endIndex } = inputData;\n  const { list: outputList } = outputData;\n  outputList.next(inputList.slice(startIndex, endIndex));\n}",
+  "alternativeMetaData": "Sublist | list,startIndex,endIndex | list | IMPLICIT | NONE",
+  "prompts": [
+    "Extract a portion of a list",
+    "Slice a list",
+    "Get a sublist",
+    "Select a range from a list"
+  ],
+  "tokensUsed": 833
+}

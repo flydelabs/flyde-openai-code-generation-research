@@ -1,0 +1,37 @@
+{
+  "stringified": "Substring | string,start,end | value | IMPLICIT | NONE\n({ string, start, end }, { value }) =>\n    value.next(string.substring(start, end))",
+  "original": {
+    "id": "Substring",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Returns the part of the string between the start and end indexes",
+    "inputs": {
+      "string": {
+        "description": "String to get substring from"
+      },
+      "start": {
+        "description": "Start index"
+      },
+      "end": {
+        "description": "End index"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Substring"
+      }
+    },
+    "runFnString": "({ string, start, end }, { value }) =>\n    value.next(string.substring(start, end))"
+  },
+  "alternativeFunction": "function (inputs, outputs) {\n  const { string, start, end } = inputs;\n  const { value } = outputs;\n\n  const subString = string.substring(start, end);\n  value.next(subString);\n}",
+  "alternativeMetaData": "Substring Extractor | inputString, startIndex, endIndex | extractedString | IMPLICIT | NONE",
+  "prompts": [
+    "Extract a part of a string",
+    "Get a substring from a string",
+    "Select a portion of a string",
+    "Get a part of a string based on start and end positions"
+  ],
+  "tokensUsed": 834
+}

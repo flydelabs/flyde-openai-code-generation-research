@@ -1,0 +1,34 @@
+{
+  "stringified": "Remove | list,item | list | IMPLICIT | NONE\n({ list, item }, { list: outputList }) => {\n    outputList.next(list.filter((i) => i !== item));\n  }",
+  "original": {
+    "id": "Remove",
+    "namespace": "Lists",
+    "description": "Removes an item from a list",
+    "inputs": {
+      "list": {
+        "description": "The list"
+      },
+      "item": {
+        "description": "The item to remove"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "The resulting list"
+      }
+    },
+    "defaultStyle": {
+      "icon": "fa-minus"
+    },
+    "runFnString": "({ list, item }, { list: outputList }) => {\n    outputList.next(list.filter((i) => i !== item));\n  }"
+  },
+  "alternativeFunction": "function ({ inputList, itemToRemove }, { outputList }) {\n  const filteredList = inputList.filter((item) => item !== itemToRemove);\n  outputList.next(filteredList);\n}",
+  "alternativeMetaData": "Filter List | inputList, itemToRemove | outputList | IMPLICIT | NONE",
+  "prompts": [
+    "Remove item from list",
+    "Filter list by removing item",
+    "List filter",
+    "Remove item from a list of items"
+  ],
+  "tokensUsed": 818
+}

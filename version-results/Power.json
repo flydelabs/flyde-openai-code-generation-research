@@ -1,0 +1,34 @@
+{
+  "stringified": "Power | n1,n2 | power | IMPLICIT | NONE\n({ n1, n2 }, { power }) => power.next(Math.pow(n1, n2))",
+  "original": {
+    "id": "Power",
+    "defaultStyle": {
+      "icon": "fa-superscript"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the power of two numbers",
+    "inputs": {
+      "n1": {
+        "description": "Base number"
+      },
+      "n2": {
+        "description": "Exponent"
+      }
+    },
+    "outputs": {
+      "power": {
+        "description": "The power of n1 and n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { power }) => power.next(Math.pow(n1, n2))"
+  },
+  "alternativeFunction": "function ({ base, exponent }, { result }) {\n    result.next(Math.pow(base, exponent));\n}",
+  "alternativeMetaData": "Exponentiation | base,exponent | result | IMPLICIT | NONE",
+  "prompts": [
+    "Calculate power of two numbers",
+    "Calculate exponentiation",
+    "Calculate n1 to the power of n2",
+    "Calculate the result of n1 raised to the power of n2"
+  ],
+  "tokensUsed": 805
+}

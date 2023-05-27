@@ -1,0 +1,34 @@
+{
+  "stringified": "Concat | a,b | value | IMPLICIT | NONE\n({ a, b }, { value }) => value.next(a + b)",
+  "original": {
+    "id": "Concat",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Concatenates two strings",
+    "inputs": {
+      "a": {
+        "description": "String a"
+      },
+      "b": {
+        "description": "String b"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Concatenated value"
+      }
+    },
+    "runFnString": "({ a, b }, { value }) => value.next(a + b)"
+  },
+  "alternativeFunction": "function (inputs, outputs) {\n  const { a, b } = inputs;\n  const { value } = outputs;\n\n  value.next(`${a}${b}`);\n}",
+  "alternativeMetaData": "Join | input1,input2 | output | IMPLICIT | NONE",
+  "prompts": [
+    "Combine two values",
+    "Concatenate two inputs",
+    "Join two values together",
+    "Create a single value from two inputs"
+  ],
+  "tokensUsed": 800
+}

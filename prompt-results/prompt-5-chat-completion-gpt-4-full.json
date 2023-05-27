@@ -1,0 +1,9 @@
+{
+  "result": "Debounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}",
+  "tokens": 1116,
+  "completionTime": 15678,
+  "generatorName": "chat-completion-gpt-4-full",
+  "prompt": "Debounce a value",
+  "score": 1,
+  "remarks": "Invalid metadata row Debounce | value,wait | result | result | value"
+}

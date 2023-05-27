@@ -1,0 +1,34 @@
+{
+  "stringified": "List From 2 | value1,value2 | list | IMPLICIT | NONE\n({ value1, value2 }, { list }) => list.next([value1, value2])",
+  "original": {
+    "id": "List From 2",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Creates a list from two values",
+    "inputs": {
+      "value1": {
+        "description": "First value"
+      },
+      "value2": {
+        "description": "Second value"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "List containing the 2 values"
+      }
+    },
+    "runFnString": "({ value1, value2 }, { list }) => list.next([value1, value2])"
+  },
+  "alternativeFunction": "function (inputData, outputData) {\n  const { value1, value2 } = inputData;\n  const { list } = outputData;\n\n  list.next([value1, value2]);\n}",
+  "alternativeMetaData": "List Creator | value1, value2 | listOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Create a list from two values",
+    "Combine two values into a list",
+    "List with two values",
+    "Create a list with two values"
+  ],
+  "tokensUsed": 824
+}

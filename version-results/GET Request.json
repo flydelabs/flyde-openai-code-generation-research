@@ -1,0 +1,39 @@
+{
+  "stringified": "GET Request | url,headers,params | data | IMPLICIT | NONE\n({ url, headers, params }, { data }) => {\n    return axios\n      .get(url, { headers, params })\n      .then((res) => data.next(res.data));\n  }",
+  "original": {
+    "id": "GET Request",
+    "defaultStyle": {
+      "icon": "fa-server"
+    },
+    "namespace": "HTTP",
+    "description": "Performs a HTTP GET request to a URL and emits the response data",
+    "inputs": {
+      "url": {
+        "description": "URL to fetch data from"
+      },
+      "headers": {
+        "description": "Headers to send with the request",
+        "mode": "required-if-connected"
+      },
+      "params": {
+        "description": "Query parameters to send with the request",
+        "mode": "required-if-connected"
+      }
+    },
+    "outputs": {
+      "data": {
+        "description": "The response data"
+      }
+    },
+    "runFnString": "({ url, headers, params }, { data }) => {\n    return axios\n      .get(url, { headers, params })\n      .then((res) => data.next(res.data));\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData, adv) {\n  const { url, headers, params } = inputData;\n  const { data } = outputData;\n\n  fetch(url, { headers, params })\n    .then((response) => response.json())\n    .then((responseData) => data.next(responseData));\n}",
+  "alternativeMetaData": "Fetch Data | url,headers,params | data | IMPLICIT | NONE",
+  "prompts": [
+    "Fetch data from URL",
+    "HTTP GET request",
+    "Retrieve data from URL",
+    "Get data from URL"
+  ],
+  "tokensUsed": 860
+}

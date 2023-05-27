@@ -1,0 +1,34 @@
+{
+  "stringified": "Get List Element | list,index | element | IMPLICIT | NONE\n({ list, index }, { element }) => element.next(list[index])",
+  "original": {
+    "id": "Get List Element",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Returns the element at the specified index",
+    "inputs": {
+      "list": {
+        "description": "List"
+      },
+      "index": {
+        "description": "Index"
+      }
+    },
+    "outputs": {
+      "element": {
+        "description": "Element"
+      }
+    },
+    "runFnString": "({ list, index }, { element }) => element.next(list[index])"
+  },
+  "alternativeFunction": "function ({ myList, myIndex }, { myElement }) { myElement.next(myList[myIndex]) }",
+  "alternativeMetaData": "List Element | myList,myIndex | myElement | IMPLICIT | NONE",
+  "prompts": [
+    "Get element from list",
+    "Retrieve item from list",
+    "Get item at index",
+    "Get specific element from list"
+  ],
+  "tokensUsed": 785
+}

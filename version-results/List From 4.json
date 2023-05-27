@@ -1,0 +1,40 @@
+{
+  "stringified": "List From 4 | value1,value2,value3,value4 | list | IMPLICIT | NONE\n({ value1, value2, value3, value4 }, { list }) =>\n    list.next([value1, value2, value3, value4])",
+  "original": {
+    "id": "List From 4",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Creates a list from four values",
+    "inputs": {
+      "value1": {
+        "description": "First value"
+      },
+      "value2": {
+        "description": "Second value"
+      },
+      "value3": {
+        "description": "Third value"
+      },
+      "value4": {
+        "description": "Fourth value"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "List containing all 4 values"
+      }
+    },
+    "runFnString": "({ value1, value2, value3, value4 }, { list }) =>\n    list.next([value1, value2, value3, value4])"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n  const { val1, val2, val3, val4 } = inputs;\n  const { list } = outputs;\n\n  const newList = [val1, val2, val3, val4];\n  list.next(newList);\n}",
+  "alternativeMetaData": "List Creator | val1,val2,val3,val4 | newList | IMPLICIT | NONE",
+  "prompts": [
+    "Create a list from values",
+    "Convert values to a list",
+    "Combine values into a list",
+    "Aggregate values into a list"
+  ],
+  "tokensUsed": 860
+}

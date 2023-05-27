@@ -1,0 +1,43 @@
+{
+  "stringified": "UpdateMany | connection,collection,filter,update,options | result | IMPLICIT | NONE\nasync ({ connection, collection, documents, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .insertMany(documents, options);\n    result.next(res);\n  }",
+  "original": {
+    "id": "UpdateMany",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "MongoDB",
+    "description": "Updates many documents in a Mongo database. UpdateMany receives a valid \"mongodb\" UpdateManyOptions object.",
+    "inputs": {
+      "connection": {
+        "description": "Mongo connection"
+      },
+      "collection": {
+        "description": "Collection"
+      },
+      "filter": {
+        "description": "Filter"
+      },
+      "update": {
+        "description": "Update"
+      },
+      "options": {
+        "description": "Options"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": ""
+      }
+    },
+    "runFnString": "async ({ connection, collection, documents, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .insertMany(documents, options);\n    result.next(res);\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData, adv) {\n  const { conn, coll, filter, update, options } = inputData;\n  const { result } = outputData;\n\n  const res = await conn\n    .db()\n    .collection(coll)\n    .updateMany(filter, update, options);\n  result.next(res);\n}",
+  "alternativeMetaData": "BulkUpdate | conn,coll,filter,update,options | result | IMPLICIT | NONE",
+  "prompts": [
+    "Update multiple documents in a collection",
+    "Update many documents at once",
+    "Update documents in bulk",
+    "Update multiple documents with a single call"
+  ],
+  "tokensUsed": 884
+}

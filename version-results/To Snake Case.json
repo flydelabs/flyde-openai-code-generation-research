@@ -1,0 +1,31 @@
+{
+  "stringified": "To Snake Case | string | value | IMPLICIT | NONE\n(string) =>\n    string\n      .replace(/([a-z])([A-Z])/g, \"$1_$2\")\n      .replace(/\\s+/g, \"_\")\n      .toLowerCase()",
+  "original": {
+    "id": "To Snake Case",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Converts a string to snake case",
+    "inputs": {
+      "string": {
+        "description": "String to convert to snake case"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Converted value"
+      }
+    },
+    "runFnString": "(string) =>\n    string\n      .replace(/([a-z])([A-Z])/g, \"$1_$2\")\n      .replace(/\\s+/g, \"_\")\n      .toLowerCase()"
+  },
+  "alternativeFunction": "function (inputString, outputValue) {\n  const snakeCaseString = inputString.replace(/([a-z])([A-Z])/g, '$1_$2').replace(/\\s+/g, '_').toLowerCase();\n  outputValue.next(snakeCaseString);\n}",
+  "alternativeMetaData": "To_Snake_Case | inputString | outputValue | IMPLICIT | NONE",
+  "prompts": [
+    "Convert string to snake case",
+    "Snake case string",
+    "Transform string to snake case format",
+    "Change string to snake case"
+  ],
+  "tokensUsed": 849
+}

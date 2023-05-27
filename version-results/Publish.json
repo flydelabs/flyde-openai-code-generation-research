@@ -1,0 +1,28 @@
+{
+  "stringified": "Publish | key,value |  | IMPLICIT | NONE\nfunction (inputs, _, adv) {\n    // magic here\n    const nsKey = `${adv.ancestorsInsIds}__${inputs.key}`;\n\n    PubSub.publish(nsKey, inputs.value);\n  }",
+  "original": {
+    "id": "Publish",
+    "namespace": "Control Flow",
+    "description": "Publishes a value by a key to all listeners in the current flow. Use 'Subscribe' to listen to events.",
+    "inputs": {
+      "key": {
+        "mode": "required",
+        "description": "A key to use to subscribe to values"
+      },
+      "value": {
+        "mode": "required"
+      }
+    },
+    "outputs": {},
+    "runFnString": "function (inputs, _, adv) {\n    // magic here\n    const nsKey = `${adv.ancestorsInsIds}__${inputs.key}`;\n\n    PubSub.publish(nsKey, inputs.value);\n  }"
+  },
+  "alternativeFunction": "function ({channel, data}, _, adv) {\n    const nsKey = `${adv.ancestorsInsIds}__${channel}`;\n\n    PubSub.publish(nsKey, data);\n  }",
+  "alternativeMetaData": "Channel Publisher | channel,data |  | IMPLICIT | NONE",
+  "prompts": [
+    "Publish a value to a channel",
+    "Send data to a channel",
+    "Publish data to a channel",
+    "Broadcast data to a channel"
+  ],
+  "tokensUsed": 836
+}

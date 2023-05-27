@@ -1,0 +1,9 @@
+{
+  "result": " Disconnect | connection,objectIds | object | IMPLICIT | NONE\nfunction (inputs, outputs, adv) {\n  const { conn, objIds } = inputs;\n  const { object } = outputs;\n\n  const removedObjIds = objIds.map(o => o.id);\n  if (conn && removedObjIds.some(id => object.id === id)) {\n    object.next(null);\n  }\n}",
+  "tokens": 132,
+  "completionTime": 3464,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 2,
+  "remarks": "Valid format but unrelated to the request"
+}

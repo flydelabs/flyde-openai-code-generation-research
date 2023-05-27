@@ -1,0 +1,31 @@
+{
+  "stringified": "To Precision | number,places | precision | IMPLICIT | NONE\n({ number, places }, { precision }) =>\n    precision.next(number.toPrecision(places))",
+  "original": {
+    "id": "To Precision",
+    "namespace": "Numbers",
+    "description": "Emits the specified number of significant figures of a number",
+    "inputs": {
+      "number": {
+        "description": "Number to format"
+      },
+      "places": {
+        "description": "Number of significant figures to format to"
+      }
+    },
+    "outputs": {
+      "precision": {
+        "description": "The number with the specified number of significant figures"
+      }
+    },
+    "runFnString": "({ number, places }, { precision }) =>\n    precision.next(number.toPrecision(places))"
+  },
+  "alternativeFunction": "function ({ num, dec }, { result }) {\n  const { num, dec } = inputs;\n  const { result } = outputs;\n  result.next(num.toFixed(dec));\n}",
+  "alternativeMetaData": "Precision | num,dec | result | IMPLICIT | NONE",
+  "prompts": [
+    "Round to precision",
+    "Set number precision",
+    "Precision calculator",
+    "Number precision"
+  ],
+  "tokensUsed": 797
+}

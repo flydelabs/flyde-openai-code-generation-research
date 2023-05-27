@@ -1,0 +1,9 @@
+{
+  "result": " Parse CSV | connection,collection,fieldnames,options | result | IMPLICIT | NONE\nfunction ({ inputFile, outputFile }, { result }) {\n    const { inputCol, outputRow } = inputFile;\n    const { result } = outputFile;\n    result.next(inputCol);\n}",
+  "tokens": 87,
+  "completionTime": 919,
+  "generatorName": "fine-tuned-babbage:ft-personal-2023-05-24-22-40-27",
+  "prompt": "parse a csv file without any libraries",
+  "score": 1,
+  "remarks": "Invalid metadata row  Parse CSV | connection,collection,fieldnames,options | result | IMPLICIT | NONE"
+}

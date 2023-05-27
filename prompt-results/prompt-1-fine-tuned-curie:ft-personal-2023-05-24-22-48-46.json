@@ -1,0 +1,9 @@
+{
+  "result": " Concat | value1,value2 | list | IMPLICIT | NONE\n({ value1, value2 }, { list }) => list.next([value1, value2])",
+  "tokens": 49,
+  "completionTime": 1650,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "Concatenate two inputs",
+  "score": 5,
+  "remarks": ""
+}

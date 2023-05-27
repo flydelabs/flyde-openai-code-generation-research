@@ -1,0 +1,9 @@
+{
+  "result": " Match 3 | object,property,value1,value2,value3 | object | IMPLICIT | NONE\nfunction (inputObj, outputObj, adv) {\n  const { object, property, value1, value2, value3 } = inputObj;\n  const { object } = outputObj;\n  const { value1, value2, value3 } = adv;\n  const result = Object.match(inputObj, {\n    property: property,\n    value1, value2, value3\n    } );\n  if (result.first === value1) {\n    object.next(inputObj);\n   }\n  if (result.second === value2) {\n    object.next(inputObj);\n   }\n  if (result.third === value3) {\n    object.next(inputObj);\n   }\n}",
+  "tokens": 271,
+  "completionTime": 2212,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
+  "score": 1,
+  "remarks": "Invalid metadata row  Match 3 | object,property,value1,value2,value3 | object | IMPLICIT | NONE"
+}

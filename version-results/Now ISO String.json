@@ -1,0 +1,27 @@
+{
+  "stringified": "Now ISO String |  | now | IMPLICIT | NONE\n(_, { now }) => now.next(new Date().toISOString())",
+  "original": {
+    "id": "Now ISO String",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Returns the current date and time as a string in ISO format",
+    "inputs": {},
+    "outputs": {
+      "now": {
+        "description": "Current date and time"
+      }
+    },
+    "runFnString": "(_, { now }) => now.next(new Date().toISOString())"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { now } = output;\n  setInterval(() => {\n    now.next(new Date().toISOString());\n  }, 1000);\n}",
+  "alternativeMetaData": "Time to ISO |  | isoTime | IMPLICIT | NONE",
+  "prompts": [
+    "Current time as ISO string",
+    "Get current time as ISO string",
+    "ISO string of current time",
+    "Convert current time to ISO string"
+  ],
+  "tokensUsed": 803
+}

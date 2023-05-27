@@ -1,0 +1,9 @@
+{
+  "result": "Headless Browser | url | h1 | IMPLICIT | NONE\n\nasync function ({url}, {h1}, {externalContext}) {\n  const browser = await puppeteer.launch();\n  const page = await browser.newPage();\n  await page.goto(url);\n  const pageTitle = await page.title();\n  const pageH1 = await page.$eval('h1', el => el.textContent);\n  if (pageH1) {\n    h1.next(pageH1);\n  } else {\n    throw new Error(`No h1 tag found on ${pageTitle}`);\n  }\n  await browser.close();\n}",
+  "tokens": 835,
+  "completionTime": 9995,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
+  "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
+  "score": 1,
+  "remarks": "Invalid metadata row Headless Browser | url | h1 | IMPLICIT | NONE"
+}

@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To Minutes | date | minutes | IMPLICIT | NONE\n({ date }, { minutes }) => minutes.next(date.getMinutes())",
+  "original": {
+    "id": "Date To Minutes",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to minutes",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "minutes": {
+        "description": "Minutes"
+      }
+    },
+    "runFnString": "({ date }, { minutes }) => minutes.next(date.getMinutes())"
+  },
+  "alternativeFunction": "function ({ dateInput }, { minutesOutput }) {\n  const { date } = dateInput;\n  const { minutes } = minutesOutput;\n  const minutesValue = date.getMinutes();\n  minutes.next(minutesValue);\n}",
+  "alternativeMetaData": "Minutes from Date | dateInput | minutesOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to minutes",
+    "Get minutes from date",
+    "Extract minutes from date",
+    "Transform date to minutes"
+  ],
+  "tokensUsed": 806
+}

@@ -1,0 +1,34 @@
+{
+  "stringified": "Char At | string,index | value | IMPLICIT | NONE\n({ string, index }, { value }) => value.next(string.charAt(index))",
+  "original": {
+    "id": "Char At",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Returns the character at the specified index",
+    "inputs": {
+      "string": {
+        "description": "String to get character from"
+      },
+      "index": {
+        "description": "Index to get character from"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Character"
+      }
+    },
+    "runFnString": "({ string, index }, { value }) => value.next(string.charAt(index))"
+  },
+  "alternativeFunction": "function ({ str, idx }, { val }) {\n  return val.next(str.charAt(idx));\n}",
+  "alternativeMetaData": "Char At V2 | str,idx | val | IMPLICIT | NONE",
+  "prompts": [
+    "Get character at index",
+    "Retrieve character from string",
+    "Extract character from string",
+    "Get single character from string"
+  ],
+  "tokensUsed": 783
+}

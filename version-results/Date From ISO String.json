@@ -1,0 +1,31 @@
+{
+  "stringified": "Date From ISO String | string | date | IMPLICIT | NONE\nasync ({ string }, { date }, { onError }) => {\n    try {\n      date.next(new Date(string));\n    } catch (e) {\n      console.error(\"Error in part\", e);\n      onError(e);\n    }\n  }",
+  "original": {
+    "id": "Date From ISO String",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Creates a date from an ISO string",
+    "inputs": {
+      "string": {
+        "description": "String"
+      }
+    },
+    "outputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "runFnString": "async ({ string }, { date }, { onError }) => {\n    try {\n      date.next(new Date(string));\n    } catch (e) {\n      console.error(\"Error in part\", e);\n      onError(e);\n    }\n  }"
+  },
+  "alternativeFunction": "function ({ inputString }, { outputDate }, { onError }) {\n  try {\n    outputDate.next(new Date(inputString));\n  } catch (e) {\n    console.error('Error in part', e);\n    onError(e);\n  }\n}",
+  "alternativeMetaData": "Date From ISO String | inputString | outputDate | IMPLICIT | NONE",
+  "prompts": [
+    "Convert ISO string to date",
+    "Parse date from ISO string",
+    "ISO string to JavaScript date",
+    "Create date from ISO string"
+  ],
+  "tokensUsed": 855
+}

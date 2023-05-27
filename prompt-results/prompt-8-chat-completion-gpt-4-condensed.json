@@ -1,0 +1,9 @@
+{
+  "result": "Sum Prices | objects | total | IMPLICIT | NONE\nfunction ({objects}, {total}) {\n  const sum = objects.reduce((acc, obj) => acc + obj.price, 0);\n  total.next(sum);\n}",
+  "tokens": 748,
+  "completionTime": 6385,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "Receive a list of objects and sum the 'price' property of each",
+  "score": 1,
+  "remarks": "Invalid metadata row Sum Prices | objects | total | IMPLICIT | NONE"
+}

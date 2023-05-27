@@ -1,0 +1,31 @@
+{
+  "stringified": "JSON Parse | json | object | IMPLICIT | NONE\n({ json }, { object }) => object.next(JSON.parse(json))",
+  "original": {
+    "id": "JSON Parse",
+    "defaultStyle": {
+      "icon": "fa-glasses"
+    },
+    "namespace": "Objects",
+    "description": "Parses a JSON string into an object",
+    "inputs": {
+      "json": {
+        "description": "JSON string to parse"
+      }
+    },
+    "outputs": {
+      "object": {
+        "description": "The parsed object"
+      }
+    },
+    "runFnString": "({ json }, { object }) => object.next(JSON.parse(json))"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { json } = input;\n  const { object } = output;\n  try {\n    const parsed = JSON.parse(json);\n    object.next(parsed);\n  } catch (error) {\n    object.error(error);\n  }\n}",
+  "alternativeMetaData": "JSON Parser | jsonString | parsedObject | IMPLICIT | NONE",
+  "prompts": [
+    "Parse JSON string to object",
+    "Convert JSON string to object",
+    "JSON string to object converter",
+    "JSON string parser"
+  ],
+  "tokensUsed": 820
+}

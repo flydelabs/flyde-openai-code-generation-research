@@ -1,0 +1,27 @@
+{
+  "stringified": "Delete File | path |  | IMPLICIT | NONE\n({ path, contents, encoding }) => {\n    return fs.promises.writeFile(path, contents, encoding);\n  }",
+  "original": {
+    "id": "Delete File",
+    "defaultStyle": {
+      "icon": "fa-file"
+    },
+    "namespace": "File System",
+    "description": "Deletes a file from the file system",
+    "inputs": {
+      "path": {
+        "description": "Path to the file"
+      }
+    },
+    "outputs": {},
+    "runFnString": "({ path, contents, encoding }) => {\n    return fs.promises.writeFile(path, contents, encoding);\n  }"
+  },
+  "alternativeFunction": "function (input, output, adv) {\n  const { path } = input;\n  const { result } = output;\n\n  fs.unlink(path, (err) => {\n    if (err) {\n      result.error(err);\n    } else {\n      result.complete();\n    }\n  });\n}",
+  "alternativeMetaData": "Remove File | filePath |  | IMPLICIT | NONE",
+  "prompts": [
+    "Delete a file",
+    "Remove file from path",
+    "Part that deletes a file",
+    "A node that deletes a file from a specified path"
+  ],
+  "tokensUsed": 842
+}

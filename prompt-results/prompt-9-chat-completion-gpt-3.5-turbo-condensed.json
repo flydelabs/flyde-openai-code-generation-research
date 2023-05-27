@@ -1,0 +1,9 @@
+{
+  "result": "Sort | array | sortedArray | IMPLICIT | NONE\n\nfunction ({array}, {sortedArray}) {\n  sortedArray.next(array.sort((a, b) => a.age - b.age));\n}",
+  "tokens": 741,
+  "completionTime": 3208,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
+  "prompt": "sort an array of objects by the 'age' property",
+  "score": 1,
+  "remarks": "Invalid metadata row Sort | array | sortedArray | IMPLICIT | NONE"
+}

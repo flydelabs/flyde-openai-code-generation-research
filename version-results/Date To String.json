@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To String | date | string | IMPLICIT | NONE\n({ date }, { string }) => string.next(date.toString())",
+  "original": {
+    "id": "Date To String",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to a string",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "string": {
+        "description": "String"
+      }
+    },
+    "runFnString": "({ date }, { string }) => string.next(date.toString())"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { date } = input;\n  const { string } = output;\n  string.next(date.toLocaleDateString());\n}",
+  "alternativeMetaData": "DateToString | dateInput | stringOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to string",
+    "Date as string",
+    "Date to string conversion",
+    "Convert date to a human-readable string"
+  ],
+  "tokensUsed": 794
+}

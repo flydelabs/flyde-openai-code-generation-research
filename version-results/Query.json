@@ -1,0 +1,34 @@
+{
+  "stringified": "Query | connection,query | result | IMPLICIT | NONE\nasync ({ connection, query }, { result }) => {\n    const queryResult = await connection.value?.query(query);\n    result.next(queryResult?.rows);\n  }",
+  "original": {
+    "id": "Query",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "Postgres",
+    "description": "Queries a Postgres database. Query receives a valid \"pg\" QueryConfig object.",
+    "inputs": {
+      "connection": {
+        "description": "Postgres connection"
+      },
+      "query": {
+        "description": "Query"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": "valid \"pg\" <a href=\"https://node-postgres.com/apis/client#queryconfig\">QueryConfig object</a>"
+      }
+    },
+    "runFnString": "async ({ connection, query }, { result }) => {\n    const queryResult = await connection.value?.query(query);\n    result.next(queryResult?.rows);\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData, adv) {\n  const { dbConnection, sqlQuery } = inputData;\n  const { queryResult } = outputData;\n\n  const queryResultData = await dbConnection.value?.query(sqlQuery);\n  queryResult.next(queryResultData?.rows);\n}",
+  "alternativeMetaData": "SQL Query | dbConnection,sqlQuery | queryResult | IMPLICIT | NONE",
+  "prompts": [
+    "Run SQL query",
+    "Execute database query",
+    "Query database for results",
+    "Send SQL query and receive results"
+  ],
+  "tokensUsed": 845
+}

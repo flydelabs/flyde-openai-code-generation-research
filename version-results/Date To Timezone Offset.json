@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To Timezone Offset | date | offset | IMPLICIT | NONE\n({ date }, { offset }) => offset.next(date.getTimezoneOffset())",
+  "original": {
+    "id": "Date To Timezone Offset",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to a timezone offset",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "offset": {
+        "description": "Offset"
+      }
+    },
+    "runFnString": "({ date }, { offset }) => offset.next(date.getTimezoneOffset())"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { date } = input;\n  const { offset } = output;\n  const timezoneOffset = date.getTimezoneOffset();\n  offset.next(timezoneOffset);\n}",
+  "alternativeMetaData": "Timezone Offset Calculator | inputDate | timezoneOffset | IMPLICIT | NONE",
+  "prompts": [
+    "Get Timezone Offset from Date",
+    "Convert Date to Timezone Offset",
+    "Calculate Timezone Offset from Date",
+    "Get Timezone Offset"
+  ],
+  "tokensUsed": 815
+}

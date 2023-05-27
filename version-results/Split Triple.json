@@ -1,0 +1,37 @@
+{
+  "stringified": "Split Triple | triple | item1,item2,item3 | IMPLICIT | NONE\n(inputs, outputs) => {\n    const { list } = inputs;\n    const { item1, item2, item3 } = outputs;\n    item1.next(list[0]);\n    item2.next(list[1]);\n    item3.next(list[2]);\n  }",
+  "original": {
+    "id": "Split Triple",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Receives a list with 3 items and emits three outputs: the first item, the second item and the third item",
+    "inputs": {
+      "triple": {
+        "description": "The triple"
+      }
+    },
+    "outputs": {
+      "item1": {
+        "description": "The first item in the triple"
+      },
+      "item2": {
+        "description": "The second item in the triple"
+      },
+      "item3": {
+        "description": "The third item in the triple"
+      }
+    },
+    "runFnString": "(inputs, outputs) => {\n    const { list } = inputs;\n    const { item1, item2, item3 } = outputs;\n    item1.next(list[0]);\n    item2.next(list[1]);\n    item3.next(list[2]);\n  }"
+  },
+  "alternativeFunction": "function ({ triple }, { item1, item2, item3 }) {\n    const [first, second, third] = triple;\n    item1.next(first);\n    item2.next(second);\n    item3.next(third);\n  }",
+  "alternativeMetaData": "Splitter | list | first,second,third | IMPLICIT | NONE",
+  "prompts": [
+    "Split a list into three items",
+    "Split list into 3 outputs",
+    "A part that separates a list into 3 items",
+    "A function that takes a list and outputs 3 items"
+  ],
+  "tokensUsed": 876
+}

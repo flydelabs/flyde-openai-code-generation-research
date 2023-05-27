@@ -1,0 +1,31 @@
+{
+  "stringified": "Less Than Or Equal | n1,n2 | result | IMPLICIT | NONE\n({ n1, n2 }, { result }) => result.next(n1 <= n2)",
+  "original": {
+    "id": "Less Than Or Equal",
+    "namespace": "Numbers",
+    "description": "Emits true if the first number is less than or equal to the second",
+    "inputs": {
+      "n1": {
+        "description": "First number"
+      },
+      "n2": {
+        "description": "Second number"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": "true if n1 is less than or equal to n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { result }) => result.next(n1 <= n2)"
+  },
+  "alternativeFunction": "function ({ num1, num2 }, { output }) { output.next(num1 <= num2); }",
+  "alternativeMetaData": "Less Than Or Equal | num1,num2 | output | IMPLICIT | NONE",
+  "prompts": [
+    "Compare two numbers",
+    "Check if first number is less than or equal to second number",
+    "Number comparison",
+    "Determine if first number is less than or equal to second number"
+  ],
+  "tokensUsed": 806
+}

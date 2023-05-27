@@ -1,0 +1,31 @@
+{
+  "stringified": "Length | string | value | IMPLICIT | NONE\n({ string }, { value }) => value.next(string.length)",
+  "original": {
+    "id": "Length",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Returns the length of a string",
+    "inputs": {
+      "string": {
+        "description": "String to get length from"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Length"
+      }
+    },
+    "runFnString": "({ string }, { value }) => value.next(string.length)"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { inputString } = input;\n  const { outputValue } = output;\n  outputValue.next(inputString.length);\n}",
+  "alternativeMetaData": "String Length | inputString | outputValue | IMPLICIT | NONE",
+  "prompts": [
+    "Measure string length",
+    "Count characters in string",
+    "Length of input string",
+    "Calculate string length"
+  ],
+  "tokensUsed": 790
+}

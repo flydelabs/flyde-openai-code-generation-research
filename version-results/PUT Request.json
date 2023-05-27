@@ -1,0 +1,43 @@
+{
+  "stringified": "PUT Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n    const config: AxiosRequestConfig = { headers, params };\n    return axios.put(url, body, config).then((res) => data.next(res.data));\n  }",
+  "original": {
+    "id": "PUT Request",
+    "defaultStyle": {
+      "icon": "fa-server"
+    },
+    "namespace": "HTTP",
+    "description": "Performs a HTTP PUT request to a URL and emits the response data",
+    "inputs": {
+      "url": {
+        "description": "URL to fetch data from"
+      },
+      "headers": {
+        "description": "Headers to send with the request",
+        "mode": "required-if-connected"
+      },
+      "params": {
+        "description": "Query parameters to send with the request",
+        "mode": "required-if-connected"
+      },
+      "data": {
+        "description": "Data to send with the request",
+        "mode": "required-if-connected"
+      }
+    },
+    "outputs": {
+      "data": {
+        "description": "The response data"
+      }
+    },
+    "runFnString": "({ url, headers, params, data: body }, { data }) => {\n    const config: AxiosRequestConfig = { headers, params };\n    return axios.put(url, body, config).then((res) => data.next(res.data));\n  }"
+  },
+  "alternativeFunction": "function ({ url: endpoint, headers: requestHeaders, params: queryParams, data: body }, { data: result }, adv) {\n    const config: AxiosRequestConfig = { headers: requestHeaders, params: queryParams };\n    return axios.put(endpoint, body, config).then((res) => result.next(res.data));\n  }",
+  "alternativeMetaData": "Update Request | endpoint,requestHeaders,queryParams,body | result | IMPLICIT | NONE",
+  "prompts": [
+    "Update data with PUT request",
+    "Send PUT request to URL",
+    "Update data using PUT method",
+    "Update data with PUT method to specified URL"
+  ],
+  "tokensUsed": 881
+}

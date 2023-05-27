@@ -1,0 +1,9 @@
+{
+  "result": " JSON Stringify | string | json | IMPLICIT | NONE\n({ string }, { json }) => json.next(JSON.stringify(string))",
+  "tokens": 42,
+  "completionTime": 1472,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "JSON string to object converter",
+  "score": 1,
+  "remarks": "Invalid metadata row  JSON Stringify | string | json | IMPLICIT | NONE"
+}

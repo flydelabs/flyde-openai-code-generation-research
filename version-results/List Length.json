@@ -1,0 +1,31 @@
+{
+  "stringified": "List Length | list | length | IMPLICIT | NONE\n({ list }, { length }) => length.next(list.length)",
+  "original": {
+    "id": "List Length",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Returns the length of a list",
+    "inputs": {
+      "list": {
+        "description": "List"
+      }
+    },
+    "outputs": {
+      "length": {
+        "description": "Length"
+      }
+    },
+    "runFnString": "({ list }, { length }) => length.next(list.length)"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n  const { myList } = inputs;\n  const { listLength } = outputs;\n  listLength.next(myList.length);\n}",
+  "alternativeMetaData": "List Size | myList | listLength | IMPLICIT | NONE",
+  "prompts": [
+    "Count items in list",
+    "Get list length",
+    "Calculate list size",
+    "Determine number of items in list"
+  ],
+  "tokensUsed": 794
+}

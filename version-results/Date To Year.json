@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To Year | date | year | IMPLICIT | NONE\n({ date }, { year }) => year.next(date.getFullYear())",
+  "original": {
+    "id": "Date To Year",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to a year",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "year": {
+        "description": "Year"
+      }
+    },
+    "runFnString": "({ date }, { year }) => year.next(date.getFullYear())"
+  },
+  "alternativeFunction": "function ({ dateInput }, { yearOutput }) {\n  const { date } = dateInput;\n  const { year } = yearOutput;\n  year.next(date.getFullYear());\n}",
+  "alternativeMetaData": "Year Extractor | dateInput | yearOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to year",
+    "Extract year from date",
+    "Get year from date",
+    "Transform date to year"
+  ],
+  "tokensUsed": 797
+}

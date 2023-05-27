@@ -1,0 +1,31 @@
+{
+  "stringified": "Truncate | n | truncated | IMPLICIT | NONE\n({ n }, { truncated }) => truncated.next(Math.trunc(n))",
+  "original": {
+    "id": "Truncate",
+    "defaultStyle": {
+      "icon": "fa-truncate"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the truncated value of a number",
+    "inputs": {
+      "n": {
+        "description": "Number to truncate"
+      }
+    },
+    "outputs": {
+      "truncated": {
+        "description": "The truncated value of n"
+      }
+    },
+    "runFnString": "({ n }, { truncated }) => truncated.next(Math.trunc(n))"
+  },
+  "alternativeFunction": "function ({ number }, { truncated }) {truncated.next(Math.trunc(number))}",
+  "alternativeMetaData": "Shorten | number | shortened | IMPLICIT | NONE",
+  "prompts": [
+    "Shorten Number",
+    "Truncate Decimal",
+    "Remove Decimal Places",
+    "Round Down"
+  ],
+  "tokensUsed": 767
+}

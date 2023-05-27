@@ -1,0 +1,9 @@
+{
+  "result": " Headless Browser | url | headless | IMPLICIT | NONE\nfunction (inputUrl, outputHeadless) {\n  const { url } = inputUrl;\n  const { headless } = outputHeadless;\n  headless.next(url.toString());\n}",
+  "tokens": 91,
+  "completionTime": 1761,
+  "generatorName": "fine-tuned-babbage:ft-personal-2023-05-24-22-40-27",
+  "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
+  "score": 1,
+  "remarks": "Invalid metadata row  Headless Browser | url | headless | IMPLICIT | NONE"
+}

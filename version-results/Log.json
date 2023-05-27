@@ -1,0 +1,27 @@
+{
+  "stringified": "Log | value |  | IMPLICIT | NONE\n({ value }) => console.log(value)",
+  "original": {
+    "id": "Log",
+    "defaultStyle": {
+      "icon": "fa-terminal"
+    },
+    "namespace": "Console",
+    "description": "Logs a value to the console",
+    "inputs": {
+      "value": {
+        "description": "Value to log"
+      }
+    },
+    "outputs": {},
+    "runFnString": "({ value }) => console.log(value)"
+  },
+  "alternativeFunction": "function ({ inputValue }, { outputValue }) {\n  outputValue.next(inputValue);\n}",
+  "alternativeMetaData": "Log Output | inputValue | | IMPLICIT | NONE",
+  "prompts": [
+    "Log a value",
+    "Print value to console",
+    "Simple logging",
+    "Log a value to console"
+  ],
+  "tokensUsed": 764
+}

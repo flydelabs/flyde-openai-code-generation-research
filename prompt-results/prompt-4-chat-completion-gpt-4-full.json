@@ -1,0 +1,9 @@
+{
+  "result": "First Element | array | first | IMPLICIT | NONE\nfunction ({array}, {first}) {\n  first.next(array[0]);\n}",
+  "tokens": 1061,
+  "completionTime": 5205,
+  "generatorName": "chat-completion-gpt-4-full",
+  "prompt": "Get the first element of an array",
+  "score": 1,
+  "remarks": "Invalid metadata row First Element | array | first | IMPLICIT | NONE"
+}

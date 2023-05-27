@@ -1,0 +1,32 @@
+{
+  "stringified": "Get Global State | key,defaultValue | value | IMPLICIT | NONE\n({ key, defaultValue }, { value }, { globalState, onError }) => {\n    const val = globalState.get(key);\n    if (val === undefined && defaultValue === undefined) {\n      onError(new Error(`Key ${key} is not set`));\n    } else {\n      value.next(globalState.get(key) ?? defaultValue);\n    }\n  }",
+  "original": {
+    "id": "Get Global State",
+    "namespace": "State",
+    "description": "Gets a value from the global state",
+    "inputs": {
+      "key": {
+        "description": "Key to get"
+      },
+      "defaultValue": {
+        "description": "Default value if key is not set",
+        "mode": "required-if-connected"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Value of the key"
+      }
+    },
+    "runFnString": "({ key, defaultValue }, { value }, { globalState, onError }) => {\n    const val = globalState.get(key);\n    if (val === undefined && defaultValue === undefined) {\n      onError(new Error(`Key ${key} is not set`));\n    } else {\n      value.next(globalState.get(key) ?? defaultValue);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n  const { key: newKey, defaultValue: newDefaultValue } = inputs;\n  const { value: newValue } = outputs;\n\n  const val = adv.state.get(newKey);\n  if (val === undefined && newDefaultValue === undefined) {\n    adv.onError(new Error(`Key ${newKey} is not set`));\n  } else {\n    newValue.next(adv.state.get(newKey) ?? newDefaultValue);\n  }\n}",
+  "alternativeMetaData": "Global State Getter | key,defaultValue | value | IMPLICIT | NONE",
+  "prompts": [
+    "Retrieve value from global state",
+    "Get value from global state",
+    "Fetch value from global state",
+    "Access global state value"
+  ],
+  "tokensUsed": 926
+}

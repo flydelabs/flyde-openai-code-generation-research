@@ -1,0 +1,31 @@
+{
+  "stringified": "Less Than | n1,n2 | result | IMPLICIT | NONE\n({ n1, n2 }, { result }) => result.next(n1 < n2)",
+  "original": {
+    "id": "Less Than",
+    "namespace": "Numbers",
+    "description": "Emits true if the first number is less than the second",
+    "inputs": {
+      "n1": {
+        "description": "First number"
+      },
+      "n2": {
+        "description": "Second number"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": "true if n1 is less than n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { result }) => result.next(n1 < n2)"
+  },
+  "alternativeFunction": "function ({ num1, num2 }, { output }) {\n  output.next(num1 < num2);\n}",
+  "alternativeMetaData": "Comparison | num1,num2 | output | IMPLICIT | NONE",
+  "prompts": [
+    "Compare two numbers",
+    "Check if first number is less than second",
+    "Number comparison",
+    "Part that checks if one number is less than another"
+  ],
+  "tokensUsed": 796
+}

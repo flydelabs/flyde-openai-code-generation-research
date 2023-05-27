@@ -1,0 +1,31 @@
+{
+  "stringified": "Exists | path | exists | IMPLICIT | NONE\n({ path, contents, encoding }) => {\n    return fs.promises.appendFile(path, contents, encoding);\n  }",
+  "original": {
+    "id": "Exists",
+    "defaultStyle": {
+      "icon": "fa-file"
+    },
+    "namespace": "File System",
+    "description": "Checks if a file exists",
+    "inputs": {
+      "path": {
+        "description": "Path to the file"
+      }
+    },
+    "outputs": {
+      "exists": {
+        "description": "Whether the file exists"
+      }
+    },
+    "runFnString": "({ path, contents, encoding }) => {\n    return fs.promises.appendFile(path, contents, encoding);\n  }"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { path } = input;\n  const { exists } = output;\n  \n  fs.access(path, fs.constants.F_OK, (err) => {\n    if (err) {\n      exists.next(false);\n    } else {\n      exists.next(true);\n    }\n  });\n}",
+  "alternativeMetaData": "File Existence | filePath | fileExists | IMPLICIT | NONE",
+  "prompts": [
+    "Check if file exists",
+    "Verify file existence",
+    "File existence checker",
+    "Determine if file exists"
+  ],
+  "tokensUsed": 849
+}

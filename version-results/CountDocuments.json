@@ -1,0 +1,40 @@
+{
+  "stringified": "CountDocuments | connection,collection,query,options | result | IMPLICIT | NONE\nasync ({ connection, collection, filter, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .deleteOne(filter, options);\n    result.next(res);\n  }",
+  "original": {
+    "id": "CountDocuments",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "MongoDB",
+    "description": "Counts documents in a Mongo database. CountDocuments receives a valid \"mongodb\" CountDocumentsOptions object.",
+    "inputs": {
+      "connection": {
+        "description": "Mongo connection"
+      },
+      "collection": {
+        "description": "Collection"
+      },
+      "query": {
+        "description": "Query"
+      },
+      "options": {
+        "description": "Options"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": ""
+      }
+    },
+    "runFnString": "async ({ connection, collection, filter, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .deleteOne(filter, options);\n    result.next(res);\n  }"
+  },
+  "alternativeFunction": "function ({ conn, coll, query, opts }, { count }) {\n  const res = await conn\n    .db()\n    .collection(coll)\n    .countDocuments(query, opts);\n  count.next(res);\n}",
+  "alternativeMetaData": "CountDocs | conn,coll,query,opts | count | IMPLICIT | NONE",
+  "prompts": [
+    "Count documents in MongoDB collection",
+    "Get number of documents in MongoDB collection",
+    "MongoDB document count",
+    "Count number of documents in MongoDB collection"
+  ],
+  "tokensUsed": 854
+}

@@ -1,0 +1,28 @@
+{
+  "stringified": "Values | object | values | IMPLICIT | NONE\n({ object }, { values }) => values.next(Object.values(object))",
+  "original": {
+    "id": "Values",
+    "namespace": "Objects",
+    "description": "Emits the values of an object",
+    "inputs": {
+      "object": {
+        "description": "Object to get values of"
+      }
+    },
+    "outputs": {
+      "values": {
+        "description": "The values of object"
+      }
+    },
+    "runFnString": "({ object }, { values }) => values.next(Object.values(object))"
+  },
+  "alternativeFunction": "function (inputObj, outputValues) {\n  const { input } = inputObj;\n  const { output } = outputValues;\n  const valuesArr = Object.values(input);\n  output.next(valuesArr);\n}",
+  "alternativeMetaData": "Values | input | output | IMPLICIT | NONE",
+  "prompts": [
+    "Extract values from object",
+    "Get values from object",
+    "Extract object values",
+    "Get object values"
+  ],
+  "tokensUsed": 798
+}

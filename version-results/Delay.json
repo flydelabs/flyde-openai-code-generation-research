@@ -1,0 +1,39 @@
+{
+  "stringified": "Delay | value,delay | delayedValue | IMPLICIT | NONE\nasync ({ value, delay }, { delayedValue }) => {\n    await new Promise((resolve) => setTimeout(resolve, delay));\n    delayedValue.next(value);\n  }",
+  "original": {
+    "id": "Delay",
+    "defaultStyle": {
+      "icon": "fa-clock"
+    },
+    "searchKeywords": [
+      "timeout",
+      "wait",
+      "setTimeout"
+    ],
+    "namespace": "Control Flow",
+    "description": "Delays a value",
+    "inputs": {
+      "value": {
+        "description": "Value to delay"
+      },
+      "delay": {
+        "description": "Delay in milliseconds"
+      }
+    },
+    "outputs": {
+      "delayedValue": {
+        "description": "Delayed value"
+      }
+    },
+    "runFnString": "async ({ value, delay }, { delayedValue }) => {\n    await new Promise((resolve) => setTimeout(resolve, delay));\n    delayedValue.next(value);\n  }"
+  },
+  "alternativeFunction": "function (inputDelay, outputDelayedValue, adv) {\n    const { value, delay } = inputDelay;\n    const { delayedValue } = outputDelayedValue;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      clearTimeout(timer);\n    }\n\n    const newTimer = setTimeout(() => {\n      delayedValue.next(value);\n    }, delay);\n\n    adv.state.set(\"timer\", newTimer);\n\n    adv.onCleanup(() => {\n      clearTimeout(timer);\n    });\n  }",
+  "alternativeMetaData": "Delayed Input | inputValue,delayTime | delayedValue | IMPLICIT | NONE",
+  "prompts": [
+    "Delay values",
+    "Delay input by specified time",
+    "Delay input values",
+    "Delay input values by specified time"
+  ],
+  "tokensUsed": 902
+}

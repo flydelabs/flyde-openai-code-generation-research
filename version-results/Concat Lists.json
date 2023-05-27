@@ -1,0 +1,34 @@
+{
+  "stringified": "Concat Lists | list1,list2 | list | IMPLICIT | NONE\n({ list1, list2 }, { list }) => list.next([...list1, ...list2])",
+  "original": {
+    "id": "Concat Lists",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Concatenates two lists",
+    "inputs": {
+      "list1": {
+        "description": "First list"
+      },
+      "list2": {
+        "description": "Second list"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "Concatenated list"
+      }
+    },
+    "runFnString": "({ list1, list2 }, { list }) => list.next([...list1, ...list2])"
+  },
+  "alternativeFunction": "function (inputs, outputs) {\n  const { list1, list2 } = inputs;\n  const { list } = outputs;\n\n  list.next(list1.concat(list2));\n}",
+  "alternativeMetaData": "Join Lists | firstList,secondList | joinedList | IMPLICIT | NONE",
+  "prompts": [
+    "Combine two lists",
+    "Concatenate two lists into one",
+    "Merge two lists",
+    "Join two lists together"
+  ],
+  "tokensUsed": 813
+}

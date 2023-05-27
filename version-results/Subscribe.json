@@ -1,0 +1,34 @@
+{
+  "stringified": "Subscribe | key,initial | value |  | NONE\nfunction (inputs, outputs, adv) {\n    const { value } = outputs;\n    const nsKey = `${adv.ancestorsInsIds}__${inputs.key}`;\n    const token = PubSub.subscribe(nsKey, (_, data) => {\n      value.next(data);\n    });\n\n    if (typeof inputs.initial !== \"undefined\") {\n      value.next(inputs.initial);\n    }\n\n    adv.onCleanup(() => {\n      PubSub.unsubscribe(token);\n    });\n  }",
+  "original": {
+    "id": "Subscribe",
+    "namespace": "Control Flow",
+    "description": "Subscribes to a value published by a key. Use 'Publish' to publish values.",
+    "inputs": {
+      "key": {
+        "mode": "required",
+        "description": "A key to use to subscribe to values"
+      },
+      "initial": {
+        "mode": "required-if-connected",
+        "description": "If passed will be published has the first value"
+      }
+    },
+    "completionOutputs": [],
+    "outputs": {
+      "value": {
+        "description": "The value published by the key"
+      }
+    },
+    "runFnString": "function (inputs, outputs, adv) {\n    const { value } = outputs;\n    const nsKey = `${adv.ancestorsInsIds}__${inputs.key}`;\n    const token = PubSub.subscribe(nsKey, (_, data) => {\n      value.next(data);\n    });\n\n    if (typeof inputs.initial !== \"undefined\") {\n      value.next(inputs.initial);\n    }\n\n    adv.onCleanup(() => {\n      PubSub.unsubscribe(token);\n    });\n  }"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n    const { value } = outputs;\n    const channelName = `${adv.ancestorsInsIds}__${inputs.channel}`;\n    const token = PubSub.subscribe(channelName, (_, data) => {\n      value.next(data);\n    });\n\n    if (typeof inputs.initial !== \"undefined\") {\n      value.next(inputs.initial);\n    }\n\n    adv.onCleanup(() => {\n      PubSub.unsubscribe(token);\n    });\n  }",
+  "alternativeMetaData": "Channel Subscription | channel,initial | data |  | NONE",
+  "prompts": [
+    "Subscribe to a PubSub channel",
+    "Subscribe to a channel and receive updates",
+    "Subscribe to a channel for updates",
+    "Subscribe to a channel and receive notifications"
+  ],
+  "tokensUsed": 965
+}

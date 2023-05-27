@@ -1,0 +1,30 @@
+{
+  "stringified": "Greater Than | n1,n2 | result | IMPLICIT | NONE\n({ n1, n2 }, { result }) => result.next(n1 > n2)",
+  "original": {
+    "id": "Greater Than",
+    "namespace": "Numbers",
+    "description": "Emits true if the first number is greater than the second",
+    "inputs": {
+      "n1": {
+        "description": "First number"
+      },
+      "n2": {
+        "description": "Second number"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": "true if n1 is greater than n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { result }) => result.next(n1 > n2)"
+  },
+  "alternativeFunction": "function ({ num1, num2 }, { output }) {\n  output.next(num1 > num2);\n}",
+  "alternativeMetaData": "Comparison | num1,num2 | output | IMPLICIT | NONE",
+  "prompts": [
+    "Compare two numbers",
+    "Check if first number is greater than second",
+    "Number comparison"
+  ],
+  "tokensUsed": 784
+}

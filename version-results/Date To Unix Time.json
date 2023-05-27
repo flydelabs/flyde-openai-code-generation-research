@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To Unix Time | date | time | IMPLICIT | NONE\n({ date }, { time }) => time.next(date.getTime())",
+  "original": {
+    "id": "Date To Unix Time",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to a Unix time",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "time": {
+        "description": "Unix time"
+      }
+    },
+    "runFnString": "({ date }, { time }) => time.next(date.getTime())"
+  },
+  "alternativeFunction": "function ({ dateInput }, { unixTimeOutput }) {\n  const { date } = dateInput;\n  const unixTime = date.getTime();\n  unixTimeOutput.next(unixTime);\n}",
+  "alternativeMetaData": "Unix Time Converter | dateInput | unixTimeOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to Unix time",
+    "Get Unix time from date",
+    "Date to Unix timestamp",
+    "Unix timestamp from date"
+  ],
+  "tokensUsed": 804
+}

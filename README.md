@@ -28,3 +28,5 @@ This process aggregates all the generated versions into a single JSON that is la
 ### Train
 
 `OPENAI_API_KEY=[key] openai api fine_tunes.create -t dataset_prepared.jsonl -m babbage`
+
+ft-2rEKwrEUNhqyJCAhgoKw0fDt

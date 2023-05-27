@@ -1,0 +1,40 @@
+{
+  "stringified": "Accumulate Values by Count | value,count | accumulated | accumulated | value\n(inputs, outputs, adv) => {\n    const { value, count } = inputs;\n    const { accumulated } = outputs;\n    const { state } = adv;\n\n    let list = state.get(\"list\") || [];\n\n    if (typeof value !== \"undefined\") {\n      list.push(value);\n      state.set(\"list\", list);\n    }\n\n    if (list.length >= count) {\n      accumulated.next(list);\n    }\n  }",
+  "original": {
+    "id": "Accumulate Values by Count",
+    "defaultStyle": {
+      "icon": "fa-basket-shopping"
+    },
+    "namespace": "Lists",
+    "description": "Accumulates values sent to the \"value\" input. After the specified count it emits the accumulated values and resets the accumulator.",
+    "inputs": {
+      "value": {
+        "description": "The value to accumulate"
+      },
+      "count": {
+        "description": "Number of values to accumulate before emitting them"
+      }
+    },
+    "reactiveInputs": [
+      "value"
+    ],
+    "outputs": {
+      "accumulated": {
+        "description": "The accumulated values"
+      }
+    },
+    "completionOutputs": [
+      "accumulated"
+    ],
+    "runFnString": "(inputs, outputs, adv) => {\n    const { value, count } = inputs;\n    const { accumulated } = outputs;\n    const { state } = adv;\n\n    let list = state.get(\"list\") || [];\n\n    if (typeof value !== \"undefined\") {\n      list.push(value);\n      state.set(\"list\", list);\n    }\n\n    if (list.length >= count) {\n      accumulated.next(list);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData, advData) {\n  const { inputValue, countValue } = inputData;\n  const { accumulatedValue } = outputData;\n  const { state } = advData;\n\n  let list = state.get(\"list\") || [];\n\n  if (typeof inputValue !== \"undefined\") {\n    list.push(inputValue);\n    state.set(\"list\", list);\n  }\n\n  if (list.length >= countValue) {\n    accumulatedValue.next(list);\n    state.set(\"list\", []);\n  }\n}",
+  "alternativeMetaData": "Group Values by Count | inputValue,countValue | accumulatedValue | accumulatedValue | inputValue",
+  "prompts": [
+    "Count Values",
+    "Accumulate by Count",
+    "Collect Values",
+    "Group Values"
+  ],
+  "tokensUsed": 956
+}

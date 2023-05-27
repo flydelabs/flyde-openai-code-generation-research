@@ -1,0 +1,43 @@
+{
+  "stringified": "UpdateOne | connection,collection,filter,update,options | result | IMPLICIT | NONE\nasync ({ connection, collection, document, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .insertOne(document, options);\n    result.next(res);\n  }",
+  "original": {
+    "id": "UpdateOne",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "MongoDB",
+    "description": "Updates one document in a Mongo database. UpdateOne receives a valid \"mongodb\" UpdateOneOptions object.",
+    "inputs": {
+      "connection": {
+        "description": "Mongo connection"
+      },
+      "collection": {
+        "description": "Collection"
+      },
+      "filter": {
+        "description": "Filter"
+      },
+      "update": {
+        "description": "Update"
+      },
+      "options": {
+        "description": "Options"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": ""
+      }
+    },
+    "runFnString": "async ({ connection, collection, document, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .insertOne(document, options);\n    result.next(res);\n  }"
+  },
+  "alternativeFunction": "function ({ connection, collection, filter, update, options }, { result }) {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .updateOne(filter, update, options);\n    result.next(res);\n  }",
+  "alternativeMetaData": "UpdateDocument | conn,coll,filter,update,options | res | IMPLICIT | NONE",
+  "prompts": [
+    "Update a single document in a MongoDB collection",
+    "Update one document in a MongoDB collection",
+    "Update a MongoDB document",
+    "Update a single MongoDB document with specific filter and update"
+  ],
+  "tokensUsed": 869
+}

@@ -1,0 +1,37 @@
+{
+  "stringified": "Ends With | string,searchValue,fromIndex | value | IMPLICIT | NONE\n(string, searchValue, fromIndex) =>\n    string.endsWith(searchValue, fromIndex)",
+  "original": {
+    "id": "Ends With",
+    "namespace": "Strings",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "description": "Determines whether a string ends with the characters of another string, returning true or false as appropriate",
+    "inputs": {
+      "string": {
+        "description": "String to search in"
+      },
+      "searchValue": {
+        "description": "Value to search for"
+      },
+      "fromIndex": {
+        "description": "Index to start searching from"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Result"
+      }
+    },
+    "runFnString": "(string, searchValue, fromIndex) =>\n    string.endsWith(searchValue, fromIndex)"
+  },
+  "alternativeFunction": "function ({stringToCheck, valueToSearch, startingIndex}, {result}) {\n  result.next(stringToCheck.endsWith(valueToSearch, startingIndex));\n}",
+  "alternativeMetaData": "Ends With Check | stringToCheck, valueToSearch, startingIndex | result | IMPLICIT | NONE",
+  "prompts": [
+    "Check if string ends with value",
+    "Ends with string check",
+    "String ending check",
+    "Check if string ends with specified value"
+  ],
+  "tokensUsed": 817
+}

@@ -1,0 +1,40 @@
+{
+  "stringified": "CreateIndex | connection,collection,fieldOrSpec,options | result | IMPLICIT | NONE\nasync ({ connection, collection, filter, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .deleteMany(filter, options);\n    result.next(res);\n  }",
+  "original": {
+    "id": "CreateIndex",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "MongoDB",
+    "description": "Creates an index in a Mongo database. CreateIndex receives a valid \"mongodb\" CreateIndexesOptions object.",
+    "inputs": {
+      "connection": {
+        "description": "Mongo connection"
+      },
+      "collection": {
+        "description": "Collection"
+      },
+      "fieldOrSpec": {
+        "description": "Field or spec"
+      },
+      "options": {
+        "description": "Options"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": ""
+      }
+    },
+    "runFnString": "async ({ connection, collection, filter, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .deleteMany(filter, options);\n    result.next(res);\n  }"
+  },
+  "alternativeFunction": "function (inputParams, outputParams, adv) {\n  const { conn, coll, fieldOrSpec, options } = inputParams;\n  const { result } = outputParams;\n\n  const res = await conn\n    .db()\n    .collection(coll)\n    .createIndex(fieldOrSpec, options);\n  result.next(res);\n}",
+  "alternativeMetaData": "NewIndex | conn,coll,fieldOrSpec,options | result | IMPLICIT | NONE",
+  "prompts": [
+    "Create Index",
+    "Add Index to Collection",
+    "Index Creation",
+    "Database Indexing"
+  ],
+  "tokensUsed": 873
+}

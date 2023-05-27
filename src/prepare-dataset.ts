@@ -46,11 +46,11 @@ import { chunkArray } from "./utils";
       return [];
     }
 
-    const compactParts = [part.original.runFnString, part.newCode]
+    const compactParts = [part.original.runFnString, part.alternativeFunction]
       .map((code) => ({ ...part.original, runFnString: code }))
       .map(codePartToCompactString);
 
-    return part.descriptions.map((desc, idx) => {
+    return part.prompts.map((desc, idx) => {
       return {
         prompt: desc + "\n\n###\n\n",
         completion: " " + compactParts[idx % 2] + "###",
@@ -63,11 +63,11 @@ import { chunkArray } from "./utils";
       return [];
     }
 
-    const compactParts = [part.original.runFnString, part.newCode]
+    const compactParts = [part.original.runFnString, part.alternativeFunction]
       .map((code) => ({ ...part.original, runFnString: code }))
       .map(codePartToCompactString);
 
-    return part.descriptions.map((desc, idx) => {
+    return part.prompts.map((desc, idx) => {
       return {
         prompt: desc + "\n\n###\n\n",
         completion: " " + compactParts[idx % 2] + "###",

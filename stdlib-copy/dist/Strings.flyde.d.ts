@@ -1,0 +1,25 @@
+import { CodePart } from "@flyde/core";
+export declare const Concat: CodePart;
+export declare const Split: CodePart;
+export declare const Join: CodePart;
+export declare const Replace: CodePart;
+export declare const Trim: CodePart;
+export declare const ToLowerCase: CodePart;
+export declare const ToUpperCase: CodePart;
+export declare const Substring: CodePart;
+export declare const Length: CodePart;
+export declare const IndexOf: CodePart;
+export declare const LastIndexOf: CodePart;
+export declare const CharAt: CodePart;
+export declare const ToKebabCase: CodePart;
+export declare const ToCamelCase: CodePart;
+export declare const ToPascalCase: CodePart;
+export declare const ToSnakeCase: CodePart;
+export declare const ToTitleCase: CodePart;
+export declare const Includes: CodePart;
+export declare const StartsWith: CodePart;
+export declare const EndsWith: CodePart;
+export declare const IsEmpty: CodePart;
+export declare const MatchRegex: CodePart;
+export declare const EmptyString: CodePart;
+//# sourceMappingURL=Strings.flyde.d.ts.map

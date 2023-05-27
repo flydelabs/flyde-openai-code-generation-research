@@ -1,0 +1,31 @@
+{
+  "stringified": "Month To Date | date | month | IMPLICIT | NONE\n({ date }, { month }) => month.next(date.getMonth())",
+  "original": {
+    "id": "Month To Date",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to a month",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "month": {
+        "description": "Month"
+      }
+    },
+    "runFnString": "({ date }, { month }) => month.next(date.getMonth())"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { date } = input;\n  const { month } = output;\n  const currentMonth = date.getMonth();\n  month.next(currentMonth);\n}",
+  "alternativeMetaData": "Current Month | date | month | IMPLICIT | NONE",
+  "prompts": [
+    "Calculate current month",
+    "Get current month",
+    "Calculate month from date",
+    "Get month from date"
+  ],
+  "tokensUsed": 796
+}

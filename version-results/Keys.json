@@ -1,0 +1,31 @@
+{
+  "stringified": "Keys | object | keys | IMPLICIT | NONE\n({ object }, { keys }) => keys.next(Object.keys(object))",
+  "original": {
+    "id": "Keys",
+    "defaultStyle": {
+      "icon": "fa-key"
+    },
+    "namespace": "Objects",
+    "description": "Emits the keys of an object",
+    "inputs": {
+      "object": {
+        "description": "Object to get keys of"
+      }
+    },
+    "outputs": {
+      "keys": {
+        "description": "The keys of object"
+      }
+    },
+    "runFnString": "({ object }, { keys }) => keys.next(Object.keys(object))"
+  },
+  "alternativeFunction": "function (inputObj, outputKeys) {\n  const { object } = inputObj;\n  const { keys } = outputKeys;\n  const objectKeys = Object.keys(object);\n  keys.next(objectKeys);\n}",
+  "alternativeMetaData": "Object Keys | obj | keys | IMPLICIT | NONE",
+  "prompts": [
+    "Extract object keys",
+    "Get keys from object",
+    "List object keys",
+    "Retrieve keys from object"
+  ],
+  "tokensUsed": 799
+}

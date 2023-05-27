@@ -1,0 +1,31 @@
+{
+  "stringified": "Max | n1,n2 | max | IMPLICIT | NONE\n({ n1, n2 }, { max }) => max.next(Math.max(n1, n2))",
+  "original": {
+    "id": "Max",
+    "namespace": "Numbers",
+    "description": "Emits the maximum of two numbers",
+    "inputs": {
+      "n1": {
+        "description": "First number"
+      },
+      "n2": {
+        "description": "Second number"
+      }
+    },
+    "outputs": {
+      "max": {
+        "description": "The maximum of n1 and n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { max }) => max.next(Math.max(n1, n2))"
+  },
+  "alternativeFunction": "function ({ num1, num2 }, { maxVal }) { maxVal.next(Math.max(num1, num2)); }",
+  "alternativeMetaData": "MaxValue | num1,num2 | maxVal | IMPLICIT | NONE",
+  "prompts": [
+    "Find maximum of two numbers",
+    "Calculate the larger number",
+    "Determine the maximum value",
+    "Get the highest number"
+  ],
+  "tokensUsed": 796
+}

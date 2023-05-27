@@ -1,0 +1,9 @@
+{
+  "result": "Parse CSV | csvString,delimiter | rows | IMPLICIT | NONE\nfunction ({csvString, delimiter}, {rows}) {\n  const lines = csvString.split('\\n');\n  const parsedRows = lines.map(line => line.split(delimiter));\n  rows.next(parsedRows);\n}",
+  "tokens": 1090,
+  "completionTime": 9734,
+  "generatorName": "chat-completion-gpt-4-full",
+  "prompt": "parse a csv file without any libraries",
+  "score": 1,
+  "remarks": "Invalid metadata row Parse CSV | csvString,delimiter | rows | IMPLICIT | NONE"
+}

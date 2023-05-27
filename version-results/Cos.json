@@ -1,0 +1,31 @@
+{
+  "stringified": "Cos | angle | cosine | IMPLICIT | NONE\n({ angle }, { cosine }) => cosine.next(Math.cos(angle))",
+  "original": {
+    "id": "Cos",
+    "defaultStyle": {
+      "icon": "fa-cos"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the cosine of an angle",
+    "inputs": {
+      "angle": {
+        "description": "Angle in radians"
+      }
+    },
+    "outputs": {
+      "cosine": {
+        "description": "The cosine of angle"
+      }
+    },
+    "runFnString": "({ angle }, { cosine }) => cosine.next(Math.cos(angle))"
+  },
+  "alternativeFunction": "function ({ angleInput }, { cosineOutput }) {\n  const { angle } = angleInput;\n  const { cosine } = cosineOutput;\n  cosine.next(Math.cos(angle));\n}",
+  "alternativeMetaData": "Trig Function | angleInput | cosineOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Calculate cosine of an angle",
+    "Calculate the cosine value",
+    "Part that calculates cosine",
+    "Calculate the cosine of an angle in radians"
+  ],
+  "tokensUsed": 802
+}

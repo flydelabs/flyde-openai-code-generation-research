@@ -1,12 +1,12 @@
 import "dotenv/config";
 
 import { batchProcessor } from "./utils";
-import { generatePartVersions } from "./utils/generatePartVersions";
 import {
-  getFlydeFiles,
+  generatePartVersions,
   saveVersionsResult,
   versionResultExists,
-} from "./utils/fs-helpers";
+} from "./utils/generatePartVersions";
+import { getFlydeFiles } from "./utils/fs-helpers";
 import { preprocessStdLibParts } from "./utils/preprocessStdLibParts";
 
 (async () => {

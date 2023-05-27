@@ -1,0 +1,40 @@
+{
+  "stringified": "DeleteOne | connection,collection,filter,options | result | IMPLICIT | NONE\nasync (\n    { connection, collection, filter, update, options },\n    { result }\n  ) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .updateOne(filter, update, options);\n    result.next(res);\n  }",
+  "original": {
+    "id": "DeleteOne",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "MongoDB",
+    "description": "Deletes one document in a Mongo database. DeleteOne receives a valid \"mongodb\" DeleteOneOptions object.",
+    "inputs": {
+      "connection": {
+        "description": "Mongo connection"
+      },
+      "collection": {
+        "description": "Collection"
+      },
+      "filter": {
+        "description": "Filter"
+      },
+      "options": {
+        "description": "Options"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": ""
+      }
+    },
+    "runFnString": "async (\n    { connection, collection, filter, update, options },\n    { result }\n  ) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .updateOne(filter, update, options);\n    result.next(res);\n  }"
+  },
+  "alternativeFunction": "function ({ conn, coll, filt, opts }, { res }) {\n  const result = await conn.db().collection(coll).deleteOne(filt, opts);\n  res.next(result);\n}",
+  "alternativeMetaData": "RemoveOne | conn,coll,filt,opts | res | IMPLICIT | NONE",
+  "prompts": [
+    "Delete a document from a MongoDB collection",
+    "Delete a single document from a MongoDB collection",
+    "Delete a document from a MongoDB collection with specified filter",
+    "Delete a single document from a MongoDB collection with specified filter"
+  ],
+  "tokensUsed": 868
+}

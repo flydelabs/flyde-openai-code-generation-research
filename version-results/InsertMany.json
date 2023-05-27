@@ -1,0 +1,40 @@
+{
+  "stringified": "InsertMany | connection,collection,documents,options | result | IMPLICIT | NONE\nasync ({ connection }) => {\n    await connection.value?.end();\n  }",
+  "original": {
+    "id": "InsertMany",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "MongoDB",
+    "description": "Inserts many documents into a Mongo database. InsertMany receives a valid \"mongodb\" InsertManyOptions object.",
+    "inputs": {
+      "connection": {
+        "description": "Mongo connection"
+      },
+      "collection": {
+        "description": "Collection"
+      },
+      "documents": {
+        "description": "Documents"
+      },
+      "options": {
+        "description": "Options"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": ""
+      }
+    },
+    "runFnString": "async ({ connection }) => {\n    await connection.value?.end();\n  }"
+  },
+  "alternativeFunction": "function ({ db, collection, documents }) {\n  return db.collection(collection).insertMany(documents);\n}",
+  "alternativeMetaData": "BulkInsert | db,collection,documents,options | result | IMPLICIT | NONE",
+  "prompts": [
+    "Insert multiple documents to a collection",
+    "Add multiple items to a database",
+    "Bulk insert to a collection",
+    "Insert many documents to a database"
+  ],
+  "tokensUsed": 796
+}

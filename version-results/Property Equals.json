@@ -1,0 +1,41 @@
+{
+  "stringified": "Property Equals | object,attribute,value | true,false | IMPLICIT | NONE\n(inputs, outputs) => {\n    // get attribute from object while supporting dot notation\n    const value = inputs.attribute\n      .split(\".\")\n      .reduce((obj, i) => obj[i], inputs.object);\n    if (value === inputs.value) {\n      outputs.true.next(inputs.object);\n    } else {\n      outputs.false.next(inputs.object);\n    }\n  }",
+  "original": {
+    "id": "Property Equals",
+    "namespace": "Objects",
+    "defaultStyle": {
+      "icon": "fa-equals"
+    },
+    "description": "Emits the object to the \"true\" output if an object's property equals a value, otherwise emits to the \"false\" output",
+    "inputs": {
+      "object": {
+        "description": "Object to check property of"
+      },
+      "attribute": {
+        "description": "Attribute to check"
+      },
+      "value": {
+        "description": "Value to check attribute against"
+      }
+    },
+    "outputs": {
+      "true": {
+        "description": "Emitted if the attribute equals the value"
+      },
+      "false": {
+        "description": "Emitted if the attribute does not equal the value"
+      }
+    },
+    "customViewCode": "<% if (inputs.attribute) { %> \"<%- inputs.attribute %>\" equals \"<%- inputs.value %>\"<% } else { %> Property Equals <% } %>",
+    "runFnString": "(inputs, outputs) => {\n    // get attribute from object while supporting dot notation\n    const value = inputs.attribute\n      .split(\".\")\n      .reduce((obj, i) => obj[i], inputs.object);\n    if (value === inputs.value) {\n      outputs.true.next(inputs.object);\n    } else {\n      outputs.false.next(inputs.object);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputObj, outputObj) {\n    const { obj, attr, val } = inputObj;\n    const { trueOutput, falseOutput } = outputObj;\n    const attributeValue = attr.split('.').reduce((obj, i) => obj[i], obj);\n    if (attributeValue === val) {\n        trueOutput.next(obj);\n    } else {\n        falseOutput.next(obj);\n    }\n}",
+  "alternativeMetaData": "Attribute Equality | obj,attr,val | trueOutput,falseOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Check if object attribute equals value",
+    "Compare object attribute to value",
+    "Object attribute value checker",
+    "Object attribute value comparison"
+  ],
+  "tokensUsed": 922
+}

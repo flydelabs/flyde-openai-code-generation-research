@@ -1,0 +1,31 @@
+{
+  "stringified": "Sin | angle | sine | IMPLICIT | NONE\n({ angle }, { sine }) => sine.next(Math.sin(angle))",
+  "original": {
+    "id": "Sin",
+    "defaultStyle": {
+      "icon": "fa-sin"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the sine of an angle",
+    "inputs": {
+      "angle": {
+        "description": "Angle in radians"
+      }
+    },
+    "outputs": {
+      "sine": {
+        "description": "The sine of angle"
+      }
+    },
+    "runFnString": "({ angle }, { sine }) => sine.next(Math.sin(angle))"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { angle } = input;\n  const { sine } = output;\n  sine.next(Math.sin(angle));\n}",
+  "alternativeMetaData": "Sinusoidal | theta | sin | IMPLICIT | NONE",
+  "prompts": [
+    "Calculate sine of an angle",
+    "Sine calculator",
+    "Calculate the sine value",
+    "Get the sine of an angle"
+  ],
+  "tokensUsed": 792
+}

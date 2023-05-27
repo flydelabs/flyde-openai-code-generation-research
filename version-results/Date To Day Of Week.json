@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To Day Of Week | date | day | IMPLICIT | NONE\n({ date }, { day }) => day.next(date.getDay())",
+  "original": {
+    "id": "Date To Day Of Week",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to a day of the week",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "day": {
+        "description": "Day"
+      }
+    },
+    "runFnString": "({ date }, { day }) => day.next(date.getDay())"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { date } = input;\n  const { day } = output;\n  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];\n  const dayOfWeek = daysOfWeek[date.getDay()];\n  day.next(dayOfWeek);\n}",
+  "alternativeMetaData": "Day of Week from Date | date | dayOfWeek | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to day of week",
+    "Get day of week from date",
+    "Date to day converter",
+    "Day of week from date"
+  ],
+  "tokensUsed": 840
+}

@@ -1,0 +1,34 @@
+{
+  "stringified": "Split | string,separator | value | IMPLICIT | NONE\n({ string, separator }, { value }) =>\n    value.next(string.split(separator))",
+  "original": {
+    "id": "Split",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Splits a string",
+    "inputs": {
+      "string": {
+        "description": "String to split"
+      },
+      "separator": {
+        "description": "Separator"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Splitted value"
+      }
+    },
+    "runFnString": "({ string, separator }, { value }) =>\n    value.next(string.split(separator))"
+  },
+  "alternativeFunction": "function ({ inputString, separator }, { outputArray }) {\n    const splitArray = inputString.split(separator);\n    outputArray.next(splitArray);\n}",
+  "alternativeMetaData": "Divide String | inputString, separator | outputArray | IMPLICIT | NONE",
+  "prompts": [
+    "Split a string",
+    "Divide string into parts",
+    "Split string into array",
+    "Separate string into multiple parts"
+  ],
+  "tokensUsed": 798
+}

@@ -1,0 +1,25 @@
+{
+  "stringified": "Error | value |  | IMPLICIT | NONE\n({ value }) => console.error(value)",
+  "original": {
+    "id": "Error",
+    "defaultStyle": {
+      "icon": "fa-terminal"
+    },
+    "namespace": "Console",
+    "description": "Logs an error to the console",
+    "inputs": {
+      "value": {
+        "description": "Value to log"
+      }
+    },
+    "outputs": {},
+    "runFnString": "({ value }) => console.error(value)"
+  },
+  "alternativeFunction": "function (inputs, outputs, adv) {\n  const { value } = inputs;\n  console.error(value);\n}",
+  "alternativeMetaData": "Error Logger | errorValue |  | IMPLICIT | NONE",
+  "prompts": [
+    "Part that logs errors",
+    "Log errors"
+  ],
+  "tokensUsed": 761
+}

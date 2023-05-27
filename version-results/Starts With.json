@@ -1,0 +1,37 @@
+{
+  "stringified": "Starts With | string,searchValue,fromIndex | value | IMPLICIT | NONE\n({ string, searchValue, fromIndex }, { value }) =>\n    value.next(string.startsWith(searchValue, fromIndex))",
+  "original": {
+    "id": "Starts With",
+    "namespace": "Strings",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "description": "Determines whether a string begins with the characters of another string, returning true or false as appropriate",
+    "inputs": {
+      "string": {
+        "description": "String to search in"
+      },
+      "searchValue": {
+        "description": "Value to search for"
+      },
+      "fromIndex": {
+        "description": "Index to start searching from"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Result"
+      }
+    },
+    "runFnString": "({ string, searchValue, fromIndex }, { value }) =>\n    value.next(string.startsWith(searchValue, fromIndex))"
+  },
+  "alternativeFunction": "function ({ inputString, searchValue, startIndex }, { result }) { result.next(inputString.startsWith(searchValue, startIndex)); }",
+  "alternativeMetaData": "StartsWithCheck | inputString, searchValue, startIndex | result | IMPLICIT | NONE",
+  "prompts": [
+    "Check if string starts with value",
+    "String start checker",
+    "Part that checks if string starts with value",
+    "A component that verifies if a string starts with a given value"
+  ],
+  "tokensUsed": 818
+}

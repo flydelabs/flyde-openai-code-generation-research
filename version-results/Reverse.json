@@ -1,0 +1,31 @@
+{
+  "stringified": "Reverse | list | reversed | IMPLICIT | NONE\n({ list }, { reversed }) => reversed.next(list.reverse())",
+  "original": {
+    "id": "Reverse",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Reverses a list",
+    "inputs": {
+      "list": {
+        "description": "List"
+      }
+    },
+    "outputs": {
+      "reversed": {
+        "description": "Reversed list"
+      }
+    },
+    "runFnString": "({ list }, { reversed }) => reversed.next(list.reverse())"
+  },
+  "alternativeFunction": "function ({ inputList }, { outputReversed }) {\n  const { list } = inputList;\n  const { reversed } = outputReversed;\n\n  const reversedList = list.reverse();\n  reversed.next(reversedList);\n}",
+  "alternativeMetaData": "ReverseList | inputList | outputReversed | IMPLICIT | NONE",
+  "prompts": [
+    "Reverse a list",
+    "Reverse order of list",
+    "Create reversed list",
+    "Generate reversed list"
+  ],
+  "tokensUsed": 805
+}

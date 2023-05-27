@@ -1,0 +1,9 @@
+{
+  "result": "Repeat Item | item,delay,times | repeated | repeated | NONE\nfunction ({item, delay, times}, {repeated}, {state, onCleanup}) {\n  let count = 0;\n  const interval = setInterval(() => {\n    repeated.next(item);\n    count++;\n    if (count >= times) {\n      clearInterval(interval);\n    }\n  }, delay);\n\n  state.set(\"interval\", interval);\n  onCleanup(() => clearInterval(interval));\n}",
+  "tokens": 1136,
+  "completionTime": 39772,
+  "generatorName": "chat-completion-gpt-4-full",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 1,
+  "remarks": "Invalid metadata row Repeat Item | item,delay,times | repeated | repeated | NONE"
+}

@@ -1,0 +1,39 @@
+{
+  "stringified": "Accumulate Values by Time | value,time | accumulated | IMPLICIT | value\n(inputs, outputs, adv) => {\n    const { value, time } = inputs;\n    const { accumulated } = outputs;\n    const { state } = adv;\n\n    let list = state.get(\"list\") || [];\n\n    const bob = Date.now() % 1000;\n    console.log(\"called\", inputs.value, inputs.time, bob);\n    state.set(\"bob\", 2);\n    console.log(Array.from(state.entries()));\n\n    if (typeof value !== \"undefined\") {\n      list.push(value);\n      state.set(\"list\", list);\n    }\n\n    if (state.get(\"timeout\")) {\n      clearTimeout(state.get(\"timeout\"));\n    }\n\n    const promise = new Promise<void>((resolve) => {\n      state.set(\"resolve\", resolve);\n    });\n\n    state.set(\n      \"timeout\",\n      setTimeout(() => {\n        console.log(\"emitting\", list, bob, Date.now() % 1000);\n        accumulated.next(list);\n\n        state.set(\"list\", []);\n        const resolve = state.get(\"resolve\");\n        if (!resolve) {\n          throw new Error(\"resolve is undefined\");\n        }\n        resolve();\n      }, time)\n    );\n\n    return promise;\n  }",
+  "original": {
+    "id": "Accumulate Values by Time",
+    "defaultStyle": {
+      "icon": "fa-basket-shopping"
+    },
+    "namespace": "Lists",
+    "description": "Accumulates values sent to the \"value\" input. After the specified time it emits the accumulated values and resets the accumulator.",
+    "inputs": {
+      "value": {
+        "description": "The value to accumulate"
+      },
+      "time": {
+        "description": "Time to wait before emitting the accumulated values. Default is 200ms",
+        "defaultValue": 200,
+        "mode": "required-if-connected"
+      }
+    },
+    "reactiveInputs": [
+      "value"
+    ],
+    "outputs": {
+      "accumulated": {
+        "description": "The accumulated values"
+      }
+    },
+    "runFnString": "(inputs, outputs, adv) => {\n    const { value, time } = inputs;\n    const { accumulated } = outputs;\n    const { state } = adv;\n\n    let list = state.get(\"list\") || [];\n\n    const bob = Date.now() % 1000;\n    console.log(\"called\", inputs.value, inputs.time, bob);\n    state.set(\"bob\", 2);\n    console.log(Array.from(state.entries()));\n\n    if (typeof value !== \"undefined\") {\n      list.push(value);\n      state.set(\"list\", list);\n    }\n\n    if (state.get(\"timeout\")) {\n      clearTimeout(state.get(\"timeout\"));\n    }\n\n    const promise = new Promise<void>((resolve) => {\n      state.set(\"resolve\", resolve);\n    });\n\n    state.set(\n      \"timeout\",\n      setTimeout(() => {\n        console.log(\"emitting\", list, bob, Date.now() % 1000);\n        accumulated.next(list);\n\n        state.set(\"list\", []);\n        const resolve = state.get(\"resolve\");\n        if (!resolve) {\n          throw new Error(\"resolve is undefined\");\n        }\n        resolve();\n      }, time)\n    );\n\n    return promise;\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData, state) {\n  const { value, time } = inputData;\n  const { accumulated } = outputData;\n  const { internalState } = state;\n\n  let list = internalState.get('list') || [];\n\n  if (typeof value !== 'undefined') {\n    list.push(value);\n    internalState.set('list', list);\n  }\n\n  if (internalState.get('timeout')) {\n    clearTimeout(internalState.get('timeout'));\n  }\n\n  const promise = new Promise<void>((resolve) => {\n    internalState.set('resolve', resolve);\n  });\n\n  internalState.set(\n    'timeout',\n    setTimeout(() => {\n      accumulated.next(list);\n\n      internalState.set('list', []);\n      const resolve = internalState.get('resolve');\n      if (!resolve) {\n        throw new Error('resolve is undefined');\n      }\n      resolve();\n    }, time)\n  );\n\n  return promise;\n}",
+  "alternativeMetaData": "Data Accumulator | data,time | accumulatedData | IMPLICIT | data",
+  "prompts": [
+    "Accumulate values over time",
+    "Collect values over a period",
+    "Aggregate values by time",
+    "Gather data over a set time"
+  ],
+  "tokensUsed": 1225
+}

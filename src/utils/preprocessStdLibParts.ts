@@ -1,5 +1,5 @@
-import { BasePart, CodePart, isCodePart } from "@flyde/core";
-import * as allStdlib from "@flyde/stdlib/dist/all"; // secret export used by the documentation website to auto-generate the API reference
+import { CodePart, isCodePart } from "@flyde/core";
+import * as allStdlib from "../../stdlib-copy/dist/all"; // secret export used by the documentation website to auto-generate the API reference
 
 import {
   fileToTypescriptAst,
@@ -30,7 +30,7 @@ export function preprocessStdLibParts(files: string[]): ProcessedPart[] {
       if (part.type === "partFromSimpleFunction") {
         const outputName = Object.keys(partObjects[idx]?.outputs)[0];
         const { params, body } = getFunctionDetails(part.run);
-        return `function ({ ${params.join(", ")} }, {${
+        return `async function ({ ${params.join(", ")} }, {${
           outputName ?? ""
         }}) {\n\t${body}\n}`;
       } else {

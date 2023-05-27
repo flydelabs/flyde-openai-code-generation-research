@@ -1,0 +1,9 @@
+{
+  "result": " Query | connection,query,options | result | IMPLICIT | NONE\nfunction (inputs, outputs, adv) {\n  const { conn, q, opt } = inputs;\n  const { res } = outputs;\n\n  const result = await conn\n    .db()\n    .table(q)\n    .delete(opt);\n  res.next(result);\n}",
+  "tokens": 98,
+  "completionTime": 2852,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "Run SQL query",
+  "score": 1,
+  "remarks": "Invalid metadata row  Query | connection,query,options | result | IMPLICIT | NONE"
+}

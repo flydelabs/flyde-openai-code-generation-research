@@ -1,0 +1,54 @@
+{
+  "stringified": "Switch 3 | value,firstCase,secondCase,thirdCase,outputValue | first,second,third,default | IMPLICIT | NONE\nfunction (inputs, outputs) {\n    const {\n      first,\n      second,\n      third,\n      default: defaultOutput,\n      outputValue,\n    } = outputs;\n    const { value, firstCase, secondCase, thirdCase } = inputs;\n    if (value === firstCase) {\n      first.next(outputValue ?? value);\n    } else if (value === secondCase) {\n      second.next(outputValue ?? value);\n    } else if (value === thirdCase) {\n      third.next(outputValue ?? value);\n    } else {\n      defaultOutput.next(outputValue ?? value);\n    }\n  }",
+  "original": {
+    "namespace": "Control Flow",
+    "id": "Switch 3",
+    "description": "Switches between 3 outputs based on the input value. If the value is not equal to any of the cases, the default output is used.",
+    "inputs": {
+      "value": {
+        "mode": "required",
+        "description": "The value to switch on"
+      },
+      "firstCase": {
+        "mode": "required",
+        "description": "The value to switch on for the first output"
+      },
+      "secondCase": {
+        "mode": "required",
+        "description": "The value to switch on for the second output"
+      },
+      "thirdCase": {
+        "mode": "required",
+        "description": "The value to switch on for the third output"
+      },
+      "outputValue": {
+        "mode": "required-if-connected",
+        "description": "The value to emit on the output. Defaults to 'value'"
+      }
+    },
+    "outputs": {
+      "first": {
+        "description": "The value emitted if the input value is equal to the first case"
+      },
+      "second": {
+        "description": "The value emitted if the input value is equal to the second case"
+      },
+      "third": {
+        "description": "The value emitted if the input value is equal to the third case"
+      },
+      "default": {
+        "description": "The value emitted if the input value is not equal to any of the cases"
+      }
+    },
+    "runFnString": "function (inputs, outputs) {\n    const {\n      first,\n      second,\n      third,\n      default: defaultOutput,\n      outputValue,\n    } = outputs;\n    const { value, firstCase, secondCase, thirdCase } = inputs;\n    if (value === firstCase) {\n      first.next(outputValue ?? value);\n    } else if (value === secondCase) {\n      second.next(outputValue ?? value);\n    } else if (value === thirdCase) {\n      third.next(outputValue ?? value);\n    } else {\n      defaultOutput.next(outputValue ?? value);\n    }\n  }"
+  },
+  "alternativeFunction": "function ({ value, case1, case2, case3, output }, { case1Output, case2Output, case3Output, defaultOutput }) {\n  if (value === case1) {\n    case1Output.next(output);\n  } else if (value === case2) {\n    case2Output.next(output);\n  } else if (value === case3) {\n    case3Output.next(output);\n  } else {\n    defaultOutput.next(output);\n  }\n}",
+  "alternativeMetaData": "Value Router | value,case1,case2,case3,output | case1Output,case2Output,case3Output,defaultOutput | IMPLICIT | NONE",
+  "prompts": [
+    "A part that routes values to different outputs",
+    "Route values to different outputs",
+    "Switch between different output values",
+    "A part that routes values based on conditions"
+  ],
+  "tokensUsed": 1020
+}

@@ -1,0 +1,9 @@
+{
+  "result": "Map To Array | map | array | IMPLICIT | NONE\nfunction ({map}, {array}) {\n  const result = Object.entries(map)\n    .filter(([key, obj]) => obj.hasOwnProperty(\"id\"))\n    .map(([key, obj]) => obj);\n  array.next(result);\n}",
+  "tokens": 1107,
+  "completionTime": 9582,
+  "generatorName": "chat-completion-gpt-4-full",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 5,
+  "remarks": "Great job"
+}

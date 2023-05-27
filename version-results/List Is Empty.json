@@ -1,0 +1,31 @@
+{
+  "stringified": "List Is Empty | list | isEmpty | IMPLICIT | NONE\n({ list }, { isEmpty }) => isEmpty.next(list.length === 0)",
+  "original": {
+    "id": "List Is Empty",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Returns true if the list is empty",
+    "inputs": {
+      "list": {
+        "description": "List"
+      }
+    },
+    "outputs": {
+      "isEmpty": {
+        "description": "Is empty"
+      }
+    },
+    "runFnString": "({ list }, { isEmpty }) => isEmpty.next(list.length === 0)"
+  },
+  "alternativeFunction": "function ({ myList }, { isListEmpty }) {\n  return isListEmpty.next(myList.length === 0);\n}",
+  "alternativeMetaData": "Empty List Checker | myList | isListEmpty | IMPLICIT | NONE",
+  "prompts": [
+    "Check if list is empty",
+    "Detect empty list",
+    "List emptiness checker",
+    "Determine if list is empty"
+  ],
+  "tokensUsed": 788
+}

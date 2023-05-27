@@ -1,0 +1,34 @@
+{
+  "stringified": "Add | n1,n2 | sum | IMPLICIT | NONE\n({ n1, n2 }, { sum }) => sum.next(n1 + n2)",
+  "original": {
+    "id": "Add",
+    "defaultStyle": {
+      "icon": "fa-plus"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the sum of two numbers",
+    "inputs": {
+      "n1": {
+        "description": "First number to add"
+      },
+      "n2": {
+        "description": "Second number to add"
+      }
+    },
+    "outputs": {
+      "sum": {
+        "description": "The sum of n1 and n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { sum }) => sum.next(n1 + n2)"
+  },
+  "alternativeFunction": "function (inputs, outputs) {\n  const { n1, n2 } = inputs;\n  const { sum } = outputs;\n\n  sum.next(n1 + n2);\n}",
+  "alternativeMetaData": "Sum of two numbers | number1,number2 | result | IMPLICIT | NONE",
+  "prompts": [
+    "Add two numbers",
+    "Calculate sum of two numbers",
+    "Simple addition",
+    "Addition of two numbers"
+  ],
+  "tokensUsed": 808
+}

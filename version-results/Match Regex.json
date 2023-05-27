@@ -1,0 +1,34 @@
+{
+  "stringified": "Match Regex | string,regex | value | IMPLICIT | NONE\n({ string, regex }, { value }) => value.next(string.match(regex))",
+  "original": {
+    "id": "Match Regex",
+    "namespace": "Strings",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "description": "Determines whether a string matches a regular expression",
+    "inputs": {
+      "string": {
+        "description": "String to check"
+      },
+      "regex": {
+        "description": "Regular expression to match"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Result"
+      }
+    },
+    "runFnString": "({ string, regex }, { value }) => value.next(string.match(regex))"
+  },
+  "alternativeFunction": "function ({ inputString, regex }, { matches }) {\n  const newMatches = inputString.match(regex);\n  matches.next(newMatches);\n}",
+  "alternativeMetaData": "Regex Matcher | inputString, regex | matches | IMPLICIT | NONE",
+  "prompts": [
+    "Match a string with a regular expression",
+    "Find matches in a string using a regex",
+    "Regex matcher",
+    "Part that matches a string with a regular expression"
+  ],
+  "tokensUsed": 802
+}

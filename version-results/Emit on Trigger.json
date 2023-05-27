@@ -1,0 +1,44 @@
+{
+  "stringified": "Emit on Trigger | value,trigger | result | IMPLICIT | NONE\nfunction (inputs, outputs) {\n    const { result } = outputs;\n    const { value, trigger } = inputs;\n    if (trigger !== undefined) {\n      result.next(value);\n    }\n  }",
+  "original": {
+    "namespace": "Control Flow",
+    "id": "Emit on Trigger",
+    "description": "Emits the value when the trigger input receives any value",
+    "inputs": {
+      "value": {
+        "mode": "required",
+        "description": "The value to emit"
+      },
+      "trigger": {
+        "mode": "required",
+        "description": "The trigger to emit the value"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": "The value emitted"
+      }
+    },
+    "runFnString": "function (inputs, outputs) {\n    const { result } = outputs;\n    const { value, trigger } = inputs;\n    if (trigger !== undefined) {\n      result.next(value);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData) {\n  const { result } = outputData;\n  const { value, trigger } = inputData;\n  if (trigger !== undefined) {\n    result.next(value);\n  }\n}",
+  "alternativeMetaData": {
+    "id": "Trigger Emitter",
+    "inputs": {
+      "valueInput": "value",
+      "triggerInput": "trigger"
+    },
+    "outputs": {
+      "emittedValue": "result"
+    },
+    "completionOutputs": "IMPLICIT",
+    "reactiveInputs": "NONE"
+  },
+  "prompts": [
+    "Trigger-based emitter",
+    "Emit value on trigger",
+    "Part that emits value on trigger",
+    "Value emitter triggered by input"
+  ],
+  "tokensUsed": 879
+}

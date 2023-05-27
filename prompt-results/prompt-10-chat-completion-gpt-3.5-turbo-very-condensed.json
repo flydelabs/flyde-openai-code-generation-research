@@ -1,0 +1,9 @@
+{
+  "result": "Here's an example TypeScript code that transforms a map of id to objects into an array of objects and removes those without the 'id' property:\n\n```typescript\ninterface ObjectWithId {\n  id: string;\n  [key: string]: any;\n}\n\nfunction transformMapToArray(map: { [id: string]: ObjectWithId }): ObjectWithId[] {\n  return Object.values(map).filter((obj) => obj.id !== undefined);\n}\n```\n\nThis code defines an interface `ObjectWithId` that requires an `id` property and any other properties. The `transformMapToArray` function takes a map of id to objects and returns an array of objects. It uses `Object.values` to get an array of all the values in the map, and then filters out any objects that don't have an `id` property.",
+  "tokens": 733,
+  "completionTime": 12912,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 1,
+  "remarks": "Invalid metadata row Here's an example TypeScript code that transforms a map of id to objects into an array of objects and removes those without the 'id' property:"
+}

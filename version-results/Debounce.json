@@ -1,0 +1,40 @@
+{
+  "stringified": "Debounce | value,wait | result | result | value\nfunction (inputs, outputs, adv) {\n    const { value, wait } = inputs;\n    const { result } = outputs;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      clearTimeout(timer);\n    }\n\n    const newTimer = setTimeout(() => {\n      result.next(value);\n    }, wait);\n\n    adv.state.set(\"timer\", newTimer);\n\n    adv.onCleanup(() => {\n      clearTimeout(timer);\n    });\n  }",
+  "original": {
+    "id": "Debounce",
+    "namespace": "Control Flow",
+    "inputs": {
+      "value": {
+        "mode": "required",
+        "description": "The data that needs to be debounced"
+      },
+      "wait": {
+        "mode": "required",
+        "defaultValue": 250,
+        "description": "Time (in millis) to wait until 'value' is emitted"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": "The debounced value"
+      }
+    },
+    "completionOutputs": [
+      "result"
+    ],
+    "reactiveInputs": [
+      "value"
+    ],
+    "description": "Emits the last value received after being idle for \"wait\" amount of milliseconds",
+    "runFnString": "function (inputs, outputs, adv) {\n    const { value, wait } = inputs;\n    const { result } = outputs;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      clearTimeout(timer);\n    }\n\n    const newTimer = setTimeout(() => {\n      result.next(value);\n    }, wait);\n\n    adv.state.set(\"timer\", newTimer);\n\n    adv.onCleanup(() => {\n      clearTimeout(timer);\n    });\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData, state) {\n  const { incomingValue, delay } = inputData;\n  const { outgoingValue } = outputData;\n\n  const timer = state.get('timer');\n  if (timer) {\n    clearTimeout(timer);\n  }\n\n  const newTimer = setTimeout(() => {\n    outgoingValue.next(incomingValue);\n  }, delay);\n\n  state.set('timer', newTimer);\n\n  state.onCleanup(() => {\n    clearTimeout(timer);\n  });\n}",
+  "alternativeMetaData": "Delay | incomingValue,delay | outgoingValue | outgoingValue | incomingValue",
+  "prompts": [
+    "Throttle incoming values",
+    "Limit incoming values to a certain rate",
+    "Delay incoming values",
+    "Control incoming values"
+  ],
+  "tokensUsed": 956
+}

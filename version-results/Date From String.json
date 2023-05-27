@@ -1,0 +1,31 @@
+{
+  "stringified": "Date From String | string | date | IMPLICIT | NONE\n({ string }, { date }) => date.next(new Date(string))",
+  "original": {
+    "id": "Date From String",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Creates a date from a string",
+    "inputs": {
+      "string": {
+        "description": "String"
+      }
+    },
+    "outputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "runFnString": "({ string }, { date }) => date.next(new Date(string))"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { string } = input;\n  const { date } = output;\n  \n  const parsedDate = new Date(string);\n  \n  if (isNaN(parsedDate.getTime())) {\n    date.done(new Error('Invalid date string'));\n  } else {\n    date.next(parsedDate);\n  }\n}",
+  "alternativeMetaData": "DateFromString | dateString | parsedDate | IMPLICIT | NONE",
+  "prompts": [
+    "Convert string to date",
+    "Parse date from string",
+    "String to date converter",
+    "Date parser"
+  ],
+  "tokensUsed": 834
+}

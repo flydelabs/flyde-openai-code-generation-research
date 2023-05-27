@@ -1,0 +1,9 @@
+{
+  "result": "SQL Query | query,connection | result,error | result,error | NONE\nasync function ({query, connection}, {result, error}, {onError}) {\n  try {\n    const db = new Database(connection);\n    const data = await db.run(query);\n    result.next(data);\n  } catch (err) {\n    error.next(err);\n    onError(err);\n  }\n}",
+  "tokens": 767,
+  "completionTime": 38996,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "Run SQL query",
+  "score": 1,
+  "remarks": "Invalid metadata row SQL Query | query,connection | result,error | result,error | NONE"
+}

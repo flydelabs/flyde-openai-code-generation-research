@@ -1,0 +1,31 @@
+{
+  "stringified": "Is Empty | string | value | IMPLICIT | NONE\n({ string }, { value }) => value.next(string.length === 0)",
+  "original": {
+    "id": "Is Empty",
+    "namespace": "Strings",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "description": "Determines whether a string is empty",
+    "inputs": {
+      "string": {
+        "description": "String to check"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Result"
+      }
+    },
+    "runFnString": "({ string }, { value }) => value.next(string.length === 0)"
+  },
+  "alternativeFunction": "function ({ inputString }, { outputValue }) {\n  return outputValue.next(inputString.length === 0);\n}",
+  "alternativeMetaData": "IsEmpty | inputString | outputValue | IMPLICIT | NONE",
+  "prompts": [
+    "Check if string is empty",
+    "Detect empty string",
+    "String emptiness checker",
+    "Part that verifies if a string is empty"
+  ],
+  "tokensUsed": 786
+}

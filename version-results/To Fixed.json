@@ -1,0 +1,31 @@
+{
+  "stringified": "To Fixed | number,places | fixed | IMPLICIT | NONE\n({ number, places }, { fixed }) => fixed.next(number.toFixed(places))",
+  "original": {
+    "id": "To Fixed",
+    "namespace": "Numbers",
+    "description": "Emits the specified number of decimal places of a number",
+    "inputs": {
+      "number": {
+        "description": "Number to format"
+      },
+      "places": {
+        "description": "Number of decimal places to format to"
+      }
+    },
+    "outputs": {
+      "fixed": {
+        "description": "The number with the specified number of decimal places"
+      }
+    },
+    "runFnString": "({ number, places }, { fixed }) => fixed.next(number.toFixed(places))"
+  },
+  "alternativeFunction": "function ({ inputNumber, decimalPlaces }, { fixedNumber }) {\n  const { inputNumber, decimalPlaces } = inputs;\n  const { fixedNumber } = outputs;\n  fixedNumber.next(inputNumber.toFixed(decimalPlaces));\n}",
+  "alternativeMetaData": "Fixed Decimal | inputNumber, decimalPlaces | fixedNumber | IMPLICIT | NONE",
+  "prompts": [
+    "Round number to fixed decimal places",
+    "Convert number to fixed decimal format",
+    "Create fixed decimal number",
+    "Limit decimal places of number"
+  ],
+  "tokensUsed": 819
+}

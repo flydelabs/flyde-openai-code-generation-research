@@ -1,0 +1,34 @@
+{
+  "stringified": "Repeat | value,times | list | IMPLICIT | NONE\n({ value, times }, { list }) => {\n    const result = [];\n    for (let i = 0; i < times; i++) {\n      result.push(value);\n    }\n    return list.next(result);\n  }",
+  "original": {
+    "id": "Repeat",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Repeats a value a number of times",
+    "inputs": {
+      "value": {
+        "description": "Value to repeat"
+      },
+      "times": {
+        "description": "How many times will the value be repeated"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "List"
+      }
+    },
+    "runFnString": "({ value, times }, { list }) => {\n    const result = [];\n    for (let i = 0; i < times; i++) {\n      result.push(value);\n    }\n    return list.next(result);\n  }"
+  },
+  "alternativeFunction": "function (inputValues, outputValues, adv) {\n  const { inputValue, repeatTimes } = inputValues;\n  const { outputList } = outputValues;\n  const repeatedValues = Array(repeatTimes).fill(inputValue);\n  outputList.next(repeatedValues);\n}",
+  "alternativeMetaData": "RepeatValue | inputValue,repeatTimes | outputList | IMPLICIT | NONE",
+  "prompts": [
+    "Repeat a value multiple times",
+    "Create a list with repeated values",
+    "Repeat input value a specified number of times",
+    "Generate a list with repeated values"
+  ],
+  "tokensUsed": 862
+}

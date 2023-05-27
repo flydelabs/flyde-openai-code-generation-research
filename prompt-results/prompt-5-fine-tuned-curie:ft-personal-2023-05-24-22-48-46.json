@@ -1,0 +1,9 @@
+{
+  "result": " Debounce | value,wait | result | result | value\nfunction (inputData, outputData, state) {\n  const { value, wait } = inputData;\n  const { result } = outputData;\n\n  const timer = state.get('timer');\n  if (timer) {\n    clearTimeout(timer);\n  }\n\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set('timer', newTimer);\n\n  state.onCleanup(() => {\n    clearTimeout(timer);\n  });\n}",
+  "tokens": 147,
+  "completionTime": 1561,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "Debounce a value",
+  "score": 1,
+  "remarks": "Invalid metadata row  Debounce | value,wait | result | result | value"
+}

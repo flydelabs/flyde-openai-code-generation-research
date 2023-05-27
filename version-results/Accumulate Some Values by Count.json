@@ -1,0 +1,44 @@
+{
+  "stringified": "Accumulate Some Values by Count | accept,ignore,count | accumulated,ignored | IMPLICIT | accept,ignore\n(inputs, outputs, adv) => {\n    const { accept, ignore, count } = inputs;\n    const { accumulated, ignored } = outputs;\n    const { state } = adv;\n\n    let list = state.get(\"list\") || [];\n    let ignoredList = state.get(\"ignored\") || [];\n\n    if (typeof accept !== \"undefined\") {\n      list.push(accept);\n      state.set(\"list\", list);\n    }\n\n    if (typeof ignore !== \"undefined\") {\n      ignoredList.push(ignore);\n      state.set(\"ignored\", ignored);\n    }\n\n    if (list.length + ignoredList.length >= count) {\n      accumulated.next(list);\n      ignored.next(ignored);\n    }\n  }",
+  "original": {
+    "id": "Accumulate Some Values by Count",
+    "defaultStyle": {
+      "icon": "fa-basket-shopping"
+    },
+    "namespace": "Lists",
+    "description": "Accumulates values sent to the \"accept\" input. Emits the list after the total items passed to both \"accept\" and \"ignore\" inputs reach the specified count.",
+    "inputs": {
+      "accept": {
+        "description": "Values to accumulate"
+      },
+      "ignore": {
+        "description": "Values to ignore"
+      },
+      "count": {
+        "description": "Number of values to accumulate before emitting them"
+      }
+    },
+    "reactiveInputs": [
+      "accept",
+      "ignore"
+    ],
+    "outputs": {
+      "accumulated": {
+        "description": "The accumulated accepted values"
+      },
+      "ignored": {
+        "description": "The accumulated ignored values"
+      }
+    },
+    "runFnString": "(inputs, outputs, adv) => {\n    const { accept, ignore, count } = inputs;\n    const { accumulated, ignored } = outputs;\n    const { state } = adv;\n\n    let list = state.get(\"list\") || [];\n    let ignoredList = state.get(\"ignored\") || [];\n\n    if (typeof accept !== \"undefined\") {\n      list.push(accept);\n      state.set(\"list\", list);\n    }\n\n    if (typeof ignore !== \"undefined\") {\n      ignoredList.push(ignore);\n      state.set(\"ignored\", ignored);\n    }\n\n    if (list.length + ignoredList.length >= count) {\n      accumulated.next(list);\n      ignored.next(ignored);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData, advData) {\n  const { acceptInput, ignoreInput, countInput } = inputData;\n  const { accumulatedOutput, ignoredOutput } = outputData;\n  const { state } = advData;\n\n  let list = state.get('list') || [];\n  let ignoredList = state.get('ignored') || [];\n\n  if (typeof acceptInput !== 'undefined') {\n    list.push(acceptInput);\n    state.set('list', list);\n  }\n\n  if (typeof ignoreInput !== 'undefined') {\n    ignoredList.push(ignoreInput);\n    state.set('ignored', ignoredList);\n  }\n\n  if (list.length + ignoredList.length >= countInput) {\n    accumulatedOutput.next(list);\n    ignoredOutput.next(ignoredList);\n  }\n}",
+  "alternativeMetaData": "Count Accumulator | acceptInput,ignoreInput,countInput | accumulatedOutput,ignoredOutput | IMPLICIT | acceptInput,ignoreInput",
+  "prompts": [
+    "Accumulate values by count",
+    "Count values and output accumulated and ignored",
+    "Part that accumulates values based on count",
+    "A node that waits for a certain number of inputs before outputting accumulated and ignored values"
+  ],
+  "tokensUsed": 1115
+}

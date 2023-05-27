@@ -1,0 +1,9 @@
+{
+  "result": " Remove Without Id | map,filter | object | IMPLICIT | NONE\nfunction ({ map, filter }, { object }) {\n    const filteredMap = map.filter(item);\n    object.next(filteredMap);\n}",
+  "tokens": 80,
+  "completionTime": 1802,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 2,
+  "remarks": "Valid format but doesn't match the request"
+}

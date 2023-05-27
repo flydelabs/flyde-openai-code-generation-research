@@ -1,0 +1,34 @@
+{
+  "stringified": "Join | array,separator | value | IMPLICIT | NONE\n({ array, separator }, { value }) => value.next(array.join(separator))",
+  "original": {
+    "id": "Join",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Joins an array of strings",
+    "inputs": {
+      "array": {
+        "description": "Array to join"
+      },
+      "separator": {
+        "description": "Separator"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Joined value"
+      }
+    },
+    "runFnString": "({ array, separator }, { value }) => value.next(array.join(separator))"
+  },
+  "alternativeFunction": "function ({ inputArray, separator }, { outputValue }) {\n  const joinedArray = inputArray.join(separator);\n  outputValue.next(joinedArray);\n}",
+  "alternativeMetaData": "Combine | inputArray,separator | outputValue | IMPLICIT | NONE",
+  "prompts": [
+    "Join an array with a separator",
+    "Combine array elements with a separator",
+    "Create a string from an array with a separator",
+    "Join array elements using a separator"
+  ],
+  "tokensUsed": 805
+}

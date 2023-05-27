@@ -1,0 +1,31 @@
+{
+  "stringified": "Flatten | list | list | IMPLICIT | NONE\n({ list }, { list: outputList }) => {\n    outputList.next(list.reduce((acc, item) => [...acc, ...item], []));\n  }",
+  "original": {
+    "id": "Flatten",
+    "namespace": "Lists",
+    "description": "Flattens a list of lists into a single list",
+    "inputs": {
+      "list": {
+        "description": "The list of lists"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "The resulting list"
+      }
+    },
+    "defaultStyle": {
+      "icon": "fa-compress"
+    },
+    "runFnString": "({ list }, { list: outputList }) => {\n    outputList.next(list.reduce((acc, item) => [...acc, ...item], []));\n  }"
+  },
+  "alternativeFunction": "function (inputList, outputList) {\n  const { list } = inputList;\n  const { list: output } = outputList;\n  const flattenedList = list.reduce((acc, item) => [...acc, ...item], []);\n  output.next(flattenedList);\n}",
+  "alternativeMetaData": "FlattenedList | inputList | outputList | IMPLICIT | NONE",
+  "prompts": [
+    "Flatten a list of lists",
+    "Combine nested lists into a single list",
+    "List flattener",
+    "Combine multiple lists into one"
+  ],
+  "tokensUsed": 847
+}

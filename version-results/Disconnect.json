@@ -1,0 +1,27 @@
+{
+  "stringified": "Disconnect | connection |  | IMPLICIT | NONE\nasync ({ path }, { exists }) => {\n    // check if file in path exists\n    return exists.next(await fs.promises.access(path, fs.constants.F_OK));\n  }",
+  "original": {
+    "id": "Disconnect",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "Postgres",
+    "description": "Disconnects from a Postgres database",
+    "inputs": {
+      "connection": {
+        "description": "Postgres connection"
+      }
+    },
+    "outputs": {},
+    "runFnString": "async ({ path }, { exists }) => {\n    // check if file in path exists\n    return exists.next(await fs.promises.access(path, fs.constants.F_OK));\n  }"
+  },
+  "alternativeFunction": "function ({ filePath }, { fileExists }) {\n  return fs.promises.access(filePath, fs.constants.F_OK)\n    .then(() => fileExists.next(true))\n    .catch(() => fileExists.next(false));\n}",
+  "alternativeMetaData": "File Existence Checker | filePath | fileExists | IMPLICIT | NONE",
+  "prompts": [
+    "Check if file exists",
+    "File existence checker",
+    "Part that verifies file existence",
+    "Verify if file exists in path"
+  ],
+  "tokensUsed": 830
+}

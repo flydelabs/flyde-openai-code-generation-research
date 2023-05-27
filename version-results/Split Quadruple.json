@@ -1,0 +1,40 @@
+{
+  "stringified": "Split Quadruple | quadruple | item1,item2,item3,item4 | IMPLICIT | NONE\n(inputs, outputs) => {\n    const { list } = inputs;\n    const { item1, item2, item3, item4 } = outputs;\n    item1.next(list[0]);\n    item2.next(list[1]);\n    item3.next(list[2]);\n    item4.next(list[3]);\n  }",
+  "original": {
+    "id": "Split Quadruple",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Receives a list with 4 items and emits four outputs: the first item, the second item, the third item and the fourth item",
+    "inputs": {
+      "quadruple": {
+        "description": "The quadruple"
+      }
+    },
+    "outputs": {
+      "item1": {
+        "description": "The first item in the quadruple"
+      },
+      "item2": {
+        "description": "The second item in the quadruple"
+      },
+      "item3": {
+        "description": "The third item in the quadruple"
+      },
+      "item4": {
+        "description": "The fourth item in the quadruple"
+      }
+    },
+    "runFnString": "(inputs, outputs) => {\n    const { list } = inputs;\n    const { item1, item2, item3, item4 } = outputs;\n    item1.next(list[0]);\n    item2.next(list[1]);\n    item3.next(list[2]);\n    item4.next(list[3]);\n  }"
+  },
+  "alternativeFunction": "function ({quadruple}, {item1, item2, item3, item4}) {\n    const [first, second, third, fourth] = quadruple;\n    item1.next(first);\n    item2.next(second);\n    item3.next(third);\n    item4.next(fourth);\n}",
+  "alternativeMetaData": "Quadruple Splitter | quadruple | item1,item2,item3,item4 | IMPLICIT | NONE",
+  "prompts": [
+    "Split a list into four items",
+    "Split list into 4 outputs",
+    "A part that separates a list into 4 items",
+    "A function that takes a list and outputs 4 items"
+  ],
+  "tokensUsed": 913
+}

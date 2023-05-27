@@ -1,0 +1,9 @@
+{
+  "result": " Head of Array | array | head | IMPLICIT | NONE\nfunction (inputArray, outputHead) {\n  const { array } = inputArray;\n  const { head } = outputHead;\n  head.next(array.head);\n}",
+  "tokens": 67,
+  "completionTime": 905,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "Get the first element of an array",
+  "score": 1,
+  "remarks": "Invalid metadata row  Head of Array | array | head | IMPLICIT | NONE"
+}

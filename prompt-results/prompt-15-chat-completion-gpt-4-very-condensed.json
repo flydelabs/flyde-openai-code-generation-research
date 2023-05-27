@@ -1,0 +1,9 @@
+{
+  "result": "IP to Location | ip | location | IMPLICIT | NONE\nasync function ({ip}, {location}, {externalContext}) {\n  const response = await externalContext.fetch(`https://ipapi.co/${ip}/json/`);\n  const data = await response.json();\n  location.next(data);\n}",
+  "tokens": 612,
+  "completionTime": 9690,
+  "generatorName": "chat-completion-gpt-4-very-condensed",
+  "prompt": "return the user's location based on their IP address",
+  "score": 1,
+  "remarks": "Invalid metadata row IP to Location | ip | location | IMPLICIT | NONE"
+}

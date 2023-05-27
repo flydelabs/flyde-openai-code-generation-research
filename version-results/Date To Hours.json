@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To Hours | date | hours | IMPLICIT | NONE\n({ date }, { hours }) => hours.next(date.getHours())",
+  "original": {
+    "id": "Date To Hours",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to hours",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "hours": {
+        "description": "Hours"
+      }
+    },
+    "runFnString": "({ date }, { hours }) => hours.next(date.getHours())"
+  },
+  "alternativeFunction": "function ({ dateInput }, { hoursOutput }) {\n  const { date } = dateInput;\n  const { hours } = hoursOutput;\n  const hoursValue = date.getHours();\n  hours.next(hoursValue);\n}",
+  "alternativeMetaData": "Hours from Date | dateInput | hoursOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to hours",
+    "Get hours from date",
+    "Extract hours from date",
+    "Transform date to hours"
+  ],
+  "tokensUsed": 806
+}

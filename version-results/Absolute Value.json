@@ -1,0 +1,31 @@
+{
+  "stringified": "Absolute Value | n | absolute | IMPLICIT | NONE\n({ n }, { absolute }) => absolute.next(Math.abs(n))",
+  "original": {
+    "id": "Absolute Value",
+    "defaultStyle": {
+      "icon": "fa-abs"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the absolute value of a number",
+    "inputs": {
+      "n": {
+        "description": "Number to take the absolute value of"
+      }
+    },
+    "outputs": {
+      "absolute": {
+        "description": "The absolute value of n"
+      }
+    },
+    "runFnString": "({ n }, { absolute }) => absolute.next(Math.abs(n))"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { n } = input;\n  const { absolute } = output;\n  absolute.next(Math.abs(n));\n}",
+  "alternativeMetaData": "AbsVal | input | output | IMPLICIT | NONE",
+  "prompts": [
+    "Calculate absolute value",
+    "Get absolute value of a number",
+    "Part that returns the absolute value",
+    "A node that outputs the absolute value of an input"
+  ],
+  "tokensUsed": 799
+}

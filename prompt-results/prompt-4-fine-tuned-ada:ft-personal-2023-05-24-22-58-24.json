@@ -1,0 +1,9 @@
+{
+  "result": " Head | array | head | IMPLICIT | NONE\nfunction (inputArray, outputHead) {\n  const { inputArray } = inputArray;\n  const { outputHead } = outputHead;\n  outputHead.next(array.head);\n}",
+  "tokens": 68,
+  "completionTime": 730,
+  "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
+  "prompt": "Get the first element of an array",
+  "score": 1,
+  "remarks": "Invalid metadata row  Head | array | head | IMPLICIT | NONE"
+}

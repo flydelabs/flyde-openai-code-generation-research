@@ -1,0 +1,28 @@
+{
+  "stringified": "Parse Int | str | int | IMPLICIT | NONE\n({ str }, { int }) => int.next(parseInt(str))",
+  "original": {
+    "id": "Parse Int",
+    "namespace": "Numbers",
+    "description": "Emits the integer value of a string",
+    "inputs": {
+      "str": {
+        "description": "String to parse"
+      }
+    },
+    "outputs": {
+      "int": {
+        "description": "The integer value of str"
+      }
+    },
+    "runFnString": "({ str }, { int }) => int.next(parseInt(str))"
+  },
+  "alternativeFunction": "function ({ inputStr }, { outputInt }) {\n  const { inputStr } = inputs;\n  const { outputInt } = outputs;\n  outputInt.next(parseInt(inputStr));\n}",
+  "alternativeMetaData": "Integer Parser | inputStr | outputInt | IMPLICIT | NONE",
+  "prompts": [
+    "Convert string to integer",
+    "Parse string as integer",
+    "Extract integer from string",
+    "Convert text to number"
+  ],
+  "tokensUsed": 797
+}

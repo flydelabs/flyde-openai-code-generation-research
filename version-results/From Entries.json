@@ -1,0 +1,31 @@
+{
+  "stringified": "From Entries | entries | object | IMPLICIT | NONE\n({ entries }, { object }) => object.next(Object.fromEntries(entries))",
+  "original": {
+    "id": "From Entries",
+    "namespace": "Objects",
+    "defaultStyle": {
+      "icon": "fa-box"
+    },
+    "description": "Creates an object from an array of entries",
+    "inputs": {
+      "entries": {
+        "description": "Array of entries to create object from"
+      }
+    },
+    "outputs": {
+      "object": {
+        "description": "The created object"
+      }
+    },
+    "runFnString": "({ entries }, { object }) => object.next(Object.fromEntries(entries))"
+  },
+  "alternativeFunction": "function (inputData, outputData) {\n  const { entries } = inputData;\n  const { object } = outputData;\n\n  const result = {};\n  for (const [key, value] of entries) {\n    result[key] = value;\n  }\n  object.next(result);\n}",
+  "alternativeMetaData": "Object from Entries | entries | object | IMPLICIT | NONE",
+  "prompts": [
+    "Create object from entries",
+    "Convert entries to object",
+    "Entries to object converter",
+    "Part that transforms entries to object"
+  ],
+  "tokensUsed": 827
+}

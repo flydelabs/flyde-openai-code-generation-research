@@ -1,0 +1,31 @@
+{
+  "stringified": "To Camel Case | string | value | IMPLICIT | NONE\n({ string }, { value }) =>\n    value.next(\n      string.replace(/(?:^\\w|[A-Z]|\\b\\w|\\s+)/g, (match, index) => {\n        if (+match === 0) return \"\";\n        return index === 0 ? match.toLowerCase() : match.toUpperCase();\n      })\n    )",
+  "original": {
+    "id": "To Camel Case",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Converts a string to camel case",
+    "inputs": {
+      "string": {
+        "description": "String to convert to camel case"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Converted value"
+      }
+    },
+    "runFnString": "({ string }, { value }) =>\n    value.next(\n      string.replace(/(?:^\\w|[A-Z]|\\b\\w|\\s+)/g, (match, index) => {\n        if (+match === 0) return \"\";\n        return index === 0 ? match.toLowerCase() : match.toUpperCase();\n      })\n    )"
+  },
+  "alternativeFunction": "function (inputString, outputValue) {\n  const { value } = outputValue;\n  const camelCaseString = inputString.replace(/(?:^\\w|[A-Z]|\\b\\w|\\s+)/g, (match, index) => {\n    if (+match === 0) return \"\";\n    return index === 0 ? match.toLowerCase() : match.toUpperCase();\n  });\n  value.next(camelCaseString);\n}",
+  "alternativeMetaData": "ToCamelCase | inputString | outputValue | IMPLICIT | NONE",
+  "prompts": [
+    "Convert string to camel case",
+    "Camel case a string",
+    "Transform string to camel case",
+    "Change string to camel case"
+  ],
+  "tokensUsed": 915
+}

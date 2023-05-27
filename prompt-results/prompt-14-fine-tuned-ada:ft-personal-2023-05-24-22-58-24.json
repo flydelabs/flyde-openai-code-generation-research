@@ -1,0 +1,9 @@
+{
+  "result": " Read Csv File | path,contents,encoding |  | IMPLICIT | NONE\nfunction ({ filePath, fileContents, encoding }, { response }) {\n  const fs = require('fs');\n  return response.next( fs.readFile(filePath, fileContents, encoding));\n}",
+  "tokens": 79,
+  "completionTime": 960,
+  "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
+  "prompt": "parse a csv file without any libraries",
+  "score": 1,
+  "remarks": "Invalid metadata row  Read Csv File | path,contents,encoding |  | IMPLICIT | NONE"
+}

@@ -1,0 +1,34 @@
+{
+  "stringified": "Split Pair | pair | item1,item2 | IMPLICIT | NONE\n(inputs, outputs) => {\n    const { pair } = inputs;\n    const { item1, item2 } = outputs;\n    item1.next(pair[0]);\n    item2.next(pair[1]);\n  }",
+  "original": {
+    "id": "Split Pair",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Receives a list with 2 items and emits two outputs: the first item and the second item",
+    "inputs": {
+      "pair": {
+        "description": "The pair to split"
+      }
+    },
+    "outputs": {
+      "item1": {
+        "description": "The first item in the pair"
+      },
+      "item2": {
+        "description": "The second item in the pair"
+      }
+    },
+    "runFnString": "(inputs, outputs) => {\n    const { pair } = inputs;\n    const { item1, item2 } = outputs;\n    item1.next(pair[0]);\n    item2.next(pair[1]);\n  }"
+  },
+  "alternativeFunction": "function ({ pair }, { item1, item2 }) {\n    const [first, second] = pair;\n    item1.next(first);\n    item2.next(second);\n}",
+  "alternativeMetaData": "Pair Splitter | pair | item1,item2 | IMPLICIT | NONE",
+  "prompts": [
+    "Split a pair into two items",
+    "Separate a pair into two values",
+    "Extract two values from a pair",
+    "Split a pair into two separate items"
+  ],
+  "tokensUsed": 841
+}

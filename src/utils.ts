@@ -1,11 +1,6 @@
-import { Configuration, OpenAIApi } from "openai";
+import { openai } from "./utils/open-ai";
 
 export async function promptGpt(system: string, prompt: string) {
-  const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-  const openai = new OpenAIApi(configuration);
-
   const completion = await openai.createChatCompletion(
     {
       model: "gpt-3.5-turbo",
@@ -15,7 +10,7 @@ export async function promptGpt(system: string, prompt: string) {
         { role: "user", content: prompt },
       ],
     },
-    { timeout: 30000 }
+    { timeout: 45000 }
   );
 
   return {
@@ -63,4 +58,15 @@ export async function batchProcessor<T, R>({
       })
     );
   }
+}
+
+export async function withRetries<T>(fn: () => Promise<T>) {
+  for (let i = 0; i < 3; i++) {
+    try {
+      return await fn();
+    } catch (e) {
+      console.log("Retrying", e);
+    }
+  }
+  throw new Error("Failed after 3 retries");
 }

@@ -1,0 +1,40 @@
+{
+  "stringified": "Boolean Split | value,trueValue,falseValue | true,false | IMPLICIT | NONE\nfunction (inputs, outputs) {\n    const { true: trueOutput, false: falseOutput } = outputs;\n    const { value, trueValue, falseValue } = inputs;\n    if (value) {\n      trueOutput.next(trueValue ?? true);\n    } else {\n      falseOutput.next(falseValue ?? false);\n    }\n  }",
+  "original": {
+    "namespace": "Control Flow",
+    "id": "Boolean Split",
+    "description": "Splits a boolean value into two outputs",
+    "inputs": {
+      "value": {
+        "mode": "required",
+        "description": "Boolean value"
+      },
+      "trueValue": {
+        "mode": "required-if-connected",
+        "description": "Value to emit if the input is true. Defaults to true"
+      },
+      "falseValue": {
+        "mode": "required-if-connected",
+        "description": "Value to emit if the input is false. Defaults to false"
+      }
+    },
+    "outputs": {
+      "true": {
+        "description": "The value is true"
+      },
+      "false": {
+        "description": "The value is false"
+      }
+    },
+    "runFnString": "function (inputs, outputs) {\n    const { true: trueOutput, false: falseOutput } = outputs;\n    const { value, trueValue, falseValue } = inputs;\n    if (value) {\n      trueOutput.next(trueValue ?? true);\n    } else {\n      falseOutput.next(falseValue ?? false);\n    }\n  }"
+  },
+  "alternativeFunction": "function (inputData, outputData) {\n  const { trueOutput, falseOutput } = outputData;\n  const { value, trueValue, falseValue } = inputData;\n  if (value) {\n    trueOutput.next(trueValue ?? true);\n  } else {\n    falseOutput.next(falseValue ?? false);\n  }\n}",
+  "alternativeMetaData": "Boolean Value Splitter | inputValue, trueOutputValue, falseOutputValue | trueOutput, falseOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Split boolean values",
+    "Split true/false values",
+    "Boolean value splitter",
+    "Split values based on boolean"
+  ],
+  "tokensUsed": 903
+}

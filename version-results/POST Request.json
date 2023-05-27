@@ -1,0 +1,43 @@
+{
+  "stringified": "POST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n    const config: AxiosRequestConfig = { headers, params };\n    return axios.post(url, body, config).then((res) => data.next(res.data));\n  }",
+  "original": {
+    "id": "POST Request",
+    "defaultStyle": {
+      "icon": "fa-server"
+    },
+    "namespace": "HTTP",
+    "description": "Performs a HTTP POST request to a URL and emits the response data",
+    "inputs": {
+      "url": {
+        "description": "URL to fetch data from"
+      },
+      "headers": {
+        "description": "Headers to send with the request",
+        "mode": "required-if-connected"
+      },
+      "params": {
+        "description": "Query parameters to send with the request",
+        "mode": "required-if-connected"
+      },
+      "data": {
+        "description": "Data to send with the request",
+        "mode": "required-if-connected"
+      }
+    },
+    "outputs": {
+      "data": {
+        "description": "The response data"
+      }
+    },
+    "runFnString": "({ url, headers, params, data: body }, { data }) => {\n    const config: AxiosRequestConfig = { headers, params };\n    return axios.post(url, body, config).then((res) => data.next(res.data));\n  }"
+  },
+  "alternativeFunction": "function ({ url: endpoint, headers: requestHeaders, params: queryParams, data: body }, { data: response }) {\n    const config: AxiosRequestConfig = { headers: requestHeaders, params: queryParams };\n    return axios.post(endpoint, body, config).then((res) => response.next(res.data));\n}",
+  "alternativeMetaData": "HTTP POST | endpoint,requestHeaders,queryParams,body | response | IMPLICIT | NONE",
+  "prompts": [
+    "Send HTTP POST requests",
+    "HTTP POST Request",
+    "Part that sends data via HTTP POST",
+    "Send data via HTTP POST"
+  ],
+  "tokensUsed": 873
+}

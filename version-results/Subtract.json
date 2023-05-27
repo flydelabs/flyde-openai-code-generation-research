@@ -1,0 +1,34 @@
+{
+  "stringified": "Subtract | n1,n2 | difference | IMPLICIT | NONE\n({ n1, n2 }, { difference }) => difference.next(n1 - n2)",
+  "original": {
+    "id": "Subtract",
+    "defaultStyle": {
+      "icon": "fa-minus"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the difference of two numbers",
+    "inputs": {
+      "n1": {
+        "description": "First number to subtract"
+      },
+      "n2": {
+        "description": "Second number to subtract"
+      }
+    },
+    "outputs": {
+      "difference": {
+        "description": "The difference of n1 and n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { difference }) => difference.next(n1 - n2)"
+  },
+  "alternativeFunction": "function ({ num1, num2 }, { result }) { result.next(num1 - num2); }",
+  "alternativeMetaData": "Difference | num1,num2 | result | IMPLICIT | NONE",
+  "prompts": [
+    "Subtract two numbers",
+    "Calculate difference between two numbers",
+    "Simple subtraction",
+    "Subtract values"
+  ],
+  "tokensUsed": 785
+}

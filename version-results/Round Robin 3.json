@@ -1,0 +1,39 @@
+{
+  "stringified": "Round Robin 3 | value | r1,r2,r3 |  | value\nfunction (inputs, outputs, adv) {\n    const { state } = adv;\n    const { r1, r2, r3 } = outputs;\n    const curr = state.get(\"curr\") || 0;\n\n    const o = [r1, r2, r3][curr];\n\n    const nextCurr = (curr + 1) % 3;\n\n    o.next(inputs.item);\n    state.set(\"curr\", nextCurr);\n  }",
+  "original": {
+    "id": "Round Robin 3",
+    "namespace": "Control Flow",
+    "description": "Item will be emitted to one of the three outputs in a round robin fashion",
+    "inputs": {
+      "value": {
+        "mode": "required",
+        "description": "The value to emit"
+      }
+    },
+    "outputs": {
+      "r1": {
+        "description": "The first output in order to emit the value received. After emitting a value, it moves to \"r2\"'s turn."
+      },
+      "r2": {
+        "description": "The second output in order to emit the value received. After emitting a value, it moves to \"r3\"'s turn."
+      },
+      "r3": {
+        "description": "The third output in order to emit the value received. After emitting a value, it moves back to \"r1\"'s turn."
+      }
+    },
+    "completionOutputs": [],
+    "reactiveInputs": [
+      "value"
+    ],
+    "runFnString": "function (inputs, outputs, adv) {\n    const { state } = adv;\n    const { r1, r2, r3 } = outputs;\n    const curr = state.get(\"curr\") || 0;\n\n    const o = [r1, r2, r3][curr];\n\n    const nextCurr = (curr + 1) % 3;\n\n    o.next(inputs.item);\n    state.set(\"curr\", nextCurr);\n  }"
+  },
+  "alternativeFunction": "function ({ item }, { out1, out2, out3 }) {\n  const outputs = [out1, out2, out3];\n  let curr = 0;\n\n  return function () {\n    const o = outputs[curr];\n    o.next(item);\n    curr = (curr + 1) % 3;\n  };\n}",
+  "alternativeMetaData": "Round Robin 3 | item | out1,out2,out3 |  | item",
+  "prompts": [
+    "Round Robin output distributor",
+    "Distribute values in a round-robin fashion",
+    "A part that distributes values equally to three outputs",
+    "A component that cycles through three outputs to distribute values"
+  ],
+  "tokensUsed": 943
+}

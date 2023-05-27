@@ -1,0 +1,31 @@
+{
+  "stringified": "To Title Case | string | value | IMPLICIT | NONE\n({ string }, { value }) =>\n    value.next(\n      string.replace(\n        /\\w\\S*/g,\n        (match) => match.charAt(0).toUpperCase() + match.substr(1).toLowerCase()\n      )\n    )",
+  "original": {
+    "id": "To Title Case",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Converts a string to title case",
+    "inputs": {
+      "string": {
+        "description": "String to convert to title case"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Converted value"
+      }
+    },
+    "runFnString": "({ string }, { value }) =>\n    value.next(\n      string.replace(\n        /\\w\\S*/g,\n        (match) => match.charAt(0).toUpperCase() + match.substr(1).toLowerCase()\n      )\n    )"
+  },
+  "alternativeFunction": "function ({ inputString }, { outputValue }) {\n  const words = inputString.split(' ');\n  const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));\n  const titleCaseString = capitalizedWords.join(' ');\n  outputValue.next(titleCaseString);\n}",
+  "alternativeMetaData": "Title Case | inputString | outputValue | IMPLICIT | NONE",
+  "prompts": [
+    "Capitalize First Letter of Each Word",
+    "Convert String to Title Case",
+    "Title Case Converter",
+    "Part that Capitalizes First Letter of Each Word"
+  ],
+  "tokensUsed": 867
+}

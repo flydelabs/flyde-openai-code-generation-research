@@ -6,8 +6,9 @@
   "scripts": {
     "generate:versions": "ts-node src/generate-versions.ts",
     "prepare:dataset": "ts-node src/prepare-dataset.ts",
-    "prepare:training-jsonl": "openai tools fine_tunes.prepare_data -f training.json",
-    "prepare:validation-jsonl": "openai tools fine_tunes.prepare_data -f validation.json",
+    "prepare:jsonl": "./prepare-jsonl.sh",
+    "benchmark:generate": "ts-node src/benchmark/generate-parts.ts",
+    "benchmark:score": "ts-node src/benchmark/score-results.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

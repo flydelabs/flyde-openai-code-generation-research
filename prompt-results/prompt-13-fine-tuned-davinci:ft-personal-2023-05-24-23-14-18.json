@@ -1,0 +1,9 @@
+{
+  "result": " POST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n    const config: AxiosRequestConfig = { headers, params };\n    return axios.post(url, body, config).then((res) => data.next(res.data));\n  }",
+  "tokens": 94,
+  "completionTime": 2688,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "Send an HTTP POST request",
+  "score": 1,
+  "remarks": "Invalid metadata row  POST Request | url,headers,params,data | data | IMPLICIT | NONE"
+}

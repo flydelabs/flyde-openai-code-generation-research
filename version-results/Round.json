@@ -1,0 +1,29 @@
+{
+  "stringified": "Round | n | rounded | IMPLICIT | NONE\n({ n }, { rounded }) => rounded.next(Math.round(n))",
+  "original": {
+    "id": "Round",
+    "defaultStyle": {
+      "icon": "fa-round"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the rounded value of a number",
+    "inputs": {
+      "n": {
+        "description": "Number to round"
+      }
+    },
+    "outputs": {
+      "rounded": {
+        "description": "The rounded value of n"
+      }
+    },
+    "runFnString": "({ n }, { rounded }) => rounded.next(Math.round(n))"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { n } = input;\n  const { rounded } = output;\n  rounded.next(Math.round(n));\n}",
+  "alternativeMetaData": "Rounded Number | number | roundedNumber | IMPLICIT | NONE",
+  "prompts": [
+    "Round a number",
+    "Create a rounded number"
+  ],
+  "tokensUsed": 778
+}

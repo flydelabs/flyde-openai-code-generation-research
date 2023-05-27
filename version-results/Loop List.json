@@ -1,0 +1,41 @@
+{
+  "stringified": "Loop List | list | item,index,length | IMPLICIT | NONE\n(inputs, outputs) => {\n    const { list } = inputs;\n    const { item, index } = outputs;\n    for (const i of list) {\n      item.next(i);\n      index.next(list.indexOf(i));\n    }\n    outputs.length.next(list.length);\n  }",
+  "original": {
+    "id": "Loop List",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "searchKeywords": [
+      "each",
+      "spread"
+    ],
+    "description": "Emits all values in a list",
+    "inputs": {
+      "list": {
+        "description": "The list to loop"
+      }
+    },
+    "outputs": {
+      "item": {
+        "description": "Will emit a value for each item in the list"
+      },
+      "index": {
+        "description": "Will emit the index of the item"
+      },
+      "length": {
+        "description": "Will emit the length of the list"
+      }
+    },
+    "runFnString": "(inputs, outputs) => {\n    const { list } = inputs;\n    const { item, index } = outputs;\n    for (const i of list) {\n      item.next(i);\n      index.next(list.indexOf(i));\n    }\n    outputs.length.next(list.length);\n  }"
+  },
+  "alternativeFunction": "function (inputList, outputItem, outputIndex, outputLength) {\n  const { list } = inputList;\n  for (const i of list) {\n    outputItem.next(i);\n    outputIndex.next(list.indexOf(i));\n  }\n  outputLength.next(list.length);\n}",
+  "alternativeMetaData": "List Loop | listInput | itemOutput,indexOutput,lengthOutput | IMPLICIT | NONE",
+  "prompts": [
+    "Loop through a list",
+    "Iterate over a list",
+    "Loop through items in a list",
+    "Loop through a list and output item, index, and length"
+  ],
+  "tokensUsed": 881
+}

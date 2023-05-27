@@ -1,0 +1,31 @@
+{
+  "stringified": "Ceiling | n | ceiling | IMPLICIT | NONE\n({ n }, { ceiling }) => ceiling.next(Math.ceil(n))",
+  "original": {
+    "id": "Ceiling",
+    "defaultStyle": {
+      "icon": "fa-ceiling"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the ceiling of a number",
+    "inputs": {
+      "n": {
+        "description": "Number to take the ceiling of"
+      }
+    },
+    "outputs": {
+      "ceiling": {
+        "description": "The ceiling of n"
+      }
+    },
+    "runFnString": "({ n }, { ceiling }) => ceiling.next(Math.ceil(n))"
+  },
+  "alternativeFunction": "function ({ inputNumber }, { outputCeiling }) {\n  const { inputNumber } = inputs;\n  const { outputCeiling } = outputs;\n  outputCeiling.next(Math.ceil(inputNumber));\n}",
+  "alternativeMetaData": "Rounded Number | inputNumber | outputCeiling | IMPLICIT | NONE",
+  "prompts": [
+    "Round up number",
+    "Calculate ceiling",
+    "Get integer ceiling",
+    "Get rounded up value"
+  ],
+  "tokensUsed": 800
+}

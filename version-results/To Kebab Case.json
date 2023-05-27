@@ -1,0 +1,31 @@
+{
+  "stringified": "To Kebab Case | string | value | IMPLICIT | NONE\n({ string }, { value }) =>\n    value.next(\n      string\n        .replace(/([a-z])([A-Z])/g, \"$1-$2\")\n        .replace(/\\s+/g, \"-\")\n        .toLowerCase()\n    )",
+  "original": {
+    "id": "To Kebab Case",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Converts a string to kebab case",
+    "inputs": {
+      "string": {
+        "description": "String to convert to kebab case"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Converted value"
+      }
+    },
+    "runFnString": "({ string }, { value }) =>\n    value.next(\n      string\n        .replace(/([a-z])([A-Z])/g, \"$1-$2\")\n        .replace(/\\s+/g, \"-\")\n        .toLowerCase()\n    )"
+  },
+  "alternativeFunction": "function ({ inputString }, { outputValue }) {\n  outputValue.next(inputString.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\\s+/g, '-').toLowerCase());\n}",
+  "alternativeMetaData": "To-Kebab-Case | inputString | outputValue | IMPLICIT | NONE",
+  "prompts": [
+    "Convert string to kebab case",
+    "Change string to kebab case",
+    "Transform string to kebab case",
+    "Convert string to kebab-case format"
+  ],
+  "tokensUsed": 856
+}

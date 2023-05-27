@@ -1,0 +1,31 @@
+{
+  "stringified": "Sum List | list | sum | IMPLICIT | NONE\n({ list }, { sum }) => sum.next(list.reduce((a, b) => a + b, 0))",
+  "original": {
+    "id": "Sum List",
+    "defaultStyle": {
+      "icon": "fa-plus"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the sum of a list of numbers",
+    "inputs": {
+      "list": {
+        "description": "List of numbers"
+      }
+    },
+    "outputs": {
+      "sum": {
+        "description": "The sum of the numbers in list"
+      }
+    },
+    "runFnString": "({ list }, { sum }) => sum.next(list.reduce((a, b) => a + b, 0))"
+  },
+  "alternativeFunction": "function ({ inputList }, { outputSum }) {\n    const { list } = inputList;\n    const { sum } = outputSum;\n    sum.next(list.reduce((a, b) => a + b, 0));\n}",
+  "alternativeMetaData": "Total List | list | total | IMPLICIT | NONE",
+  "prompts": [
+    "Calculate sum of list",
+    "Sum up a list of numbers",
+    "Add up a list of values",
+    "Calculate the total of a list"
+  ],
+  "tokensUsed": 823
+}

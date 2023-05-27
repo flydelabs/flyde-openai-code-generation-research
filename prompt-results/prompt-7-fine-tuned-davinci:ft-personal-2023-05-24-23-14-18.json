@@ -1,0 +1,9 @@
+{
+  "result": " Round Robin 3 | value | r1,r2,r3 |  | value\nfunction (inputs, outputs, adv) {\n    const { state } = adv;\n    const { r1, r2, r3 } = outputs;\n    const curr = state.get(\"curr\") || 0;\n\n    const o = [r1, r2, r3][curr];\n\n    const nextCurr = (curr + 1) % 3;\n\n    o.next(inputs.item);\n    state.set(\"curr\", nextCurr);\n  }",
+  "tokens": 159,
+  "completionTime": 4373,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "Round robin a value into one of 3 outputs",
+  "score": 1,
+  "remarks": "Invalid metadata row  Round Robin 3 | value | r1,r2,r3 |  | value"
+}

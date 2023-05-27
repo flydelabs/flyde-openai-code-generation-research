@@ -1,0 +1,31 @@
+{
+  "stringified": "Date From Unix Time | time | date | IMPLICIT | NONE\n({ time }, { date }) => date.next(new Date(time))",
+  "original": {
+    "id": "Date From Unix Time",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Creates a date from a Unix time",
+    "inputs": {
+      "time": {
+        "description": "Unix time"
+      }
+    },
+    "outputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "runFnString": "({ time }, { date }) => date.next(new Date(time))"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { unixTime } = input;\n  const { date } = output;\n  \n  const dateObj = new Date(unixTime * 1000);\n  date.next(dateObj);\n}",
+  "alternativeMetaData": "Unix Time to Date | unixTime | date | IMPLICIT | NONE",
+  "prompts": [
+    "Convert Unix Time to Date",
+    "Get Date from Unix Timestamp",
+    "Unix Time to Date Converter",
+    "Convert Unix Timestamp to Date Object"
+  ],
+  "tokensUsed": 818
+}

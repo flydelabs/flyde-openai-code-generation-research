@@ -1,0 +1,33 @@
+{
+  "stringified": "Modulo | n1,n2 | remainder | IMPLICIT | NONE\n({ n1, n2 }, { remainder }) => remainder.next(n1 % n2)",
+  "original": {
+    "id": "Modulo",
+    "defaultStyle": {
+      "icon": "fa-percentage"
+    },
+    "namespace": "Numbers",
+    "description": "Emits the remainder of two numbers",
+    "inputs": {
+      "n1": {
+        "description": "First number to divide"
+      },
+      "n2": {
+        "description": "Second number to divide"
+      }
+    },
+    "outputs": {
+      "remainder": {
+        "description": "The remainder of n1 and n2"
+      }
+    },
+    "runFnString": "({ n1, n2 }, { remainder }) => remainder.next(n1 % n2)"
+  },
+  "alternativeFunction": "function ({ dividend, divisor }, { remainder }) {\n  remainder.next(dividend % divisor);\n}",
+  "alternativeMetaData": "Remainder Calculation | dividend,divisor | remainder | IMPLICIT | NONE",
+  "prompts": [
+    "Calculate remainder of division",
+    "Modulo operation",
+    "Calculate remainder"
+  ],
+  "tokensUsed": 780
+}

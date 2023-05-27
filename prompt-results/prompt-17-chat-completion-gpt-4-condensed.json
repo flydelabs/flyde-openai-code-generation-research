@@ -1,0 +1,9 @@
+{
+  "result": "Send Slack Message | token,channel,text | response | IMPLICIT | NONE\nasync function ({token, channel, text}, {response}) {\n  const axios = require(\"axios\");\n  const url = \"https://slack.com/api/chat.postMessage\";\n  const headers = { \"Content-Type\": \"application/json\", \"Authorization\": `Bearer ${token}` };\n  const data = { channel, text };\n\n  try {\n    const res = await axios.post(url, data, { headers });\n    response.next(res.data);\n  } catch (error) {\n    response.error(error);\n  }\n}",
+  "tokens": 814,
+  "completionTime": 19668,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "send a message to a slack channel",
+  "score": 1,
+  "remarks": "Invalid metadata row Send Slack Message | token,channel,text | response | IMPLICIT | NONE"
+}

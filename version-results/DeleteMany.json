@@ -1,0 +1,40 @@
+{
+  "stringified": "DeleteMany | connection,collection,filter,options | result | IMPLICIT | NONE\nasync (\n    { connection, collection, filter, update, options },\n    { result }\n  ) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .updateMany(filter, update, options);\n    result.next(res);\n  }",
+  "original": {
+    "id": "DeleteMany",
+    "defaultStyle": {
+      "icon": "fa-database"
+    },
+    "namespace": "MongoDB",
+    "description": "Deletes many documents in a Mongo database. DeleteMany receives a valid \"mongodb\" DeleteManyOptions object.",
+    "inputs": {
+      "connection": {
+        "description": "Mongo connection"
+      },
+      "collection": {
+        "description": "Collection name"
+      },
+      "filter": {
+        "description": "Filter query"
+      },
+      "options": {
+        "description": "Query options"
+      }
+    },
+    "outputs": {
+      "result": {
+        "description": ""
+      }
+    },
+    "runFnString": "async (\n    { connection, collection, filter, update, options },\n    { result }\n  ) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .updateMany(filter, update, options);\n    result.next(res);\n  }"
+  },
+  "alternativeFunction": "function ({ conn, coll, filt, opts }, { res }) {\n    const result = await conn\n      .db()\n      .collection(coll)\n      .deleteMany(filt, opts);\n    res.next(result);\n  }",
+  "alternativeMetaData": "MongoDB Deleter | conn,coll,filt,opts | res | IMPLICIT | NONE",
+  "prompts": [
+    "Delete multiple documents from a MongoDB collection",
+    "Delete many documents from a MongoDB collection",
+    "A part that deletes multiple documents from a MongoDB collection",
+    "A MongoDB collection deleter that can delete multiple documents"
+  ],
+  "tokensUsed": 880
+}

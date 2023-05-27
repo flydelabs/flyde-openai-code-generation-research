@@ -1,0 +1,36 @@
+{
+  "stringified": "Round Robin 2 | value | r1,r2 |  | value\nfunction (inputs, outputs, adv) {\n    const { state } = adv;\n    const { r1, r2 } = outputs;\n    const curr = state.get(\"curr\") || 0;\n\n    const o = [r1, r2][curr];\n\n    const nextCurr = (curr + 1) % 2;\n\n    o.next(inputs.item);\n    state.set(\"curr\", nextCurr);\n  }",
+  "original": {
+    "namespace": "Control Flow",
+    "id": "Round Robin 2",
+    "description": "Item will be emitted to one of the 2 outputs in a round robin fashion",
+    "inputs": {
+      "value": {
+        "mode": "required",
+        "description": "The value to emit"
+      }
+    },
+    "outputs": {
+      "r1": {
+        "description": "The first output in order to emit the value received. After emitting a value, it moves to \"r2\"'s turn."
+      },
+      "r2": {
+        "description": "The second output in order to emit the value received. After emitting a value, it moves to \"r3\"'s turn."
+      }
+    },
+    "completionOutputs": [],
+    "reactiveInputs": [
+      "value"
+    ],
+    "runFnString": "function (inputs, outputs, adv) {\n    const { state } = adv;\n    const { r1, r2 } = outputs;\n    const curr = state.get(\"curr\") || 0;\n\n    const o = [r1, r2][curr];\n\n    const nextCurr = (curr + 1) % 2;\n\n    o.next(inputs.item);\n    state.set(\"curr\", nextCurr);\n  }"
+  },
+  "alternativeFunction": "function ({ item }, { output1, output2 }) {\n  const { state } = adv;\n  const curr = state.get('curr') || 0;\n\n  const o = [output1, output2][curr];\n\n  const nextCurr = (curr + 1) % 2;\n\n  o.next(item);\n  state.set('curr', nextCurr);\n}",
+  "alternativeMetaData": "Round Robin 2 | item | output1,output2 |  | item",
+  "prompts": [
+    "Alternate between two outputs",
+    "Round Robin output",
+    "Switch between two outputs",
+    "Output to two destinations in turns"
+  ],
+  "tokensUsed": 924
+}

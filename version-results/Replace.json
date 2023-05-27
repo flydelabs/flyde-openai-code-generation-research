@@ -1,0 +1,37 @@
+{
+  "stringified": "Replace | string,searchValue,replaceValue | value | IMPLICIT | NONE\n({ string, searchValue, replaceValue }, { value }) =>\n    value.next(string.replace(searchValue, replaceValue))",
+  "original": {
+    "id": "Replace",
+    "defaultStyle": {
+      "icon": "fa-font"
+    },
+    "namespace": "Strings",
+    "description": "Replaces a string",
+    "inputs": {
+      "string": {
+        "description": "String to replace"
+      },
+      "searchValue": {
+        "description": "Value to search for"
+      },
+      "replaceValue": {
+        "description": "Value to replace with"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "Replaced value"
+      }
+    },
+    "runFnString": "({ string, searchValue, replaceValue }, { value }) =>\n    value.next(string.replace(searchValue, replaceValue))"
+  },
+  "alternativeFunction": "function ({ inputString, searchValue, replaceValue }, { outputString }) => { outputString.next(inputString.replace(searchValue, replaceValue)) }",
+  "alternativeMetaData": "ModifiedString | inputString,searchValue,replaceValue | outputString | IMPLICIT | NONE",
+  "prompts": [
+    "Replace text in string",
+    "Replace values in string",
+    "Modify string content",
+    "Change text in string"
+  ],
+  "tokensUsed": 808
+}

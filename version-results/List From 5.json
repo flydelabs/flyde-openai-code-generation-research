@@ -1,0 +1,43 @@
+{
+  "stringified": "List From 5 | value1,value2,value3,value4,value5 | list | IMPLICIT | NONE\n({ value1, value2, value3, value4, value5 }, { list }) =>\n    list.next([value1, value2, value3, value4, value5])",
+  "original": {
+    "id": "List From 5",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Creates a list from five values",
+    "inputs": {
+      "value1": {
+        "description": "First value"
+      },
+      "value2": {
+        "description": "Second value"
+      },
+      "value3": {
+        "description": "Third value"
+      },
+      "value4": {
+        "description": "Fourth value"
+      },
+      "value5": {
+        "description": "Fifth value"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "List containing all 5 values"
+      }
+    },
+    "runFnString": "({ value1, value2, value3, value4, value5 }, { list }) =>\n    list.next([value1, value2, value3, value4, value5])"
+  },
+  "alternativeFunction": "function ({ val1, val2, val3, val4, val5 }, { outputList }) { outputList.next([val1, val2, val3, val4, val5]); }",
+  "alternativeMetaData": "List Creator | val1,val2,val3,val4,val5 | outputList | IMPLICIT | NONE",
+  "prompts": [
+    "Create a list from 5 values",
+    "List creator",
+    "Part that creates a list",
+    "A node that generates a list from 5 values"
+  ],
+  "tokensUsed": 852
+}

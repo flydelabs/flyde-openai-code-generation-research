@@ -1,0 +1,37 @@
+{
+  "stringified": "List From 3 | value1,value2,value3 | list | IMPLICIT | NONE\n({ value1, value2, value3 }, { list }) =>\n    list.next([value1, value2, value3])",
+  "original": {
+    "id": "List From 3",
+    "defaultStyle": {
+      "icon": "fa-list"
+    },
+    "namespace": "Lists",
+    "description": "Creates a list from three values",
+    "inputs": {
+      "value1": {
+        "description": "First value"
+      },
+      "value2": {
+        "description": "Second value"
+      },
+      "value3": {
+        "description": "Third value"
+      }
+    },
+    "outputs": {
+      "list": {
+        "description": "List containing all 3 values"
+      }
+    },
+    "runFnString": "({ value1, value2, value3 }, { list }) =>\n    list.next([value1, value2, value3])"
+  },
+  "alternativeFunction": "function (inputData, outputData) {\n  const { value1, value2, value3 } = inputData;\n  const { list } = outputData;\n  list.next([value1, value2, value3]);\n}",
+  "alternativeMetaData": "List Creator | val1,val2,val3 | outputList | IMPLICIT | NONE",
+  "prompts": [
+    "Create a list from 3 values",
+    "Convert 3 values to a list",
+    "List of 3 values",
+    "Create a list with 3 values"
+  ],
+  "tokensUsed": 843
+}

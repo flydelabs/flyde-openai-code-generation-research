@@ -1,0 +1,31 @@
+{
+  "stringified": "Date To Milliseconds | date | milliseconds | IMPLICIT | NONE\n({ date }, { milliseconds }) =>\n    milliseconds.next(date.getMilliseconds())",
+  "original": {
+    "id": "Date To Milliseconds",
+    "defaultStyle": {
+      "icon": "fa-calendar"
+    },
+    "namespace": "Dates",
+    "description": "Converts a date to milliseconds",
+    "inputs": {
+      "date": {
+        "description": "Date"
+      }
+    },
+    "outputs": {
+      "milliseconds": {
+        "description": "Milliseconds"
+      }
+    },
+    "runFnString": "({ date }, { milliseconds }) =>\n    milliseconds.next(date.getMilliseconds())"
+  },
+  "alternativeFunction": "function (input, output) {\n  const { date } = input;\n  const { milliseconds } = output;\n  \n  const dateInMs = date.getTime();\n  milliseconds.next(dateInMs);\n}",
+  "alternativeMetaData": "Time Converter | inputDate | outputMs | IMPLICIT | NONE",
+  "prompts": [
+    "Convert date to milliseconds",
+    "Get milliseconds from date",
+    "Date to milliseconds converter",
+    "Convert a date to its corresponding milliseconds"
+  ],
+  "tokensUsed": 811
+}

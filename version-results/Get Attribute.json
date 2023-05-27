@@ -1,0 +1,39 @@
+{
+  "stringified": "Get Attribute | object,attribute | value | IMPLICIT | NONE\n({ object, attribute }, { value }) =>\n    value.next(attribute.split(\".\").reduce((obj, i) => obj[i], object))",
+  "original": {
+    "id": "Get Attribute",
+    "searchKeywords": [
+      "pick",
+      "dot"
+    ],
+    "namespace": "Objects",
+    "defaultStyle": {
+      "icon": "fa-magnifying-glass"
+    },
+    "description": "Gets an attribute from an object",
+    "inputs": {
+      "object": {
+        "description": "Object to get attribute from"
+      },
+      "attribute": {
+        "description": "Attribute to get"
+      }
+    },
+    "outputs": {
+      "value": {
+        "description": "The value of the attribute"
+      }
+    },
+    "customViewCode": "<% if (inputs.attribute) { %> Get \"<%- inputs.attribute %>\"<% } else { %> Get Attribute <% } %>",
+    "runFnString": "({ object, attribute }, { value }) =>\n    value.next(attribute.split(\".\").reduce((obj, i) => obj[i], object))"
+  },
+  "alternativeFunction": "function (inputObj, outputObj, adv) {\n  const { obj, attr } = inputObj;\n  const { val } = outputObj;\n  const attributeArray = attr.split('.');\n  let value = obj;\n  for (let i = 0; i < attributeArray.length; i++) {\n    value = value[attributeArray[i]];\n  }\n  val.next(value);\n}",
+  "alternativeMetaData": "Extract Value | obj,attr | val | IMPLICIT | NONE",
+  "prompts": [
+    "Get value from object attribute",
+    "Extract value from object",
+    "Get attribute value",
+    "Retrieve value from object attribute"
+  ],
+  "tokensUsed": 866
+}

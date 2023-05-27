@@ -1,0 +1,9 @@
+{
+  "result": " Concat | string,value | value | IMPLICIT | NONE\nfunction (inputs, outputs) {\n  const { string: outputString, value: outputValue } = outputs;\n  const { value: outputValue } = outputs;\n  const newValue = string.concat(outputValue);\n  outputValue.next(newValue);\n}",
+  "tokens": 89,
+  "completionTime": 938,
+  "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
+  "prompt": "Concatenate two inputs",
+  "score": 2,
+  "remarks": "Incorrect input names and output names, missing metadata"
+}
