@@ -4,6 +4,6 @@
   "completionTime": 38996,
   "generatorName": "chat-completion-gpt-4-condensed",
   "prompt": "Run SQL query",
-  "score": 1,
-  "remarks": "Invalid metadata row SQL Query | query,connection | result,error | result,error | NONE"
+  "score": 5,
+  "remarks": ""
 }

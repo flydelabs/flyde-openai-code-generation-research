@@ -4,6 +4,6 @@
   "completionTime": 2028,
   "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
   "prompt": "sort an array of objects by the 'age' property",
-  "score": 1,
-  "remarks": "Invalid metadata row  Sort By Age | array | object | IMPLICIT | NONE"
+  "score": 4,
+  "remarks": "Change inputArray to array and outputObject to object"
 }

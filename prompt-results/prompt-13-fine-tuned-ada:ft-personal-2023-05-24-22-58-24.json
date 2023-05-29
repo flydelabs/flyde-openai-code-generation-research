@@ -4,6 +4,6 @@
   "completionTime": 1063,
   "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
   "prompt": "Send an HTTP POST request",
-  "score": 1,
-  "remarks": "Invalid metadata row  POST Request | url,headers,params,data | data | IMPLICIT | NONE"
+  "score": 4,
+  "remarks": "Minor naming issues"
 }

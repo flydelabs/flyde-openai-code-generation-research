@@ -4,6 +4,6 @@
   "completionTime": 2844,
   "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
   "prompt": "parse a csv file without any libraries",
-  "score": 1,
-  "remarks": "Invalid metadata row  Parse CSV | filePath,columns,encoding | data | IMPLICIT | NONE"
+  "score": 2,
+  "remarks": "Incorrect implementation, wrong variable usage"
 }

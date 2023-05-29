@@ -70,3 +70,19 @@ export async function withRetries<T>(fn: () => Promise<T>) {
   }
   throw new Error("Failed after 3 retries");
 }
+
+export function calcAverage(arr: number[]) {
+  return arr.reduce((a, b) => a + b, 0) / arr.length;
+}
+
+export function calcPercentile(arr: number[], percentile: number) {
+  const sorted = arr.sort((a, b) => a - b);
+  const index = Math.ceil((percentile / 100) * sorted.length);
+  return sorted[index];
+}
+
+export function toCsv(data: string[][]) {
+  return data
+    .map((row) => row.map((c) => c.replace(/,/g, " ")).join(","))
+    .join("\n");
+}

@@ -17,8 +17,8 @@ export interface GeneratedPartWithScore extends GeneratedPart {
     const result: GeneratedPartWithScore = JSON.parse(content);
 
     if (result.score) {
-      // console.log("Skipping", result.generatorName, file);
-      // continue;
+      console.log("Skipping", result.generatorName, file);
+      continue;
     }
     const score = await withRetries(() => {
       return measureQuality(result.prompt, result.result);

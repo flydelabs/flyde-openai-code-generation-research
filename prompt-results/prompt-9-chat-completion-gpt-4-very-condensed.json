@@ -4,6 +4,6 @@
   "completionTime": 7337,
   "generatorName": "chat-completion-gpt-4-very-condensed",
   "prompt": "sort an array of objects by the 'age' property",
-  "score": 1,
-  "remarks": "Invalid metadata row Sort By Age | array | sortedArray | IMPLICIT | NONE"
+  "score": 5,
+  "remarks": ""
 }

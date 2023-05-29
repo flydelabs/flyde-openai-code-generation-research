@@ -5,5 +5,5 @@
   "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
   "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
   "score": 1,
-  "remarks": "Invalid metadata row  Emit 200 Times | item |  | IMPLICIT | NONE"
+  "remarks": "Incorrect part name, no delay, emits only once"
 }

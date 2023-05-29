@@ -4,6 +4,6 @@
   "completionTime": 5042,
   "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
   "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
-  "score": 1,
-  "remarks": "Invalid metadata row  Delay | value,delay | value |  | value,delay"
+  "score": 2,
+  "remarks": "Valid format but doesn't match the prompt"
 }

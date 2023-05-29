@@ -4,6 +4,6 @@
   "completionTime": 1359,
   "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
   "prompt": "return the user's location based on their IP address",
-  "score": 1,
-  "remarks": "Invalid metadata row  Get IP Address | ip | ip | IMPLICIT | NONE"
+  "score": 2,
+  "remarks": "Valid format but unrelated to request"
 }

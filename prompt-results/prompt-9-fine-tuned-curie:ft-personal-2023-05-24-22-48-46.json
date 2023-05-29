@@ -4,6 +4,6 @@
   "completionTime": 1062,
   "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
   "prompt": "sort an array of objects by the 'age' property",
-  "score": 1,
-  "remarks": "Invalid metadata row  Age | object | age | IMPLICIT | NONE"
+  "score": 2,
+  "remarks": "Wrong function signature, not sorting by age"
 }

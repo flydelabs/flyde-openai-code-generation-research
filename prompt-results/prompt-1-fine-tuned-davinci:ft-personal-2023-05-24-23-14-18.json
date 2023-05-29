@@ -5,5 +5,5 @@
   "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
   "prompt": "Concatenate two inputs",
   "score": 2,
-  "remarks": "Wrong input names, unnecessary array creation"
+  "remarks": "Wrong input names, function signature"
 }

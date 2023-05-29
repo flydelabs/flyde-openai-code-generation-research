@@ -9,6 +9,7 @@
     "prepare:jsonl": "./prepare-jsonl.sh",
     "benchmark:generate": "ts-node src/benchmark/generate-parts.ts",
     "benchmark:score": "ts-node src/benchmark/score-results.ts",
+    "benchmark:csv": "ts-node src/benchmark/generate-csv.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

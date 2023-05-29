@@ -4,6 +4,6 @@
   "completionTime": 7396,
   "generatorName": "chat-completion-gpt-4-full",
   "prompt": "Receive a list of objects and sum the 'price' property of each",
-  "score": 1,
-  "remarks": "Invalid metadata row Sum Prices | objects | total | IMPLICIT | NONE"
+  "score": 5,
+  "remarks": ""
 }

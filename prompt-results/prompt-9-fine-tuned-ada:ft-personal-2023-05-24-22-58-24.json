@@ -5,5 +5,5 @@
   "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
   "prompt": "sort an array of objects by the 'age' property",
   "score": 1,
-  "remarks": "Invalid metadata row  Slice | array,start,end | object | IMPLICIT | NONE"
+  "remarks": "Unrelated to prompt and invalid format"
 }

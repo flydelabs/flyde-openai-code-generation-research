@@ -4,6 +4,6 @@
   "completionTime": 19668,
   "generatorName": "chat-completion-gpt-4-condensed",
   "prompt": "send a message to a slack channel",
-  "score": 1,
-  "remarks": "Invalid metadata row Send Slack Message | token,channel,text | response | IMPLICIT | NONE"
+  "score": 4,
+  "remarks": "response.error should be replaced with onError"
 }

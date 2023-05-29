@@ -5,5 +5,5 @@
   "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
   "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
   "score": 1,
-  "remarks": "Invalid metadata row  Headless | url | headings | IMPLICIT | NONE"
+  "remarks": "Invalid format and unrelated to the request"
 }

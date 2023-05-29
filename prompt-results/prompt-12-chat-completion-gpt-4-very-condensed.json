@@ -4,6 +4,6 @@
   "completionTime": 16420,
   "generatorName": "chat-completion-gpt-4-very-condensed",
   "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
-  "score": 1,
-  "remarks": "Invalid metadata row Emit Times | item,delay,times | emitted | emitted | item"
+  "score": 3,
+  "remarks": "Needs to handle multiple emissions and clearTimeout"
 }

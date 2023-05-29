@@ -4,6 +4,6 @@
   "completionTime": 826,
   "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
   "prompt": "return the user's location based on their IP address",
-  "score": 1,
-  "remarks": "Invalid metadata row  Find IP Address | host,port | address | IMPLICIT | NONE"
+  "score": 2,
+  "remarks": "Unrelated to user's location, incorrect function implementation"
 }

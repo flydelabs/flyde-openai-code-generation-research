@@ -4,6 +4,6 @@
   "completionTime": 984,
   "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
   "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
-  "score": 1,
-  "remarks": "Invalid metadata row  Emit 5 times | item | delay | IMPLICIT | NONE"
+  "score": 2,
+  "remarks": "Incorrect output name, missing timer logic"
 }

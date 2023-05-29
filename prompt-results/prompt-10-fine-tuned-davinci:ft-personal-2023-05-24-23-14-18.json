@@ -5,5 +5,5 @@
   "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
   "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
   "score": 2,
-  "remarks": "Valid format but unrelated to the request"
+  "remarks": "Valid format but unrelated to request"
 }

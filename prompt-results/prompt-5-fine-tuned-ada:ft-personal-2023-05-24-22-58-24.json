@@ -4,6 +4,6 @@
   "completionTime": 1447,
   "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
   "prompt": "Debounce a value",
-  "score": 1,
-  "remarks": "Invalid metadata row  Debounce | value |  | IMPLICIT | NONE"
+  "score": 2,
+  "remarks": "Missing wait input, wrong output name, incorrect usage of inputs and outputs"
 }

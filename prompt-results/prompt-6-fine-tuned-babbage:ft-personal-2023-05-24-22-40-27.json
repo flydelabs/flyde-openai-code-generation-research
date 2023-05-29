@@ -4,6 +4,6 @@
   "completionTime": 1649,
   "generatorName": "fine-tuned-babbage:ft-personal-2023-05-24-22-40-27",
   "prompt": "Throttle a value",
-  "score": 1,
-  "remarks": "Invalid metadata row  Throttle | value,wait | result | result | value"
+  "score": 3,
+  "remarks": "Similar to debounce, but not a throttle implementation"
 }

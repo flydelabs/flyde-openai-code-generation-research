@@ -4,6 +4,6 @@
   "completionTime": 938,
   "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
   "prompt": "Concatenate two inputs",
-  "score": 2,
-  "remarks": "Incorrect input names and output names, missing metadata"
+  "score": 3,
+  "remarks": "Incorrect input names and output name, missing advanced context"
 }

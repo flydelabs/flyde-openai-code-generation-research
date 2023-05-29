@@ -4,6 +4,6 @@
   "completionTime": 8217,
   "generatorName": "chat-completion-gpt-3.5-turbo-full",
   "prompt": "Debounce a value",
-  "score": 1,
-  "remarks": "Invalid metadata row Debounce | value,wait | result | result | value"
+  "score": 5,
+  "remarks": "Great implementation and use of Flyde features"
 }
