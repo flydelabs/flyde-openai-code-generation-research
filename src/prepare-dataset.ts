@@ -1,9 +1,10 @@
 import { writeFileSync } from "fs";
 import { codePartToCompactString } from "./utils/codePartToCompactString";
-import { getFlydeFiles, readVersionResult } from "./utils/fs-helpers";
+import { getFlydeFiles } from "./utils/fs-helpers";
 import { preprocessStdLibParts } from "./utils/preprocessStdLibParts";
 import { join } from "path";
 import { chunkArray } from "./utils";
+import { readVersionResult } from "./utils/generatePartVersions";
 
 (async function () {
   const files = getFlydeFiles();

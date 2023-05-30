@@ -2,9 +2,11 @@
 
 This project contains code used to benchmark various approaches of code generation for Flyde.
 
-Read the blog post here - [ TODO LINK ]
+Read the blog post here - https://medium.com/@gabrielgrinberg/openai-fine-tuning-vs-chat-completion-a-quality-latency-and-costs-comparison-fc58e3ec3ec
 
 Learn more about Flyde: https://www.flyde.dev
+
+Note: while most of the process was automated, some manual steps were required. If you're trying to reproduce the results, please reach out to me and I'll be happy to help.
 
 ## Running
 
@@ -12,21 +14,30 @@ Learn more about Flyde: https://www.flyde.dev
 
 `pnpm install`
 
-### Generate Part Versions
+### Scripts
 
-In order to conform to OpenAI's recommendation of at least 500 items in the training data set, several versions of a prompt for each code part are generated. Along with an additional version for the code part's function.
+Note: some scripts require a valid and GPT-4 enabled OpenAPI key available on env variable `OPEN_AI_KEY`.
 
-`pnpm run generate:versions`
-Note: requires an OpenAPI key on `OPEN_AI_KEY`
+#### pnpm run generate:versions
 
-### Preparing the dataset
+Generate prompts and an alternate version of the code for each code part.
 
-This process aggregates all the generated versions into a single JSON that is later passed to the OpenAI CLI helper tool - https://platform.openai.com/docs/guides/fine-tuning/cli-data-preparation-tool
+#### pnpm run prepare:dataset
 
-`pnpm run prepare:dataset`
+Writes a JSON file with all the prompts and code parts
 
-### Train
+#### pnpm run prepare:jsonl
 
-`OPENAI_API_KEY=[key] openai api fine_tunes.create -t dataset_prepared.jsonl -m babbage`
+Tranforms the JSON file into a JSONL file that can be used by the OpenAI CLI tool
 
-ft-2rEKwrEUNhqyJCAhgoKw0fDt
+### pnpm run benchmark:generate
+
+Generates parts based on the benchmark prompts
+
+### pnpm run benchmark:score
+
+Scores the generated parts using GPT-4
+
+### pnpm run benchmark:csv
+
+Generates a CSV file with the results
