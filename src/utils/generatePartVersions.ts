@@ -105,7 +105,7 @@ function (inputs, outputs, adv) {
   }
 }
 
-const VERSION_RESULTS_DIR = "versions-results";
+const VERSION_RESULTS_DIR = "version-results";
 
 export interface PersistedVersionResult {
   newCode: string;

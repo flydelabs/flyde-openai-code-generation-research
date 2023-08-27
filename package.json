@@ -6,6 +6,7 @@
   "scripts": {
     "generate:versions": "ts-node src/generate-versions.ts",
     "prepare:dataset": "ts-node src/prepare-dataset.ts",
+    "prepare:dataset-cc": "ts-node src/prepare-dataset-chat-completion.ts",
     "prepare:jsonl": "./prepare-jsonl.sh",
     "benchmark:generate": "ts-node src/benchmark/generate-parts.ts",
     "benchmark:score": "ts-node src/benchmark/score-results.ts",
