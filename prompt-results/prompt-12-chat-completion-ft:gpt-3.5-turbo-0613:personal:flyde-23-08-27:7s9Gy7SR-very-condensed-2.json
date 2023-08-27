@@ -1,0 +1,9 @@
+{
+  "result": "DelayAndEmit | item,delay,times | emitted | emitted | item,delay,times\nasync function ({ item, delay, times }, { emitted }) {\n    for (let i = 0; i < times; i++) {\n      await new Promise((resolve) => setTimeout(resolve, delay));\n      emitted.next(item);\n    }\n  }",
+  "tokens": 329,
+  "completionTime": 1297,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-2",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 4,
+  "remarks": "The part works as expected but the delay parameter is not used correctly. It should be fixed to 200ms as per the prompt."
+}

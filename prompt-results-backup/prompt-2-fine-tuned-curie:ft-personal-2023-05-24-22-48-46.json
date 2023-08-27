@@ -1,0 +1,9 @@
+{
+  "result": " JSON Stringify | string | object | IMPLICIT | NONE\n({ string }, { object }) => object.next(JSON.stringify(string))",
+  "tokens": 42,
+  "completionTime": 674,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "JSON string to object converter",
+  "score": 2,
+  "remarks": "Wrong function used, should be JSON.parse"
+}

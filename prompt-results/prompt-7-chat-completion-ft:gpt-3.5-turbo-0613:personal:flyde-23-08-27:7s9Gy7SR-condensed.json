@@ -1,0 +1,9 @@
+{
+  "result": "Round Robin 3 | value | value1,value2,value3 | IMPLICIT | NONE\nfunction (inputs, outputs, adv) {\n    const { state } = adv;\n    const { value, value1, value2, value3 } = inputs;\n    const curr = state.get(\"curr\") || 0;\n    const next = (curr + 1) % 3;\n    state.set(\"curr\", next);\n    if (curr === 0) {\n      value1.next(value);\n    } else if (curr === 1) {\n      value2.next(value);\n    } else if (curr === 2) {\n      value3.next(value);\n    }\n  }",
+  "tokens": 839,
+  "completionTime": 2178,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed",
+  "prompt": "Round robin a value into one of 3 outputs",
+  "score": 4,
+  "remarks": "The part is almost perfect, but the inputs are not correctly destructured. It should be `const { value } = inputs;` instead of `const { value, value1, value2, value3 } = inputs;`"
+}

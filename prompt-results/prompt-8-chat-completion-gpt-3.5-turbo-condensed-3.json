@@ -1,0 +1,11 @@
+{
+  "result": "Map | objects | prices | IMPLICIT | NONE\nfunction ({objects}, {prices}) {\n  const total = objects.reduce((acc, obj) => acc + obj.price, 0);\n  prices.next(total);\n}",
+  "tokens": 479,
+  "completionTime": 1419,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
+  "prompt": "Receive a list of objects and sum the 'price' property of each",
+  "score": 5,
+  "remarks": "The part correctly receives a list of objects and sums the 'price' property of each. It uses good names and properly uses Flyde's features.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:04:17.604Z"
+}

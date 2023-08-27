@@ -1,0 +1,9 @@
+{
+  "result": "Delay5 | item | item | item | item | item | item\nasync function (inputs, outputs, { state }) {\n    const { item } = inputs;\n    const { item: oItem1, item: oItem2, item: oItem3, item: oItem4, item: oItem5 } =\n      outputs;\n\n    await new Promise((resolve) => setTimeout(resolve, 200));\n\n    oItem1.next(item);\n\n    await new Promise((resolve) => setTimeout(resolve, 200));\n\n    oItem2.next(item);\n\n    await new Promise((resolve) => setTimeout(resolve, 200));\n\n    oItem3.next(item);\n\n    await new Promise((resolve) => setTimeout(resolve, 200));\n\n    oItem4.next(item);\n\n    await new Promise((resolve) => setTimeout(resolve, 200));\n\n    oItem5.next(item);\n  }",
+  "tokens": 616,
+  "completionTime": 3575,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed-3",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 1,
+  "remarks": "Invalid metadata row Delay5 | item | item | item | item | item | item"
+}

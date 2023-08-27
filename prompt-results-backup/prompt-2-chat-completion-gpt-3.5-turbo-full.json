@@ -1,0 +1,9 @@
+{
+  "result": "JSON to Object | json | object | IMPLICIT | NONE\nfunction ({json}, {object}) {\n  try {\n    const parsed = JSON.parse(json);\n    object.next(parsed);\n  } catch (error) {\n    adv.onError(error);\n  }\n}",
+  "tokens": 1085,
+  "completionTime": 4313,
+  "generatorName": "chat-completion-gpt-3.5-turbo-full",
+  "prompt": "JSON string to object converter",
+  "score": 5,
+  "remarks": ""
+}

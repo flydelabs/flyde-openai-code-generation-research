@@ -1,0 +1,9 @@
+{
+  "result": " Throttle | value,wait | result | result | value\nfunction (inputs, outputs, adv) {\n    const { value, wait } = inputs;\n    const { result } = outputs;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      adv.onError(new ThrottleError(value));\n      return;\n    } else {\n      result.next(value);\n      const newTimer = setTimeout(() => {\n        adv.state.set(\"timer\", null);\n      }, wait);\n      adv.state.set(\"timer\", newTimer);\n    }\n  }",
+  "tokens": 193,
+  "completionTime": 2064,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "Throttle a value",
+  "score": 4,
+  "remarks": "Minor tweaks needed"
+}

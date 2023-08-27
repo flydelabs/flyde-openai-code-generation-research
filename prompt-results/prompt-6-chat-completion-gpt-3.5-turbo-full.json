@@ -1,9 +1,11 @@
 {
-  "result": "Throttle | value,delay | result | result | value",
-  "tokens": 1044,
-  "completionTime": 1500,
+  "result": "Throttle | value,delay | throttledValue | throttledValue | value",
+  "tokens": 1046,
+  "completionTime": 996,
   "generatorName": "chat-completion-gpt-3.5-turbo-full",
   "prompt": "Throttle a value",
   "score": 5,
-  "remarks": ""
+  "remarks": "",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:03:58.473Z"
 }

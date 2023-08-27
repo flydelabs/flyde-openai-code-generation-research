@@ -1,0 +1,11 @@
+{
+  "result": "metadata:\n  id: getLocationByIP\n  inputs: { ipAddress: string }\n  outputs: { location: string }\n  completion: explicit\n  reactive inputs: []\n\nfunction getLocationByIP(inputs) {\n  const { ipAddress } = inputs;\n  const location = // logic to determine location based on IP address\n  return { location };\n}",
+  "tokens": 216,
+  "completionTime": 2335,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "return the user's location based on their IP address",
+  "score": 1,
+  "remarks": "Invalid metadata row metadata:",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:13.394Z"
+}

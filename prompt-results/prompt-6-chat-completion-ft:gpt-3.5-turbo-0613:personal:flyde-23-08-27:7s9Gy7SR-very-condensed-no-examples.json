@@ -1,0 +1,9 @@
+{
+  "result": "{\n  \"id\": \"flyde.throttle\",\n  \"inputs\": [\n    {\n      \"name\": \"value\",\n      \"type\": \"T\"\n    },\n    {\n      \"name\": \"wait\",\n      \"type\": \"number\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"name\": \"throttledValue\",\n      \"type\": \"T\"\n    }\n  ],\n  \"function\": \"async (inputs, output, context) => {\\n    const { value, wait } = inputs;\\n    const { state } = context;\\n    if (state.timeoutId) {\\n      clearTimeout(state.timeoutId);\\n    }\\n    const timeoutId = setTimeout(() => {\\n      output('throttledValue', value);\\n    }, wait);\\n    context.state.timeoutId = timeoutId;\\n  }\"\n}",
+  "tokens": 317,
+  "completionTime": 2512,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples",
+  "prompt": "Throttle a value",
+  "score": 1,
+  "remarks": "Invalid metadata row {"
+}

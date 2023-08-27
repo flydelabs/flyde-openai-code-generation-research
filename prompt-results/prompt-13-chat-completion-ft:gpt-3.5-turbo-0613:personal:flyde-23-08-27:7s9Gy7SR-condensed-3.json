@@ -1,0 +1,9 @@
+{
+  "result": "Post | url,data,options | response | IMPLICIT | NONE\nasync function (inputs, outputs, advanced) {\n    const { state } = advanced;\n    const { response } = outputs;\n    const { url, data, options } = inputs;\n\n    const res = await fetch(url, {\n      method: \"POST\",\n      body: JSON.stringify(data),\n      ...options,\n    });\n\n    response.next(res);\n\n    state.set(\"response\", res);\n  }",
+  "tokens": 519,
+  "completionTime": 1545,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed-3",
+  "prompt": "Send an HTTP POST request",
+  "score": 5,
+  "remarks": "The part is well-written and does exactly what the prompt asked for. It uses good names and properly uses Flyde's features."
+}

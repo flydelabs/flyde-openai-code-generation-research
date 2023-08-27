@@ -1,0 +1,9 @@
+{
+  "result": "IP Geolocation | apiKey,ip | location | IMPLICIT | NONE\nasync ({ apiKey, ip }, { location }) => {\n    const res = await fetch(\n      `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${ip}`\n    );\n    const data = await res.json();\n    location.next(data);\n  }",
+  "tokens": 622,
+  "completionTime": 1629,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed",
+  "prompt": "return the user's location based on their IP address",
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly fetches the user's location based on their IP address."
+}

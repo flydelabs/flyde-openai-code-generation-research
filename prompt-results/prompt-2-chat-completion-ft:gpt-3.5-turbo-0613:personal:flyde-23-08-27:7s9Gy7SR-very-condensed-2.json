@@ -1,0 +1,9 @@
+{
+  "result": "JsonToObject | json | object | object | json\nfunction ({ json }, { object }) {\n    object.next(JSON.parse(json));\n  }",
+  "tokens": 272,
+  "completionTime": 740,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-2",
+  "prompt": "JSON string to object converter",
+  "score": 5,
+  "remarks": "The part is well-written and does exactly what the prompt asked for. It uses good names and properly uses Flyde's features."
+}

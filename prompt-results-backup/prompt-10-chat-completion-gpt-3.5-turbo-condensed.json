@@ -1,0 +1,9 @@
+{
+  "result": "Sure, here's the code to do that in JavaScript:\n\n```javascript\nconst idToObjectMap = {\n  1: { id: 1, name: 'John' },\n  2: { name: 'Jane' },\n  3: { id: 3, name: 'Bob' },\n  4: { id: 4, name: 'Alice' },\n  5: { name: 'Dave' },\n};\n\nconst objectArray = Object.values(idToObjectMap).filter(obj => obj.id);\n\nconsole.log(objectArray);\n// Output: [{ id: 1, name: 'John' }, { id: 3, name: 'Bob' }, { id: 4, name: 'Alice' }]\n```\n\nThis code uses `Object.values()` to get an array of all the objects in the `idToObjectMap`. It then uses `Array.filter()` to remove any objects that don't have an `id` property. The resulting array contains only the objects with an `id` property.",
+  "tokens": 922,
+  "completionTime": 16148,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 1,
+  "remarks": "Invalid metadata row Sure, here's the code to do that in JavaScript:"
+}

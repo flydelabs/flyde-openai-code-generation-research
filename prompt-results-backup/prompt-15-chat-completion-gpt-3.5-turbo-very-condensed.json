@@ -1,0 +1,9 @@
+{
+  "result": "Node Metadata:\n```\nID: Get User Location\nInputs: ip\nOutputs: location\nCompletion Type: IMPLICIT\nReactive Inputs: NONE\n```\n\nFunction Declaration:\n```\nimport axios from 'axios';\n\ninterface LocationData {\n  city: string;\n  region: string;\n  country: string;\n}\n\nasync function ({ip}, {location}, {onError}) {\n  try {\n    const response = await axios.get<LocationData>(`https://ipapi.co/${ip}/json/`);\n    const { city, region, country } = response.data;\n    location.next(`${city}, ${region}, ${country}`);\n  } catch (error) {\n    onError(error);\n  }\n}\n```",
+  "tokens": 696,
+  "completionTime": 10590,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
+  "prompt": "return the user's location based on their IP address",
+  "score": 1,
+  "remarks": "Invalid metadata row Node Metadata:"
+}

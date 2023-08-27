@@ -1,0 +1,9 @@
+{
+  "result": "Slack Message | webhookUrl,message | response | IMPLICIT | NONE\nasync function ({webhookUrl, message}, {response}, {onError}) {\n  try {\n    const res = await axios.post(webhookUrl, { text: message });\n    response.next(res.data);\n  } catch (error) {\n    onError(error);\n  }\n}",
+  "tokens": 1106,
+  "completionTime": 30924,
+  "generatorName": "chat-completion-gpt-3.5-turbo-full",
+  "prompt": "send a message to a slack channel",
+  "score": 5,
+  "remarks": ""
+}

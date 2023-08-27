@@ -1,0 +1,9 @@
+{
+  "result": " Emit 200 | value |  | IMPLICIT | NONE\nfunction (inputData, outputData, adv) {\n  const { value } = inputData;\n  const { output } = outputData;\n  const { delay } = adv;\n\n  const timer = setInterval(() => {\n    output.next(value);\n    delay.next(200);\n  }, delay);\n\n  adv.state.set('timer', timer);\n\n  adv.onCleanup(() => {\n    clearInterval(timer);\n  });\n}",
+  "tokens": 151,
+  "completionTime": 1468,
+  "generatorName": "fine-tuned-babbage:ft-personal-2023-05-24-22-40-27",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 2,
+  "remarks": "Incorrect metadata and function signature, delay not implemented correctly"
+}

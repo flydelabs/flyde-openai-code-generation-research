@@ -50,7 +50,7 @@ export async function measureQuality(
       remarks: `Invalid metadata row ${firstLine}`,
     };
   }
-  const res = await openai.createChatCompletion({
+  const res = await openai.chat.completions.create({
     model: "gpt-4",
     temperature: 0,
     max_tokens: 100,
@@ -68,7 +68,7 @@ export async function measureQuality(
       },
     ],
   });
-  const rawString = res.data.choices[0].message?.content;
+  const rawString = res.choices[0].message?.content;
   if (!rawString) {
     throw new Error("No response from OpenAI");
   }

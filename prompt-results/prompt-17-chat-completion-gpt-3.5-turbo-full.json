@@ -1,9 +1,11 @@
 {
-  "result": "Slack Message | webhookUrl,message | response | IMPLICIT | NONE\nasync function ({webhookUrl, message}, {response}, {onError}) {\n  try {\n    const res = await axios.post(webhookUrl, { text: message });\n    response.next(res.data);\n  } catch (error) {\n    onError(error);\n  }\n}",
-  "tokens": 1106,
-  "completionTime": 30924,
+  "result": "Slack Message | channel,message,token | None | IMPLICIT | NONE\nasync function ({channel, message, token}, {}, {externalContext}) {\n  try {\n    const response = await axios.post(\"https://slack.com/api/chat.postMessage\", {\n      channel,\n      text: message\n    }, {\n      headers: {\n        Authorization: `Bearer ${token}`\n      }\n    });\n    console.log(response.data);\n  } catch (error) {\n    console.error(error);\n  }\n}",
+  "tokens": 1132,
+  "completionTime": 2793,
   "generatorName": "chat-completion-gpt-3.5-turbo-full",
   "prompt": "send a message to a slack channel",
-  "score": 5,
-  "remarks": ""
+  "score": 4,
+  "remarks": "The part is well written and does the job, but it doesn't use Flyde's onError for error handling.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:49.591Z"
 }

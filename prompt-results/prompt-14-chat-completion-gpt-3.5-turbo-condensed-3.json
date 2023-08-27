@@ -1,0 +1,11 @@
+{
+  "result": "CSVParser | csvData | parsedData | EXPLICIT | NONE\nfunction ({csvData}, {parsedData}) {\n  const rows = csvData.split('\\n');\n  const headers = rows[0].split(',');\n  const data = [];\n\n  for (let i = 1; i < rows.length; i++) {\n    const row = rows[i].split(',');\n    if (row.length === headers.length) {\n      const rowData = {};\n      for (let j = 0; j < headers.length; j++) {\n        rowData[headers[j]] = row[j];\n      }\n      data.push(rowData);\n    }\n  }\n\n  parsedData.next(data);\n}",
+  "tokens": 563,
+  "completionTime": 3641,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
+  "prompt": "parse a csv file without any libraries",
+  "score": 5,
+  "remarks": "The part correctly parses a CSV file without using any libraries. It handles the splitting of rows and columns, and correctly maps each row to an object with the headers as keys. The part also correctly uses the EXPLICIT completion type, as it only completes when it emits the parsed data.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:48.241Z"
+}

@@ -1,0 +1,11 @@
+{
+  "result": "```typescript\nimport * as fs from 'fs';\n\ntype CSVRow = string[];\n\nfunction parseCSVFile(filePath: string): Promise<CSVRow[]> {\n  return new Promise((resolve, reject) => {\n    fs.readFile(filePath, 'utf8', (err, data) => {\n      if (err) {\n        reject(err);\n        return;\n      }\n\n      const rows: CSVRow[] = [];\n      const lines = data.split('\\n');\n      for (const line of lines) {\n        const row = line.split(',');\n        rows.push(row);\n      }\n\n      resolve(rows);\n    });\n  });\n}\n\n// Usage example\nparseCSVFile('path/to/file.csv')\n  .then((rows) => {\n    console.log(rows);\n  })\n  .catch((err) => {\n    console.error(err);\n  });\n```\nThis code uses the `fs` module from Node.js to read the CSV file and parse its contents. It defines a `parseCSVFile` function that takes a file path as input and returns a promise that resolves to an array of CSV rows. The function reads the file using `fs.readFile`, splits the data into lines, and then splits each line into individual CSV values. The resulting rows are stored in an array and resolved by the promise.",
+  "tokens": 401,
+  "completionTime": 6566,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "parse a csv file without any libraries",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:57.868Z"
+}

@@ -1,0 +1,9 @@
+{
+  "result": "// Part 1: JSONToObject\n\n// JSONToObject ID: 4c8e8d8e-7e6b-4f2f-8e8d-8e7e6b4f2f4f\n// Inputs: 1\n//  json: string\n// Outputs: 1\n//  object: any\n// Completion: implicit\n// Reactive inputs: none\nexport const JSONToObject = {\n  id: \"4c8e8d8e-7e6b-4f2f-8e8d-8e7e6b4f2f4f\",\n  inputs: [\"json\"],\n  outputs: [\"object\"],\n  completionType: \"implicit\",\n  reactiveInputs: [],\n} as const;\n\nexport function JSONToObjectFunction(json: string): any {\n  return JSON.parse(json);\n}",
+  "tokens": 320,
+  "completionTime": 2621,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples",
+  "prompt": "JSON string to object converter",
+  "score": 1,
+  "remarks": "Invalid metadata row // Part 1: JSONToObject"
+}

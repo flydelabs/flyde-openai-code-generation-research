@@ -1,0 +1,9 @@
+{
+  "result": " Age | object | age | IMPLICIT | NONE\nfunction (inputObj, outputObj) {\n  const { input } = inputObj;\n  const { output } = outputObj;\n  const filteredArray = input.filter((obj) => obj.age === 18);\n  output.next(filteredArray);\n}",
+  "tokens": 88,
+  "completionTime": 1062,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "sort an array of objects by the 'age' property",
+  "score": 2,
+  "remarks": "Wrong function signature, not sorting by age"
+}

@@ -1,0 +1,9 @@
+{
+  "result": " Parse CSV | file | data | IMPLICIT | NONE\nfunction (inputFile, outputData) {\n  const { file } = inputFile;\n  const { data } = outputData;\n\n  const parser = CSV.parser();\n  const result = parser.parse(file.split('\n').reduce((acc, line) => {\n    return line.charAt(0).toUpperCase() + line.slice(1);\n    }, \"\n\").join(\"\");\n  data.next(result);\n}",
+  "tokens": 134,
+  "completionTime": 2561,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "parse a csv file without any libraries",
+  "score": 2,
+  "remarks": "Valid format but doesn't match request"
+}

@@ -1,0 +1,9 @@
+{
+  "result": "Query | connection,query | result | result | connection,query\nasync function ({ connection, query }, { result }) {\n    const { Client } = require(\"pg\");\n    const client = new Client(connection);\n    await client.connect();\n    const res = await client.query(query);\n    result.next(res);\n    await client.end();\n  }",
+  "tokens": 311,
+  "completionTime": 1219,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-2",
+  "prompt": "Run SQL query",
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly handles the SQL query execution."
+}

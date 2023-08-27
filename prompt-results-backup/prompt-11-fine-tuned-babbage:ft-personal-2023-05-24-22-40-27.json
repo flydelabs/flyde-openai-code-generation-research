@@ -1,0 +1,9 @@
+{
+  "result": " Accumulate Values by Name | value,firstValue,secondValue,thirdValue | first,second,third | value | IMPLICIT | NONE\nfunction (inputs, outputs, adv) {\n  const { val, first, second, third } = inputs;\n  const { value } = outputs;\n  const { state } = adv;\n\n  let list = state.get('list') || [];\n\n  if (typeof val !== 'undefined') {\n    list.push(val);\n    state.set('list', list);\n  }\n\n  if (firstValue === undefined && secondValue === undefined && thirdValue === undefined) {\n    value.next(list);\n    state.set('list', []);\n  }\n\n  if (typeof firstValue !== 'undefined') {\n    firstValue.next(value);\n    state.set('list', []);\n  }\n\n  if (typeof secondValue !== 'undefined') {\n    secondValue.next(value);\n    state.set('list', []);\n  }\n\n  if (typeof thirdValue !== 'undefined') {\n    thirdValue.next(value);\n    state.set('list', []);\n  }\n}",
+  "tokens": 364,
+  "completionTime": 3595,
+  "generatorName": "fine-tuned-babbage:ft-personal-2023-05-24-22-40-27",
+  "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
+  "score": 1,
+  "remarks": "Invalid metadata row  Accumulate Values by Name | value,firstValue,secondValue,thirdValue | first,second,third | value | IMPLICIT | NONE"
+}

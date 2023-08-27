@@ -1,0 +1,9 @@
+{
+  "result": "Slack Send Message | token,channel,text | response | IMPLICIT | NONE\nasync function ({token, channel, text}, {response}) {\n  const slack = new WebClient(token);\n  try {\n    const result = await slack.chat.postMessage({ channel, text });\n    response.next(result);\n  } catch (error) {\n    response.error(error);\n  }\n}",
+  "tokens": 623,
+  "completionTime": 13802,
+  "generatorName": "chat-completion-gpt-4-very-condensed",
+  "prompt": "send a message to a slack channel",
+  "score": 5,
+  "remarks": ""
+}

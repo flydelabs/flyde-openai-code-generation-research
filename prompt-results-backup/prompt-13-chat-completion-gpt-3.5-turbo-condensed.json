@@ -1,0 +1,9 @@
+{
+  "result": "POST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n}",
+  "tokens": 761,
+  "completionTime": 6640,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
+  "prompt": "Send an HTTP POST request",
+  "score": 5,
+  "remarks": ""
+}

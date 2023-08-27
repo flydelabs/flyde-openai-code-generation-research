@@ -1,9 +1,11 @@
 {
-  "result": "Sort | array | sortedArray | IMPLICIT | NONE\n\nfunction ({array}, {sortedArray}) {\n  sortedArray.next(array.sort((a, b) => a.age - b.age));\n}",
-  "tokens": 741,
-  "completionTime": 3208,
+  "result": "Sort Array of Objects | array | sortedArray | IMPLICIT | NONE\nfunction ({array}, {sortedArray}) {\n  sortedArray.next(array.sort((a, b) => a.age - b.age));\n}",
+  "tokens": 742,
+  "completionTime": 1364,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
   "prompt": "sort an array of objects by the 'age' property",
   "score": 5,
-  "remarks": ""
+  "remarks": "The part is well-written and correctly sorts an array of objects by the 'age' property. It uses Flyde's features properly.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:04:35.247Z"
 }

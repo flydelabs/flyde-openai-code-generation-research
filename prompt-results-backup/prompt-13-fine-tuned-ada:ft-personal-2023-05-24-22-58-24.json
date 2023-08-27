@@ -1,0 +1,9 @@
+{
+  "result": " POST Request | url,headers,params,data | data | IMPLICIT | NONE\nfunction ({ url: endpoint, headers: requestHeaders, params: queryParams, data: body }, { data: response }) {\n    const config: AxiosRequestConfig = { headers: requestHeaders, params: queryParams };\n    return axios.post(endpoint, body, config).then((res) => response.next(res.data));\n}",
+  "tokens": 114,
+  "completionTime": 1063,
+  "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
+  "prompt": "Send an HTTP POST request",
+  "score": 4,
+  "remarks": "Minor naming issues"
+}

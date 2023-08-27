@@ -1,7 +1,7 @@
 import { openai } from "./utils/open-ai";
 
 export async function promptGpt(system: string, prompt: string) {
-  const completion = await openai.createChatCompletion(
+  const completion = await openai.chat.completions.create(
     {
       model: "gpt-3.5-turbo",
       temperature: 0,
@@ -14,8 +14,8 @@ export async function promptGpt(system: string, prompt: string) {
   );
 
   return {
-    content: completion.data.choices[0].message?.content,
-    usage: completion.data.usage?.total_tokens,
+    content: completion.choices[0].message?.content,
+    usage: completion.usage?.total_tokens,
   };
 }
 

@@ -1,0 +1,11 @@
+{
+  "result": "Throttle | value, wait | throttledValue | throttledValue | value\nfunction ({value, wait}, {throttledValue}, {state, onCleanup}) {\n  let timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  timer = setTimeout(() => {\n    throttledValue.next(value);\n    state.delete(\"timer\");\n  }, wait);\n\n  state.set(\"timer\", timer);\n  onCleanup(() => clearTimeout(timer));\n}",
+  "tokens": 522,
+  "completionTime": 3315,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
+  "prompt": "Throttle a value",
+  "score": 5,
+  "remarks": "The part is well-written and correctly implements the throttle functionality. It uses Flyde's features properly and has good naming conventions.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:03:54.670Z"
+}

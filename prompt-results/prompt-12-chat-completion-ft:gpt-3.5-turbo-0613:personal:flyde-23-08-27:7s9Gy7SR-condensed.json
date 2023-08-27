@@ -1,0 +1,9 @@
+{
+  "result": "Delay 5 | item,delay | delayed | IMPLICIT | NONE\nasync ({ item, delay }, { delayed }) => {\n    await new Promise((resolve) => setTimeout(resolve, delay));\n    delayed.next(item);\n  }",
+  "tokens": 752,
+  "completionTime": 985,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 2,
+  "remarks": "The part is in valid format but it doesn't fulfill the request. It only emits the item once after a delay, not 5 times with 200ms delay between each time."
+}

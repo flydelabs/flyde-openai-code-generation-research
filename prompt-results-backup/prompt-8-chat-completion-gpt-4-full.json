@@ -1,0 +1,9 @@
+{
+  "result": "Sum Prices | objects | total | IMPLICIT | NONE\nfunction ({objects}, {total}) {\n  const sum = objects.reduce((acc, obj) => acc + obj.price, 0);\n  total.next(sum);\n}",
+  "tokens": 1086,
+  "completionTime": 7396,
+  "generatorName": "chat-completion-gpt-4-full",
+  "prompt": "Receive a list of objects and sum the 'price' property of each",
+  "score": 5,
+  "remarks": ""
+}

@@ -1,0 +1,9 @@
+{
+  "result": "Delay Emit 5 | item | emitted | IMPLICIT | NONE\nasync ({ item }, { emitted }) => {\n    for (let i = 0; i < 5; i++) {\n      await new Promise((resolve) => setTimeout(resolve, 200));\n      emitted.next(item);\n    }\n  }",
+  "tokens": 623,
+  "completionTime": 1140,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 5,
+  "remarks": "Perfectly matches the prompt. Good use of async/await and setTimeout to create the delay. The part will emit the item 5 times with a 200ms delay as requested."
+}

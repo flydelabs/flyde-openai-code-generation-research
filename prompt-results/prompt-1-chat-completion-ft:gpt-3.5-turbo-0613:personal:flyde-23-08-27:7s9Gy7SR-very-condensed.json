@@ -1,0 +1,9 @@
+{
+  "result": "Concat | s1,s2 | value | IMPLICIT | NONE\n({ s1, s2 }, { value }) => value.next(s1 + s2)",
+  "tokens": 579,
+  "completionTime": 11378,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed",
+  "prompt": "Concatenate two inputs",
+  "score": 5,
+  "remarks": "Perfectly matches the prompt. Uses good names and properly uses Flyde's features."
+}

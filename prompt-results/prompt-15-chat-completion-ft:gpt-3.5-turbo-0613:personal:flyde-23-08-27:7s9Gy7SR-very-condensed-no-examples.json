@@ -1,0 +1,9 @@
+{
+  "result": "// Part 1: Get IP Address\nconst getIpAddress: FlydePart = {\n  metadata: {\n    id: \"getIpAddress\",\n    inputs: [],\n    outputs: [\"ipAddress\"],\n    completionType: \"implicit\",\n    reactiveInputs: [],\n  },\n  async function(inputs, outputs, context) {\n    const ipAddress = await fetch(\"https://api.ipify.org?format=json\")\n      .then((response) => response.json())\n      .then((data) => data.ip);\n    outputs.ipAddress.setValue(ipAddress);\n  },\n};\n\n// Part 2: Get Location\nconst getLocation: FlydePart = {\n  metadata: {\n    id: \"getLocation\",\n    inputs: [\"ipAddress\"],\n    outputs: [\"location\"],\n    completionType: \"implicit\",\n    reactiveInputs: [\"ipAddress\"],\n  },\n  async function(inputs, outputs, context) {\n    const { ipAddress } = inputs;\n    const location = await fetch(\n      `https://ipapi.co/${ipAddress}/json/`\n    ).then((response) => response.json());\n    outputs.location.setValue(location);\n  },\n};\n\n// Part 3: Get User Location\nconst getUserLocation: FlydePart = {\n  metadata: {\n    id: \"getUserLocation\",\n    inputs: [],\n    outputs: [\"location\"],\n    completionType: \"implicit\",\n    reactiveInputs: [],\n  },\n  async function(inputs, outputs, context) {\n    const { ipAddress } = inputs;\n    const location = await fetch(\n      `https://ipapi.co/${ipAddress}/json/`\n    ).then((response) => response.json());\n    outputs.location.setValue(location);\n  },\n};",
+  "tokens": 483,
+  "completionTime": 4710,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples",
+  "prompt": "return the user's location based on their IP address",
+  "score": 1,
+  "remarks": "Invalid metadata row // Part 1: Get IP Address"
+}

@@ -1,9 +1,11 @@
 {
-  "result": "ID: SQL Query\nInputs: query\nOutputs: result\nCompletion type: EXPLICIT\nReactive inputs: NONE\n\nfunction ({query}, {result}, {externalContext, onError}) {\n  const { database } = externalContext;\n  database.query(query, (err, res) => {\n    if (err) {\n      onError(err);\n    } else {\n      result.next(res);\n    }\n  });\n}",
-  "tokens": 777,
-  "completionTime": 7476,
+  "result": "SQL Query | query, connection | result | EXPLICIT | NONE\nasync function ({query, connection}, {result}, {externalContext, onError}) {\n  try {\n    const res = await connection.query(query);\n    result.next(res);\n  } catch (error) {\n    onError(error);\n  }\n}",
+  "tokens": 753,
+  "completionTime": 1877,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
   "prompt": "Run SQL query",
-  "score": 1,
-  "remarks": "Invalid metadata row ID: SQL Query"
+  "score": 5,
+  "remarks": "The part is well-written and uses Flyde's features correctly. It correctly uses async/await and error handling.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:03:11.200Z"
 }

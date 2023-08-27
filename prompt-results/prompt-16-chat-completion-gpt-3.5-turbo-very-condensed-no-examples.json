@@ -1,0 +1,11 @@
+{
+  "result": "```typescript\nimport puppeteer from 'puppeteer';\n\ntype Input = {\n  url: string;\n};\n\ntype Output = {\n  h1Tag?: string;\n};\n\nasync function getH1Tag(input: Input): Promise<Output> {\n  const browser = await puppeteer.launch();\n  const page = await browser.newPage();\n  await page.goto(input.url);\n\n  const h1Tag = await page.evaluate(() => {\n    const h1 = document.querySelector('h1');\n    return h1 ? h1.innerText : undefined;\n  });\n\n  await browser.close();\n\n  return { h1Tag };\n}\n\nconst getH1TagPart: FPart<Input, Output> = {\n  id: 'getH1Tag',\n  inputs: ['url'],\n  outputs: ['h1Tag'],\n  fn: getH1Tag,\n};\n\nexport default getH1TagPart;\n```\nIn this example, we use the `puppeteer` library to launch a headless browser, navigate to the provided URL, and extract the text content of the first `h1` tag on the page. The `getH1Tag` function is an asynchronous function that takes an `Input` object containing the `url` and returns a `Promise` that resolves to an `Output` object containing the `h1Tag` if it exists on the page.\n\nThe `getH1TagPart` is a Flyde part that has an ID of `'getH1Tag'`, reactive input `'url'`, and output `'h1Tag'`. The function `getH1Tag` is assigned to the `fn` property of the part.\n\nTo use this part, you can import it and include it in your Flyde graph.",
+  "tokens": 512,
+  "completionTime": 9054,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:34.064Z"
+}

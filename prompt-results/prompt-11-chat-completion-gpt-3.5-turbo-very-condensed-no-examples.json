@@ -1,0 +1,11 @@
+{
+  "result": "```typescript\ntype Input = {\n  object: object;\n  propertyName: string;\n  value1: any;\n  value2: any;\n  value3: any;\n};\n\ntype Output = {\n  output1?: object;\n  output2?: object;\n  output3?: object;\n  default: object;\n};\n\nconst processObject = async (input: Input, output: Output) => {\n  const { object, propertyName, value1, value2, value3 } = input;\n  const propertyValue = object[propertyName];\n\n  if (propertyValue === value1) {\n    output.output1 = object;\n  } else if (propertyValue === value2) {\n    output.output2 = object;\n  } else if (propertyValue === value3) {\n    output.output3 = object;\n  } else {\n    output.default = object;\n  }\n};\n```",
+  "tokens": 378,
+  "completionTime": 4508,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:14.078Z"
+}

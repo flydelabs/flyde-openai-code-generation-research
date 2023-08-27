@@ -1,0 +1,9 @@
+{
+  "result": "Concatenate | input1,input2 | concatenated | IMPLICIT | NONE\nfunction ({input1, input2}, {concatenated}) {\n  concatenated.next(input1 + input2);\n}",
+  "tokens": 731,
+  "completionTime": 7482,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "Concatenate two inputs",
+  "score": 5,
+  "remarks": ""
+}

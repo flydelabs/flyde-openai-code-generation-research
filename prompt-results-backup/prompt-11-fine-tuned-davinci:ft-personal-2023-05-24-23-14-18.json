@@ -1,0 +1,9 @@
+{
+  "result": " Equals 3 | value1,value2,value3 | object | IMPLICIT | NONE\nfunction (inputs, outputs, adv) {\n    const { obj, output1, output2, output3, defaultOutput } = outputs;\n    const { value1, value2, value3 } = inputs;\n    if (obj.has(value1)) {\n      output1.next(obj.get(value1));\n    } else if (obj.has(value2)) {\n      output2.next(obj.get(value2));\n    } else if (obj.has(value3)) {\n      output3.next(obj.get(value3));\n    } else {\n      defaultOutput.next(obj);\n    }\n  }",
+  "tokens": 267,
+  "completionTime": 5939,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
+  "score": 2,
+  "remarks": "Incorrect inputs and outputs, missing property name, and wrong logic"
+}

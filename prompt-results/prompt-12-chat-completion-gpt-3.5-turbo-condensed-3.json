@@ -1,0 +1,11 @@
+{
+  "result": "Repeat | item | output | IMPLICIT | NONE\nfunction ({item}, {output}, {state, onCleanup}) {\n  let count = 0;\n  const intervalId = setInterval(() => {\n    output.next(item);\n    count++;\n    if (count === 5) {\n      clearInterval(intervalId);\n    }\n  }, 200);\n\n  onCleanup(() => clearInterval(intervalId));\n}",
+  "tokens": 518,
+  "completionTime": 2374,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 5,
+  "remarks": "The part is well-written and fulfills the prompt perfectly. It uses Flyde's features correctly.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:20.340Z"
+}

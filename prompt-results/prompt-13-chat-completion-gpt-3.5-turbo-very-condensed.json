@@ -1,9 +1,11 @@
 {
-  "result": "Node Metadata:\n- ID: \"HTTP POST Request\"\n- Inputs: \"url\", \"headers\", \"params\", \"data\"\n- Outputs: \"response\"\n- Completion Type: IMPLICIT\n- Reactive Inputs: NONE\n\nFunction Declaration:\n```typescript\nimport axios, { AxiosRequestConfig } from \"axios\";\n\nfunction ({ url, headers, params, data }, { response }: { response: FlydeOutput<any> }, { onError }: AdvancedContext) {\n  const config: AxiosRequestConfig = { headers, params };\n  axios.post(url, data, config)\n    .then((res) => response.next(res.data))\n    .catch((err) => onError(err));\n}\n```",
-  "tokens": 687,
-  "completionTime": 10009,
+  "result": "POST Request | url, headers, params, data | response | IMPLICIT | NONE\nfunction ({ url, headers, params, data }, { response }) {\n  axios.post(url, data, { headers, params })\n    .then(res => response.next(res))\n    .catch(error => response.error(error));\n}",
+  "tokens": 610,
+  "completionTime": 3073,
   "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
   "prompt": "Send an HTTP POST request",
-  "score": 1,
-  "remarks": "Invalid metadata row Node Metadata:"
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly implements the HTTP POST request as per the prompt.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:43.873Z"
 }

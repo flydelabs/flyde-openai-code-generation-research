@@ -1,0 +1,9 @@
+{
+  "result": " Sum List | list | sum | IMPLICIT | NONE\nfunction ({ inputList }, { outputSum }) {\n    const { list } = inputList;\n    const { sum } = outputSum;\n    sum.next(list.reduce((a, b) => a + b, 0));\n}",
+  "tokens": 93,
+  "completionTime": 961,
+  "generatorName": "fine-tuned-babbage:ft-personal-2023-05-24-22-40-27",
+  "prompt": "Receive a list of objects and sum the 'price' property of each",
+  "score": 2,
+  "remarks": "Valid format, unrelated to request"
+}

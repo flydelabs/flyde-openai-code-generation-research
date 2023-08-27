@@ -1,0 +1,11 @@
+{
+  "result": "Debounce | value, wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}",
+  "tokens": 329,
+  "completionTime": 2510,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-2",
+  "prompt": "Debounce a value",
+  "score": 5,
+  "remarks": "The part is well-written and correctly implements the debounce functionality. It uses the state to store the timer and properly cleans up on completion.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:03:48.371Z"
+}

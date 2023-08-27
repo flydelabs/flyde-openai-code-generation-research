@@ -1,0 +1,9 @@
+{
+  "result": "Throttle | value,delay | result | result | value",
+  "tokens": 1044,
+  "completionTime": 1500,
+  "generatorName": "chat-completion-gpt-3.5-turbo-full",
+  "prompt": "Throttle a value",
+  "score": 5,
+  "remarks": ""
+}

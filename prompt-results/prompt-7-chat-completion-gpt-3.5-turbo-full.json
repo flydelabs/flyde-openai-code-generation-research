@@ -1,9 +1,11 @@
 {
-  "result": "Round Robin | value | output1,output2,output3 | IMPLICIT | NONE\nfunction ({value}, {output1, output2, output3}, {state}) {\n  const currIndex = state.get(\"index\") || 0;\n  const nextIndex = (currIndex + 1) % 3;\n  state.set(\"index\", nextIndex);\n  switch (nextIndex) {\n    case 0:\n      output1.next(value);\n      break;\n    case 1:\n      output2.next(value);\n      break;\n    case 2:\n      output3.next(value);\n      break;\n  }\n}",
-  "tokens": 1164,
-  "completionTime": 34851,
+  "result": "Round Robin | value | output1,output2,output3 | IMPLICIT | NONE\nfunction ({value}, {output1, output2, output3}, {state}) {\n  const currentIndex = state.get(\"currentIndex\") || 0;\n  const outputs = [output1, output2, output3];\n  outputs[currentIndex].next(value);\n  const nextIndex = (currentIndex + 1) % outputs.length;\n  state.set(\"currentIndex\", nextIndex);\n}",
+  "tokens": 1131,
+  "completionTime": 2885,
   "generatorName": "chat-completion-gpt-3.5-turbo-full",
   "prompt": "Round robin a value into one of 3 outputs",
   "score": 5,
-  "remarks": "Great job"
+  "remarks": "The part correctly implements round robin logic and uses Flyde's features properly.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:04:11.661Z"
 }

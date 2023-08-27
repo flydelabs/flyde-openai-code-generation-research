@@ -1,0 +1,9 @@
+{
+  "result": "// Part 1\n{\n  \"id\": \"concatenate\",\n  \"inputs\": [\n    { \"name\": \"input1\", \"type\": \"any\" },\n    { \"name\": \"input2\", \"type\": \"any\" }\n  ],\n  \"outputs\": [{ \"name\": \"output\", \"type\": \"any\" }],\n  \"function\": \"async (inputs, outputs) => {\\n    const { input1, input2 } = inputs;\\n    const { output } = outputs;\\n    output.value = input1.value + input2.value;\\n  }\"\n}",
+  "tokens": 264,
+  "completionTime": 1947,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples",
+  "prompt": "Concatenate two inputs",
+  "score": 1,
+  "remarks": "Invalid metadata row // Part 1"
+}

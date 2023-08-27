@@ -1,0 +1,9 @@
+{
+  "result": "GetH1FromUrl | url | h1 | IMPLICIT | NONE\nasync function (inputs, outputs, advanced) {\n    const { url } = inputs;\n    const { h1 } = outputs;\n    const { state } = advanced;\n\n    const puppeteer = require(\"puppeteer\");\n\n    const browser = await puppeteer.launch();\n    const page = await browser.newPage();\n    await page.goto(url);\n    const h1Element = await page.$(\"h1\");\n    const h1Text = await page.evaluate((element) => element.textContent, h1Element);\n\n    h1.next(h1Text);\n\n    await browser.close();\n  }",
+  "tokens": 578,
+  "completionTime": 2172,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed-3",
+  "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
+  "score": 5,
+  "remarks": "The part is well written, uses good names and properly uses Flyde's features. It does the job well and doesn't require any tweaks."
+}

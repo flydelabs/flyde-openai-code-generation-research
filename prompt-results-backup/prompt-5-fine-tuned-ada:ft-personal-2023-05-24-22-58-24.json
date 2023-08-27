@@ -1,0 +1,9 @@
+{
+  "result": " Debounce | value |  | IMPLICIT | NONE\nfunction (inputs, outputs, adv) {\n    const { value } = inputs;\n    const { time } = outputs;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      clearTimeout(timer);\n    }\n\n    const newTimer = setTimeout(() => {\n      value.next(time);\n    }, inputs);\n\n    adv.state.set(\"timer\", newTimer);\n\n    adv.onCleanup(() => {\n      clearTimeout(timer);\n    });\n  }",
+  "tokens": 174,
+  "completionTime": 1447,
+  "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
+  "prompt": "Debounce a value",
+  "score": 2,
+  "remarks": "Missing wait input, wrong output name, incorrect usage of inputs and outputs"
+}

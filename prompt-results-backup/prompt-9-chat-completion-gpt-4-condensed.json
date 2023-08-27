@@ -1,0 +1,9 @@
+{
+  "result": "Sort Objects | array | sortedArray | IMPLICIT | NONE\nfunction ({array}, {sortedArray}) {\n  const result = array.sort((a, b) => a.age - b.age);\n  sortedArray.next(result);\n}",
+  "tokens": 746,
+  "completionTime": 10166,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "sort an array of objects by the 'age' property",
+  "score": 5,
+  "remarks": ""
+}

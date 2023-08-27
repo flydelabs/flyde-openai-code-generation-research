@@ -1,0 +1,9 @@
+{
+  "result": " Throttle | value,wait | result | result | value\nfunction (inputValues, outputValues, state) {\n  const { inputValue, waitTime } = inputValues;\n  const { outputValue } = outputValues;\n  \n  const timer = state.get('timer');\n  if (timer) {\n    state.set('lastInput', inputValue);\n    return;\n  }\n  \n  outputValue.next(inputValue);\n  const newTimer = setTimeout(() => {\n    state.set('timer', null);\n    const lastInput = state.get('lastInput');\n    if (lastInput) {\n      outputValue.next(lastInput);\n    }\n  }, waitTime);\n  state.set('timer', newTimer);\n}",
+  "tokens": 202,
+  "completionTime": 5641,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "Throttle a value",
+  "score": 4,
+  "remarks": "Minor tweaks needed in input and output names"
+}

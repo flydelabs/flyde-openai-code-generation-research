@@ -1,0 +1,9 @@
+{
+  "result": "```typescript\n{\n  \"id\": \"array-first\",\n  \"inputs\": [\n    { \"name\": \"array\", \"type\": \"T[]\" }\n  ],\n  \"outputs\": [\n    { \"name\": \"first\", \"type\": \"T\" }\n  ],\n  \"function\": \"async (inputs, outputs) => { outputs.first = inputs.array[0]; }\"\n}\n```",
+  "tokens": 224,
+  "completionTime": 1377,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples",
+  "prompt": "Get the first element of an array",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript"
+}

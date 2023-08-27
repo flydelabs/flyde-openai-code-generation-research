@@ -1,9 +1,11 @@
 {
-  "result": "Headless Browser | url | h1 | IMPLICIT | NONE\n\nasync function ({url}, {h1}, {externalContext}) {\n  const browser = await puppeteer.launch();\n  const page = await browser.newPage();\n  await page.goto(url);\n  const pageTitle = await page.title();\n  const pageH1 = await page.$eval('h1', el => el.textContent);\n  if (pageH1) {\n    h1.next(pageH1);\n  } else {\n    throw new Error(`No h1 tag found on ${pageTitle}`);\n  }\n  await browser.close();\n}",
-  "tokens": 835,
-  "completionTime": 9995,
+  "result": "Headless Browser | url | h1Tag | IMPLICIT | NONE\nasync function ({url}, {h1Tag}, {externalContext}) {\n  const puppeteer = require('puppeteer');\n\n  const browser = await puppeteer.launch();\n  const page = await browser.newPage();\n  await page.goto(url);\n\n  const h1Element = await page.$('h1');\n  if (h1Element) {\n    const h1Text = await page.evaluate(element => element.textContent, h1Element);\n    h1Tag.next(h1Text);\n  }\n\n  await browser.close();\n}",
+  "tokens": 833,
+  "completionTime": 3350,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
   "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
   "score": 5,
-  "remarks": "Great job"
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly fetches the h1 tag from the provided URL using a headless browser.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:25.604Z"
 }

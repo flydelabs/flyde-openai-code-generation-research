@@ -1,0 +1,9 @@
+{
+  "result": "RoundRobin3 | value | output1,output2,output3 |  | value\nfunction (inputs, outputs, context) {\n    const { value } = inputs;\n    const { output1, output2, output3 } = outputs;\n    const { state } = context;\n\n    const index = state.get(\"index\") || 0;\n\n    if (index === 0) {\n      output1.next(value);\n      state.set(\"index\", 1);\n    } else if (index === 1) {\n      output2.next(value);\n      state.set(\"index\", 2);\n    } else {\n      output3.next(value);\n      state.set(\"index\", 0);\n    }\n  }",
+  "tokens": 392,
+  "completionTime": 2235,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-2",
+  "prompt": "Round robin a value into one of 3 outputs",
+  "score": 5,
+  "remarks": "The part correctly implements round robin logic and uses Flyde's features properly."
+}

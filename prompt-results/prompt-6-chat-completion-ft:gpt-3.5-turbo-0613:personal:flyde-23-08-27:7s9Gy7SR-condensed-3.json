@@ -1,0 +1,9 @@
+{
+  "result": "Throttle | value,wait | result | result | value\nfunction (inputs, outputs, state) {\n    const { value, wait } = inputs;\n    const { result } = outputs;\n\n    const timer = state.get(\"timer\");\n    if (timer) {\n      clearTimeout(timer);\n    }\n\n    const newTimer = setTimeout(() => {\n      result.next(value);\n    }, wait);\n\n    state.set(\"timer\", newTimer);\n  }",
+  "tokens": 514,
+  "completionTime": 3039,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed-3",
+  "prompt": "Throttle a value",
+  "score": 2,
+  "remarks": "The part is in valid format but it doesn't throttle the value as requested. It behaves more like a debounce function."
+}

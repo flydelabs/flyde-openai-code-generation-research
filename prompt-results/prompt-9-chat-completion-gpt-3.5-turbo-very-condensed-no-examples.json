@@ -1,0 +1,11 @@
+{
+  "result": "```typescript\nimport { createFlow, Flow } from 'flyde';\n\ninterface Person {\n  name: string;\n  age: number;\n}\n\nconst sortArrayByAge = createFlow<Person[], Person[]>({\n  inputs: ['array'],\n  outputs: ['sortedArray'],\n  completion: 'explicit',\n  reactiveInputs: ['array'],\n  fn: async (context, inputs, outputs) => {\n    const { array } = inputs;\n    const sortedArray = array.slice().sort((a, b) => a.age - b.age);\n    outputs.sortedArray = sortedArray;\n  },\n});\n\n// Usage\nconst unsortedArray: Person[] = [\n  { name: 'John', age: 25 },\n  { name: 'Jane', age: 30 },\n  { name: 'Bob', age: 20 },\n];\n\nconst sortedArray: Person[] = await sortArrayByAge({ array: unsortedArray });\nconsole.log(sortedArray);\n```\nIn the above code, we define a `sortArrayByAge` flow that takes an array of `Person` objects as input and outputs a sorted array based on the `age` property. The flow is created using the `createFlow` function from the `flyde` library.\n\nThe flow has the following metadata:\n- Inputs: `array` (the unsorted array of `Person` objects)\n- Outputs: `sortedArray` (the sorted array of `Person` objects)\n- Completion: `explicit` (the flow needs to be explicitly completed by specifying the output)\n- Reactive Inputs: `array` (the flow will react to changes in the `array` input)\n\nThe function inside the flow uses the `inputs` and `outputs` parameters to access the input values and set the output value. It sorts the `array` input using the `sort` method and assigns the sorted array to the `sortedArray` output.\n\nTo use the flow, you can call it with the `array` input and await the result. The sorted array will be returned as the output.",
+  "tokens": 564,
+  "completionTime": 13023,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "sort an array of objects by the 'age' property",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:04:39.343Z"
+}

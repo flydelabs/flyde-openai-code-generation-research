@@ -1,0 +1,9 @@
+{
+  "result": " Publish | key,value |  | IMPLICIT | NONE\nfunction ({channel, message}, _, adv) {\n    const nsKey = `${adv.ancestorsInsIds}__${channel}`;\n\n    PubSub.publish(nsKey, message);\n  }",
+  "tokens": 81,
+  "completionTime": 2259,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "send a message to a slack channel",
+  "score": 2,
+  "remarks": "Valid format but unrelated to Slack"
+}

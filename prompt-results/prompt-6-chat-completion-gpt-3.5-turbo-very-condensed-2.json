@@ -1,0 +1,11 @@
+{
+  "result": "Throttle | value, wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const lastValue = state.get(\"lastValue\");\n  const lastTime = state.get(\"lastTime\");\n  const currentTime = Date.now();\n\n  if (!lastTime || currentTime - lastTime >= wait) {\n    result.next(value);\n    state.set(\"lastValue\", value);\n    state.set(\"lastTime\", currentTime);\n  }\n\n  if (!state.get(\"timer\")) {\n    const timer = setTimeout(() => {\n      const lastValue = state.get(\"lastValue\");\n      result.next(lastValue);\n      state.set(\"timer\", null);\n    }, wait);\n\n    state.set(\"timer\", timer);\n    onCleanup(() => clearTimeout(timer));\n  }\n}",
+  "tokens": 405,
+  "completionTime": 4709,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-2",
+  "prompt": "Throttle a value",
+  "score": 5,
+  "remarks": "The part correctly implements the throttle functionality. It uses state to store the last value and time, and uses a timer to delay the output. The part also correctly uses the onCleanup function to clear the timer when the part is done.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:04:02.326Z"
+}

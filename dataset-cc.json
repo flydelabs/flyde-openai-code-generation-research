@@ -71,6 +71,22 @@
       },
       {
         "role": "user",
+        "content": "Parse JSON string to object"
+      },
+      {
+        "role": "assistant",
+        "content": "JSON Parse | json | object | IMPLICIT | NONE\n({ json }, { object }) => object.next(JSON.parse(json))"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
         "content": "Convert object to JSON string"
       },
       {
@@ -231,6 +247,22 @@
       },
       {
         "role": "user",
+        "content": "Add two numbers"
+      },
+      {
+        "role": "assistant",
+        "content": "Add | n1,n2 | sum | IMPLICIT | NONE\n({ n1, n2 }, { sum }) => sum.next(n1 + n2)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
         "content": "Subtract two numbers"
       },
       {
@@ -364,6 +396,22 @@
       {
         "role": "assistant",
         "content": "Ceiling | n | ceiling | IMPLICIT | NONE\n({ n }, { ceiling }) => ceiling.next(Math.ceil(n))"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
+        "content": "Round a number"
+      },
+      {
+        "role": "assistant",
+        "content": "Round | n | rounded | IMPLICIT | NONE\n({ n }, { rounded }) => rounded.next(Math.round(n))"
       }
     ]
   },
@@ -519,6 +567,22 @@
       },
       {
         "role": "user",
+        "content": "Round to precision"
+      },
+      {
+        "role": "assistant",
+        "content": "To Precision | number,places | precision | IMPLICIT | NONE\n({ number, places }, { precision }) =>\n    precision.next(number.toPrecision(places))"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
         "content": "Compare two numbers"
       },
       {
@@ -588,6 +652,22 @@
       {
         "role": "assistant",
         "content": "Sum List | list | sum | IMPLICIT | NONE\n({ list }, { sum }) => sum.next(list.reduce((a, b) => a + b, 0))"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
+        "content": "Combine two values"
+      },
+      {
+        "role": "assistant",
+        "content": "Concat | a,b | value | IMPLICIT | NONE\n({ a, b }, { value }) => value.next(a + b)"
       }
     ]
   },
@@ -732,6 +812,22 @@
       {
         "role": "assistant",
         "content": "Index Of | string,searchValue,fromIndex | value | IMPLICIT | NONE\n({ string, searchValue, fromIndex }, { value }) =>\n    value.next(string.indexOf(searchValue, fromIndex))"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
+        "content": "Find last occurrence of substring"
+      },
+      {
+        "role": "assistant",
+        "content": "Last Index Of | string,searchValue,fromIndex | value | IMPLICIT | NONE\n({ string, searchValue, fromIndex }, { value }) =>\n    value.next(string.lastIndexOf(searchValue, fromIndex))"
       }
     ]
   },
@@ -935,6 +1031,22 @@
       },
       {
         "role": "user",
+        "content": "Limit input to certain number of times"
+      },
+      {
+        "role": "assistant",
+        "content": "Limit Times | item,times,reset | ok |  | item,reset\nfunction (inputs, outputs, adv) {\n    // magic here\n    const { state } = adv;\n    const { item, times, reset } = inputs;\n    const { ok } = outputs;\n\n    if (typeof reset !== \"undefined\") {\n      state.set(\"val\", 0);\n      return;\n    }\n\n    let curr = state.get(\"val\") || 0;\n    curr++;\n    state.set(\"val\", curr);\n    if (curr >= times) {\n      adv.onError(new Error(`Limit of ${times} reached`));\n    } else {\n      ok.next(item);\n    }\n  }"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
         "content": "Round Robin output distributor"
       },
       {
@@ -1079,6 +1191,22 @@
       },
       {
         "role": "user",
+        "content": "A part that routes values to different outputs"
+      },
+      {
+        "role": "assistant",
+        "content": "Switch 4 | value,firstCase,secondCase,thirdCase,fourthCase,outputValue | first,second,third,fourth,default | IMPLICIT | NONE\nfunction (inputs, outputs) {\n    const {\n      first,\n      second,\n      third,\n      fourth,\n      default: defaultOutput,\n      outputValue,\n    } = outputs;\n    const { value, firstCase, secondCase, thirdCase, fourthCase } = inputs;\n    if (value === firstCase) {\n      first.next(outputValue ?? value);\n    } else if (value === secondCase) {\n      second.next(outputValue ?? value);\n    } else if (value === thirdCase) {\n      third.next(outputValue ?? value);\n    } else if (value === fourthCase) {\n      fourth.next(outputValue ?? value);\n    } else {\n      defaultOutput.next(outputValue ?? value);\n    }\n  }"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
         "content": "Delay values"
       },
       {
@@ -1164,6 +1292,22 @@
       {
         "role": "assistant",
         "content": "Equals | a,b | true,false | IMPLICIT | NONE\n(inputs, outputs) => {\n    const { a, b } = inputs;\n    const { true: trueOutput, false: falseOutput } = outputs;\n\n    if (a === b) {\n      trueOutput.next(a);\n    } else {\n      falseOutput.next(a);\n    }\n  }"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
+        "content": "Count items in list"
+      },
+      {
+        "role": "assistant",
+        "content": "List Length | list | length | IMPLICIT | NONE\n({ list }, { length }) => length.next(list.length)"
       }
     ]
   },
@@ -1319,6 +1463,22 @@
       },
       {
         "role": "user",
+        "content": "Loop through a list"
+      },
+      {
+        "role": "assistant",
+        "content": "Loop List | list | item,index,length | IMPLICIT | NONE\n(inputs, outputs) => {\n    const { list } = inputs;\n    const { item, index } = outputs;\n    for (const i of list) {\n      item.next(i);\n      index.next(list.indexOf(i));\n    }\n    outputs.length.next(list.length);\n  }"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
         "content": "Split list into head and rest"
       },
       {
@@ -1463,6 +1623,22 @@
       },
       {
         "role": "user",
+        "content": "Add item to beginning of list"
+      },
+      {
+        "role": "assistant",
+        "content": "Prepend | list,item | list | IMPLICIT | NONE\n({ list, item }, { list: outputList }) => {\n    outputList.next([item, ...list]);\n  }"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
         "content": "Remove item from list"
       },
       {
@@ -1548,6 +1724,22 @@
       {
         "role": "assistant",
         "content": "Error | value |  | IMPLICIT | NONE\n({ value }) => console.error(value)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
+        "content": "Current Date"
+      },
+      {
+        "role": "assistant",
+        "content": "Now |  | now | IMPLICIT | NONE\n(_, { now }) => now.next(new Date())"
       }
     ]
   },
@@ -1692,6 +1884,22 @@
       {
         "role": "assistant",
         "content": "Date To Unix Time | date | time | IMPLICIT | NONE\n({ date }, { time }) => time.next(date.getTime())"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
+        "content": "Convert date to year"
+      },
+      {
+        "role": "assistant",
+        "content": "Date To Year | date | year | IMPLICIT | NONE\n({ date }, { year }) => year.next(date.getFullYear())"
       }
     ]
   },
@@ -1879,6 +2087,22 @@
       },
       {
         "role": "user",
+        "content": "Database connection initializer"
+      },
+      {
+        "role": "assistant",
+        "content": "Find | connection,collection,query,options | result | IMPLICIT | NONE\nasync ({ host, port, database, user, password }, { connection }) => {\n    const { Client } = await import(\"pg\");\n    const client = new Client({\n      host,\n      port,\n      database,\n      user,\n      password,\n    });\n    await client.connect();\n    connection.next(client);\n  }"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
         "content": "Find a single document in a MongoDB collection"
       },
       {
@@ -2055,6 +2279,22 @@
       },
       {
         "role": "user",
+        "content": "Read contents of file"
+      },
+      {
+        "role": "assistant",
+        "content": "Read File | path,encoding | contents | IMPLICIT | NONE\nasync ({ connection, collection, fieldOrSpec, options }, { result }) => {\n    const res = await connection\n      .db()\n      .collection(collection)\n      .createIndex(fieldOrSpec, options);\n    result.next(res);\n  }"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.\nEach node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.\nThe function receives the inputs and returns the outputs. The function can be synchronous or asynchronous. The function has access to the input values, and output objects (RxJS Subjects) and can trigger any output by calling `outputs.outputName.next(value)`. The function may return a cleanup function.\nThe function haa the following signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.\nThe advanced context has the following properties: \"state\", \"globalState\", \"onCleanup\", \"onError\" and a \"externalContext\".  state is a key-value store that is persisted between executions. globalState is a key-value store that is persisted between executions and is shared between all flows. onError is a function that can be called with an error to trigger the error output. externalContext contains data passed by the user to the flow's execution.\nFlyde parts can be in one of 2 states: \"pending values\" or \"processing\". A part starts processing once it has all required inputs. \nParts can have implicit completion or explicit completion. Implicit completion means that the part will complete once the function has returned a value. If the value is a promise, it'll wait for the promise to be resolved.\nExplicit completion means that the user defines 1 or more outputs that once a value is emitted from them, they will trigger the completion of the part.\nOnce a part is processing, new inputs will be queued and processed only when it is done. In order for a part to receive new inputs while it is processing, the inputs need to be marked as \"reactive inputs\".\nFor example, a debounce node will receive a value and emit it after a delay. If it receives a new value before the delay is over, it will cancel the previous delay and start a new one. In order to do that, it needs to receive the new value while it is processing. Therefore, it needs to mark the input as \"reactive input\".\n\nFlyde parts start with a metadata line that defines the part's ID, inputs, outputs, completion type and reactive inputs, followed by the function declaration.\nThe metadata looks like this:\nID | Inputs separated by a comma (or \"None\" for 0) | Outputs separated by a comma (or \"None\" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or \"NONE\" for 0)\n\nHere are some examples, separated by \"-----\":\nDebounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n-----\nAdd | n1,n2 | sum | IMPLICIT | NONE\nfunction ({n1, n2}, {sum}) {\n  sum.next(n1 + n2);\n}\n-----\nPOST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n} \n-----\nSplit Pair | pair | item1,item2 | IMPLICIT | NONE\n({pair}, {item1, item2}) => {\n  item1.next(pair[0]);\n  item2.next(pair[1]);\n}\n-----\nMerge Pair | item1,item2 | pair | IMPLICIT | NONE\n({item1, item2}, {pair}) => {\n  pair.next([item1, item2]);\n}\n-----\nLimit Times | item,times,reset | ok | item,reset\nfunction ({item, times, reset}, {ok}, {onError}) {\n  if (typeof reset !== \"undefined\") {\n    state.set(\"val\", 0);\n    return;\n  }\n\n  const curr = (state.get(\"val\") || 0) + 1;\n  state.set(\"val\", curr);\n  if (curr >= times) {\n    adv.onError(new Error(`Limit of ${times} reached`));\n  } else {\n    ok.next(item);\n  }\n}\n\nYour job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.\n\n"
+      },
+      {
+        "role": "user",
         "content": "Write contents to file"
       },
       {
@@ -2158,269 +2398,5 @@
         "content": "Query | connection,query | result | IMPLICIT | NONE\nasync ({ connection, query }, { result }) => {\n    const queryResult = await connection.value?.query(query);\n    result.next(queryResult?.rows);\n  }"
       }
     ]
-  },
-  {
-    "prompt": "Parse JSON string to object\n\n###\n\n",
-    "completion": " J###"
-  },
-  {
-    "prompt": "Convert JSON string to object\n\n###\n\n",
-    "completion": " S###"
-  },
-  {
-    "prompt": "JSON string to object converter\n\n###\n\n",
-    "completion": " J###"
-  },
-  {
-    "prompt": "JSON string parser\n\n###\n\n",
-    "completion": " S###"
-  },
-  {
-    "prompt": "Add two numbers\n\n###\n\n",
-    "completion": " A###"
-  },
-  {
-    "prompt": "Calculate sum of two numbers\n\n###\n\n",
-    "completion": " d###"
-  },
-  {
-    "prompt": "Simple addition\n\n###\n\n",
-    "completion": " A###"
-  },
-  {
-    "prompt": "Addition of two numbers\n\n###\n\n",
-    "completion": " d###"
-  },
-  {
-    "prompt": "Round a number\n\n###\n\n",
-    "completion": " R###"
-  },
-  {
-    "prompt": "Create a rounded number\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Round to precision\n\n###\n\n",
-    "completion": " T###"
-  },
-  {
-    "prompt": "Set number precision\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Precision calculator\n\n###\n\n",
-    "completion": " T###"
-  },
-  {
-    "prompt": "Number precision\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Combine two values\n\n###\n\n",
-    "completion": " C###"
-  },
-  {
-    "prompt": "Concatenate two inputs\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Join two values together\n\n###\n\n",
-    "completion": " C###"
-  },
-  {
-    "prompt": "Create a single value from two inputs\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Find last occurrence of substring\n\n###\n\n",
-    "completion": " L###"
-  },
-  {
-    "prompt": "Get index of last substring\n\n###\n\n",
-    "completion": " a###"
-  },
-  {
-    "prompt": "Find last index of substring in string\n\n###\n\n",
-    "completion": " L###"
-  },
-  {
-    "prompt": "Find the last position of a substring in a string\n\n###\n\n",
-    "completion": " a###"
-  },
-  {
-    "prompt": "Limit input to certain number of times\n\n###\n\n",
-    "completion": " L###"
-  },
-  {
-    "prompt": "Limit input to specific count\n\n###\n\n",
-    "completion": " i###"
-  },
-  {
-    "prompt": "Limit input to a certain number of occurrences\n\n###\n\n",
-    "completion": " L###"
-  },
-  {
-    "prompt": "Limit input to a specific number of times\n\n###\n\n",
-    "completion": " i###"
-  },
-  {
-    "prompt": "A part that routes values to different outputs\n\n###\n\n",
-    "completion": " S###"
-  },
-  {
-    "prompt": "Switch between multiple output values\n\n###\n\n",
-    "completion": " w###"
-  },
-  {
-    "prompt": "A node that directs input values to different outputs\n\n###\n\n",
-    "completion": " S###"
-  },
-  {
-    "prompt": "A flow-based programming node that routes input values to different outputs\n\n###\n\n",
-    "completion": " w###"
-  },
-  {
-    "prompt": "Count items in list\n\n###\n\n",
-    "completion": " L###"
-  },
-  {
-    "prompt": "Get list length\n\n###\n\n",
-    "completion": " i###"
-  },
-  {
-    "prompt": "Calculate list size\n\n###\n\n",
-    "completion": " L###"
-  },
-  {
-    "prompt": "Determine number of items in list\n\n###\n\n",
-    "completion": " i###"
-  },
-  {
-    "prompt": "Loop through a list\n\n###\n\n",
-    "completion": " L###"
-  },
-  {
-    "prompt": "Iterate over a list\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Loop through items in a list\n\n###\n\n",
-    "completion": " L###"
-  },
-  {
-    "prompt": "Loop through a list and output item, index, and length\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Add item to beginning of list\n\n###\n\n",
-    "completion": " P###"
-  },
-  {
-    "prompt": "Prepend item to list\n\n###\n\n",
-    "completion": " r###"
-  },
-  {
-    "prompt": "Add to start of list\n\n###\n\n",
-    "completion": " P###"
-  },
-  {
-    "prompt": "Insert item at beginning of list\n\n###\n\n",
-    "completion": " r###"
-  },
-  {
-    "prompt": "Current Date\n\n###\n\n",
-    "completion": " N###"
-  },
-  {
-    "prompt": "Get Current Time\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Real-time Clock\n\n###\n\n",
-    "completion": " N###"
-  },
-  {
-    "prompt": "Part that outputs current date/time\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Convert date to year\n\n###\n\n",
-    "completion": " D###"
-  },
-  {
-    "prompt": "Extract year from date\n\n###\n\n",
-    "completion": " a###"
-  },
-  {
-    "prompt": "Get year from date\n\n###\n\n",
-    "completion": " D###"
-  },
-  {
-    "prompt": "Transform date to year\n\n###\n\n",
-    "completion": " a###"
-  },
-  {
-    "prompt": "Connect to database\n\n###\n\n",
-    "completion": " C###"
-  },
-  {
-    "prompt": "Establish database connection\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Create database connection\n\n###\n\n",
-    "completion": " C###"
-  },
-  {
-    "prompt": "Connect to database server\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Database connection initializer\n\n###\n\n",
-    "completion": " F###"
-  },
-  {
-    "prompt": "Initialize database connection\n\n###\n\n",
-    "completion": " i###"
-  },
-  {
-    "prompt": "Create database connection\n\n###\n\n",
-    "completion": " F###"
-  },
-  {
-    "prompt": "Connect to database\n\n###\n\n",
-    "completion": " i###"
-  },
-  {
-    "prompt": "Read contents of file\n\n###\n\n",
-    "completion": " R###"
-  },
-  {
-    "prompt": "Get file contents\n\n###\n\n",
-    "completion": " e###"
-  },
-  {
-    "prompt": "Read file data\n\n###\n\n",
-    "completion": " R###"
-  },
-  {
-    "prompt": "Retrieve file contents\n\n###\n\n",
-    "completion": " e###"
-  },
-  {
-    "prompt": "Connect to database\n\n###\n\n",
-    "completion": " C###"
-  },
-  {
-    "prompt": "Establish database connection\n\n###\n\n",
-    "completion": " o###"
-  },
-  {
-    "prompt": "Create database connection\n\n###\n\n",
-    "completion": " C###"
-  },
-  {
-    "prompt": "Connect to database server\n\n###\n\n",
-    "completion": " o###"
   }
 ]

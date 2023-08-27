@@ -1,0 +1,9 @@
+{
+  "result": " Delay | value,delay | value |  | value,delay\nfunction (inputs, outputs, adv) {\n    const { value, delay } = inputs;\n    const { value } = outputs;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      clearTimeout(timer);\n    }\n\n    const newTimer = setTimeout(() => {\n      value.next(value);\n    }, delay);\n\n    adv.state.set(\"timer\", newTimer);\n\n    adv.onCleanup(() => {\n      clearTimeout(timer);\n    });\n  }",
+  "tokens": 189,
+  "completionTime": 5042,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 2,
+  "remarks": "Valid format but doesn't match the prompt"
+}

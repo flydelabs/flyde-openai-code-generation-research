@@ -1,0 +1,9 @@
+{
+  "result": "```typescript\nimport { createFlydPart } from \"flyd-parts\";\n\nconst delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));\n\nexport const emitItemFiveTimesWithDelay = createFlydPart(\n  (item: any) => async (context) => {\n    const { outputs } = context;\n\n    for (let i = 0; i < 5; i++) {\n      await delay(200);\n      outputs.emit(item);\n    }\n  }\n);\n\nemitItemFiveTimesWithDelay.metadata = {\n  inputs: [\"item\"],\n  outputs: [\"emit\"],\n  completionType: \"implicit\",\n  reactiveInputs: [],\n} as const;\n```",
+  "tokens": 296,
+  "completionTime": 2230,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript"
+}

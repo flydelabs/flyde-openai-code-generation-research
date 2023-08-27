@@ -1,4 +1,5 @@
-export const flydeExamples = `Debounce | value,wait | result | result | value
+export const flydeExamples = [
+  `Debounce | value,wait | result | result | value
 function ({value, wait}, {result}, {state, onCleanup}) {
   const timer = state.get("timer");
   if (timer) {
@@ -10,31 +11,26 @@ function ({value, wait}, {result}, {state, onCleanup}) {
 
   state.set("timer", newTimer);
   onCleanup(() => clearTimeout(timer));
-}
------
-Add | n1,n2 | sum | IMPLICIT | NONE
+}`,
+  `Add | n1,n2 | sum | IMPLICIT | NONE
 function ({n1, n2}, {sum}) {
   sum.next(n1 + n2);
-}
------
-POST Request | url,headers,params,data | data | IMPLICIT | NONE
+}`,
+  `POST Request | url,headers,params,data | data | IMPLICIT | NONE
 ({ url, headers, params, data: body }, { data }) => {
   const config: AxiosRequestConfig = { headers, params };
   return axios.post(url, body, config).then((res) => data.next(res.data));
-} 
------
-Split Pair | pair | item1,item2 | IMPLICIT | NONE
+} `,
+  `Split Pair | pair | item1,item2 | IMPLICIT | NONE
 ({pair}, {item1, item2}) => {
   item1.next(pair[0]);
   item2.next(pair[1]);
-}
------
-Merge Pair | item1,item2 | pair | IMPLICIT | NONE
+}`,
+  `Merge Pair | item1,item2 | pair | IMPLICIT | NONE
 ({item1, item2}, {pair}) => {
   pair.next([item1, item2]);
-}
------
-Limit Times | item,times,reset | ok | item,reset
+}`,
+  `Limit Times | item,times,reset | ok | item,reset
 function ({item, times, reset}, {ok}, {onError}) {
   if (typeof reset !== "undefined") {
     state.set("val", 0);
@@ -48,7 +44,8 @@ function ({item, times, reset}, {ok}, {onError}) {
   } else {
     ok.next(item);
   }
-}`;
+}`,
+];
 
 export const fullChatInstructions = `Your job is to receive user prompts and generate a Flyde part based on the prompt. Do not add explanations. Flyde is a flow-based programming tool that uses TypeScript to declare nodes.
 Each node as an id, 0 or more inputs, 0 or more outputs, and a function that is called when the node is executed.
@@ -66,7 +63,7 @@ The metadata looks like this:
 ID | Inputs separated by a comma (or "None" for 0) | Outputs separated by a comma (or "None" for 0) | Completion type: IMPLICIT or the name of the output that triggers the completion | Reactive inputs separated by a comma (or "NONE" for 0)
 
 Here are some examples, separated by "-----":
-${flydeExamples}
+${flydeExamples.join("\n-----\n")}
 
 Your job is to receive a prompt from the user describing a node, and generate the metadata and function declaration for that node, and nothing more.
 
@@ -78,18 +75,50 @@ The AdvancedContext includes "state", "globalState", "onCleanup", "onError", and
 Flyde parts exhibit "pending values" or "processing" states, with processing starting upon receiving all necessary inputs. Parts can complete implicitly when the function returns, or explicitly when a specified output is emitted.
 Processing parts queue new inputs until completion, unless inputs are marked "reactive inputs". For instance, a debounce node, which emits a delayed value but cancels the delay upon receiving a new value, requires this reactive input.
 Flyde parts start with metadata (ID | Inputs | Outputs | Completion type | Reactive inputs), followed by the function declaration. Here are examples:
-${flydeExamples}
+${flydeExamples.join("\n-----\n")}
 Your task is to interpret user prompts into node metadata and function declarations.
 `;
 
 export const veryCondensedChatInstructions = `Using TypeScript, translate prompts into Flyde parts. Nodes contain an id, inputs, outputs, and a function. The function, synchronous or asynchronous, uses inputs and outputs to drive actions. AdvancedContext includes "state", "globalState", "onCleanup", "onError", and "externalContext".
 Flyde parts transition from "pending values" to "processing" on receiving inputs. Completion can be implicit or explicit via a specified output. Inputs marked as "reactive inputs" are queued until part completion.
 Flyde parts have metadata (ID | Inputs | Outputs | Completion type | Reactive inputs) and function declarations. See examples:
-${flydeExamples}
+${flydeExamples.join("\n-----\n")}
 Your task: turn user prompts into node metadata and function declarations`;
+
+// condensedChat instructions but only 3 examples
+export const condensed3ExamplesChatInstructions = `Generate Flyde parts from prompts without adding explanations. Flyde employs TypeScript for node declaration in its flow-based programming. A node contains an id, inputs, outputs, and a function executing on node run. The function, which can be synchronous or asynchronous, uses inputs and outputs to trigger the node's output. It can also return a cleanup function.
+Function signature: (inputs: Record<string, any>, outputs: Record<string, Output>, advanced: AdvancedContext) => void | Promise<void> | () => void | Promise<() => void>.
+The AdvancedContext includes "state", "globalState", "onCleanup", "onError", and "externalContext". State and globalState persist between executions. onError handles errors, and externalContext houses user-provided flow execution data.
+Flyde parts exhibit "pending values" or "processing" states, with processing starting upon receiving all necessary inputs. Parts can complete implicitly when the function returns, or explicitly when a specified output is emitted.
+Processing parts queue new inputs until completion, unless inputs are marked "reactive inputs". For instance, a debounce node, which emits a delayed value but cancels the delay upon receiving a new value, requires this reactive input.
+Flyde parts start with metadata (ID | Inputs | Outputs | Completion type | Reactive inputs), followed by the function declaration. Here are examples:
+${flydeExamples.slice(0, 2).join("\n-----\n")}
+Your task is to interpret user prompts into node metadata and function declarations.
+`;
+
+export const veryCondensed2ExamplesChatInstructions = `Using TypeScript, translate prompts into Flyde parts. Nodes contain an id, inputs, outputs, and a function. The function, synchronous or asynchronous, uses inputs and outputs to drive actions. AdvancedContext includes "state", "globalState", "onCleanup", "onError", and "externalContext".
+Flyde parts transition from "pending values" to "processing" on receiving inputs. Completion can be implicit or explicit via a specified output. Inputs marked as "reactive inputs" are queued until part completion.
+Flyde parts have metadata (ID | Inputs | Outputs | Completion type | Reactive inputs) and function declarations. See examples:
+-----
+${flydeExamples.slice(0, 1).join("\n-----\n")}
+-----
+Your task: turn user prompts into node metadata and function declarations`;
+
+export const veryCondensedNoExamplesChatInstructions = `Using TypeScript, translate prompts into Flyde parts. Nodes contain an id, inputs, outputs, and a function. The function, synchronous or asynchronous, uses inputs and outputs to drive actions. AdvancedContext includes "state", "globalState", "onCleanup", "onError", and "externalContext".
+Flyde parts transition from "pending values" to "processing" on receiving inputs. Completion can be implicit or explicit via a specified output. Inputs marked as "reactive inputs" are queued until part completion.
+Flyde parts have metadata (ID | Inputs | Outputs | Completion type | Reactive inputs) and function declarations.`;
 
 export const chatCompletionInstructions = [
   { name: "full", instructions: fullChatInstructions },
   { name: "condensed", instructions: condensedChatInstructions },
   { name: "very-condensed", instructions: veryCondensedChatInstructions },
+  { name: "condensed-3", instructions: condensed3ExamplesChatInstructions },
+  {
+    name: "very-condensed-2",
+    instructions: veryCondensed2ExamplesChatInstructions,
+  },
+  {
+    name: "very-condensed-no-examples",
+    instructions: veryCondensedNoExamplesChatInstructions,
+  },
 ];

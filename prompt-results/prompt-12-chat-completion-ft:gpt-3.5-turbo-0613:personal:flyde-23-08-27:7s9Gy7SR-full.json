@@ -1,0 +1,9 @@
+{
+  "result": "Delay 5 | item | times,reset | ok | item,reset\nasync function (inputs, outputs, adv) {\n    const { state } = adv;\n    const { item, times, reset } = inputs;\n    const { ok } = outputs;\n\n    if (typeof reset !== \"undefined\") {\n      state.set(\"val\", 0);\n      return;\n    }\n\n    const curr = (state.get(\"val\") || 0) + 1;\n    state.set(\"val\", curr);\n    if (curr >= times) {\n      adv.onError(new Error(`Limit of ${times} reached`));\n    } else {\n      ok.next(item);\n      await new Promise((resolve) => setTimeout(resolve, 200));\n    }\n  }",
+  "tokens": 1197,
+  "completionTime": 2382,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-full",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 2,
+  "remarks": "The part is in valid format but it doesn't match the prompt. It seems to be a limit times part with a delay, not a part that emits an item 5 times with a delay."
+}

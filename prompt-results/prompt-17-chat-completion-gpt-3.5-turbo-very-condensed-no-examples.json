@@ -1,0 +1,11 @@
+{
+  "result": "metadata:\n  id: \"sendSlackMessage\"\n  inputs: {\n    channel: string,\n    message: string\n  }\n  outputs: {\n    success: boolean\n  }\n  completion: \"success\"\n  reactiveInputs: []\n\nfunction sendSlackMessage(inputs) {\n  const { channel, message } = inputs;\n\n  // Code to send message to Slack channel\n\n  return {\n    success: true\n  };\n}",
+  "tokens": 231,
+  "completionTime": 2446,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "send a message to a slack channel",
+  "score": 1,
+  "remarks": "Invalid metadata row metadata:",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:52.721Z"
+}

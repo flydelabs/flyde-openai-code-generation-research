@@ -1,0 +1,9 @@
+{
+  "result": "JSON Parse | json | object | IMPLICIT | NONE\n({ json }, { object }) => object.next(JSON.parse(json))",
+  "tokens": 1056,
+  "completionTime": 9089,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-full",
+  "prompt": "JSON string to object converter",
+  "score": 5,
+  "remarks": "Perfectly matches the prompt and uses Flyde's features correctly."
+}

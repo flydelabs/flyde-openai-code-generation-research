@@ -1,0 +1,9 @@
+{
+  "result": "ID: TransformMapToArray\nInputs: map\nOutputs: array\nCompletion type: IMPLICIT\nReactive inputs: NONE\n\nfunction ({map}, {array}) {\n  const result = Object.entries(map)\n    .filter(([key, value]) => key === \"id\" && value)\n    .map(([key, value]) => value);\n  array.next(result);\n}",
+  "tokens": 639,
+  "completionTime": 12613,
+  "generatorName": "chat-completion-gpt-4-very-condensed",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 1,
+  "remarks": "Invalid metadata row ID: TransformMapToArray"
+}

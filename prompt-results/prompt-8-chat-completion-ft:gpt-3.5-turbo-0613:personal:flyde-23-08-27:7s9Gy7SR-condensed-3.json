@@ -1,0 +1,9 @@
+{
+  "result": "SumByProperty | list,property | sum | IMPLICIT | NONE\nfunction (inputs, outputs) {\n    const { list, property } = inputs;\n    const { sum } = outputs;\n    const total = list.value.reduce(\n      (acc, obj) => acc + obj[property.value],\n      0\n    );\n    sum.next(total);\n  }",
+  "tokens": 508,
+  "completionTime": 1318,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed-3",
+  "prompt": "Receive a list of objects and sum the 'price' property of each",
+  "score": 5,
+  "remarks": "The part is well-written, uses good names and properly uses Flyde's features. It correctly sums the 'price' property of each object in the list."
+}

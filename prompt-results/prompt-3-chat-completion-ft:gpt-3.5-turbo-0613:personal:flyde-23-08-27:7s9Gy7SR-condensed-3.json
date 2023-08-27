@@ -1,0 +1,9 @@
+{
+  "result": "Query | connection,query | result | IMPLICIT | NONE\nasync function (inputs, outputs, context) {\n    const { connection, query } = inputs;\n    const { result } = outputs;\n    const { state } = context;\n\n    const connectionState = state.get(\"connection\");\n    if (!connectionState) {\n      throw new Error(\"No connection\");\n    }\n\n    const { connection: dbConnection } = connectionState;\n\n    const queryResult = await dbConnection.query(query);\n    result.next(queryResult);\n  }",
+  "tokens": 530,
+  "completionTime": 1744,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed-3",
+  "prompt": "Run SQL query",
+  "score": 3,
+  "remarks": "The part is relevant to the request but it doesn't handle the connection input properly. It should establish a connection using the provided connection string instead of getting it from the state."
+}

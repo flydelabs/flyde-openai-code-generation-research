@@ -1,0 +1,9 @@
+{
+  "result": "Map To Array | map | array | IMPLICIT | NONE\n({ map }, { array }) => {\n    const result = Array.from(map.values());\n    array.next(result.filter((obj) => obj.hasOwnProperty(\"id\")));\n  }",
+  "tokens": 609,
+  "completionTime": 918,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly transforms the map into an array and filters out objects without the 'id' property."
+}

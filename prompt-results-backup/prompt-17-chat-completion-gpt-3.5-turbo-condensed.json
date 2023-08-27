@@ -1,0 +1,9 @@
+{
+  "result": "Slack Message | channel,message,token | response | EXPLICIT | NONE\n\nfunction ({channel, message, token}, {response}, {externalContext}) {\n  const config = {\n    headers: {\n      Authorization: `Bearer ${token}`,\n      \"Content-Type\": \"application/json\",\n    },\n  };\n  const body = {\n    channel,\n    text: message,\n  };\n  return axios.post(\"https://slack.com/api/chat.postMessage\", body, config)\n    .then((res) => response.next(res.data))\n    .catch((err) => adv.onError(err));\n}",
+  "tokens": 815,
+  "completionTime": 9122,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
+  "prompt": "send a message to a slack channel",
+  "score": 4,
+  "remarks": "Missing advanced context in function signature"
+}

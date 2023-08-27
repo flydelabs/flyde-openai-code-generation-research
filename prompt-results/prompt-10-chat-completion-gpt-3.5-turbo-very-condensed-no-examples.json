@@ -1,0 +1,11 @@
+{
+  "result": "```typescript\nimport { F, flyde } from 'flyde';\n\ntype ObjectWithId = {\n  id: string;\n  [key: string]: any;\n};\n\nconst transformMapToArray = flyde<ObjectWithId[], { map: Record<string, ObjectWithId> }>(\n  (inputs, outputs) => {\n    const { map } = inputs;\n\n    const transformedArray = Object.values(map).filter((obj) => obj.hasOwnProperty('id'));\n\n    outputs.array = transformedArray;\n  }\n);\n\nconst map = {\n  obj1: { id: '1', name: 'Object 1' },\n  obj2: { name: 'Object 2' },\n  obj3: { id: '3', name: 'Object 3' },\n};\n\nconst transformedArray = transformMapToArray({ map });\n\nconsole.log(transformedArray); // Output: [{ id: '1', name: 'Object 1' }, { id: '3', name: 'Object 3' }]\n```\nIn the above code, we define a Flyde part called `transformMapToArray` that takes an input `map` of type `Record<string, ObjectWithId>` and outputs an array of objects of type `ObjectWithId[]`. The function inside the Flyde part filters out objects from the input map that do not have the `id` property and assigns the filtered array to the `array` output.\n\nWe then create a sample input `map` and pass it to the `transformMapToArray` Flyde part. The resulting transformed array is logged to the console.",
+  "tokens": 479,
+  "completionTime": 7922,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:05.835Z"
+}

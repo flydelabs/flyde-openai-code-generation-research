@@ -1,0 +1,9 @@
+{
+  "result": " Sort By Age | array | object | IMPLICIT | NONE\nfunction ({ inputArray }, { outputObject }) {\n  const sortedArray = inputArray.sort((a, b) => b.age - a.age);\n  outputObject.next(sortedArray);\n}",
+  "tokens": 77,
+  "completionTime": 2028,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "sort an array of objects by the 'age' property",
+  "score": 4,
+  "remarks": "Change inputArray to array and outputObject to object"
+}

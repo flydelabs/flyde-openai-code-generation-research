@@ -1,0 +1,9 @@
+{
+  "result": " Emit 5 times | item | delay | IMPLICIT | NONE\nfunction (inputs, outputs, adv) {\n  const { item } = inputs;\n  const { delay } = outputs;\n\n  const result = adv.state.get(\"item\") || [];\n  if (result) {\n    result.next(item);\n  }\n  return adv.state.set(\"item\", item);\n}",
+  "tokens": 115,
+  "completionTime": 984,
+  "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 2,
+  "remarks": "Incorrect output name, missing timer logic"
+}
