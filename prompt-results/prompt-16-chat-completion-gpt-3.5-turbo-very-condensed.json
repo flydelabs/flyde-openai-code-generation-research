@@ -1,10 +1,11 @@
 {
-  "result": "Node Metadata:\n```\nID: Headless Browser\nInputs: url\nOutputs: h1\nCompletion Type: IMPLICIT\nReactive Inputs: NONE\n```\n\nFunction Declaration:\n```typescript\nimport puppeteer from 'puppeteer';\n\nasync function ({url}, {h1}, {onError}) {\n  try {\n    const browser = await puppeteer.launch();\n    const page = await browser.newPage();\n    await page.goto(url);\n    const pageTitle = await page.$eval('h1', el => el.textContent);\n    if (pageTitle) {\n      h1.next(pageTitle);\n    } else {\n      onError(new Error('h1 tag not found'));\n    }\n    await browser.close();\n  } catch (error) {\n    onError(error);\n  }\n}\n```",
-  "tokens": 725,
-  "completionTime": 12999,
+  "result": "Headless Browser | url | h1Tag | IMPLICIT | NONE\nasync function ({url}, {h1Tag}, {externalContext}) {\n  const browser = await externalContext.launch();\n  const page = await browser.newPage();\n  await page.goto(url);\n  const h1Element = await page.$('h1');\n  if (h1Element) {\n    const text = await page.evaluate(element => element.textContent, h1Element);\n    h1Tag.next(text);\n  }\n  await browser.close();\n}",
+  "tokens": 672,
+  "completionTime": 3032,
   "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
   "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
-  "score": 1,
-  "remarks": "Invalid metadata row Node Metadata:",
-  "redid": false
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly uses the headless browser to fetch the h1 tag from the provided URL.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:38.327Z"
 }

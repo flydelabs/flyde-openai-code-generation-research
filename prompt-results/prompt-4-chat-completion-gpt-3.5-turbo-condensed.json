@@ -1,10 +1,11 @@
 {
-  "result": "ID: Get First Element\nInputs: array\nOutputs: element\nCompletion Type: IMPLICIT\nReactive Inputs: NONE\n\nFunction:\nfunction ({array}, {element}) {\n  element.next(array[0]);\n}",
-  "tokens": 741,
-  "completionTime": 3707,
+  "result": "First Element | array | element | IMPLICIT | NONE\nfunction ({array}, {element}) {\n  element.next(array[0]);\n}",
+  "tokens": 723,
+  "completionTime": 2075,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
   "prompt": "Get the first element of an array",
-  "score": 1,
-  "remarks": "Invalid metadata row ID: Get First Element",
-  "redid": false
+  "score": 5,
+  "remarks": "The part correctly retrieves the first element of the array and emits it through the 'element' output. It uses good names and properly uses Flyde's features.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:03:30.113Z"
 }

@@ -1,10 +1,11 @@
 {
-  "result": "SwitchOutput | object, propertyName, value1, value2, value3 | output1, output2, output3, defaultOutput | IMPLICIT | NONE\nfunction ({object, propertyName, value1, value2, value3}, {output1, output2, output3, defaultOutput}) {\n  const propertyValue = object[propertyName];\n  if (propertyValue === value1) {\n    output1.next(object);\n  } else if (propertyValue === value2) {\n    output2.next(object);\n  } else if (propertyValue === value3) {\n    output3.next(object);\n  } else {\n    defaultOutput.next(object);\n  }\n}",
-  "tokens": 621,
-  "completionTime": 3804,
+  "result": "SwitchOutput | obj, propName, value1, value2, value3 | output1, output2, output3, default | IMPLICIT | NONE\nfunction ({obj, propName, value1, value2, value3}, {output1, output2, output3, default}) {\n  const propValue = obj[propName];\n  if (propValue === value1) {\n    output1.next(obj);\n  } else if (propValue === value2) {\n    output2.next(obj);\n  } else if (propValue === value3) {\n    output3.next(obj);\n  } else {\n    default.next(obj);\n  }\n}",
+  "tokens": 618,
+  "completionTime": 3734,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
   "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
   "score": 5,
   "remarks": "The part is well-written and fulfills the prompt perfectly. It uses good names and properly uses Flyde's features.",
-  "redid": false
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:11.646Z"
 }

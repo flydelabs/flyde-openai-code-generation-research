@@ -1,10 +1,11 @@
 {
-  "result": "SQL Query | query,connection | result | result | query,connection\n```typescript\nimport { AdvancedContext } from \"flyd\";\n\ninterface Inputs {\n  query: string;\n  connection: Connection;\n}\n\ninterface Outputs {\n  result: Flyd.Stream<any>;\n}\n\nfunction runSqlQuery({ query, connection }: Inputs, { result }: Outputs, { onError }: AdvancedContext) {\n  connection.query(query, (err, res) => {\n    if (err) {\n      onError(err);\n    } else {\n      result.next(res);\n    }\n  });\n}\n```\nNote: `Connection` is a type from a SQL library like `mysql` or `pg`.",
-  "tokens": 682,
-  "completionTime": 11247,
+  "result": "SQL Query | query, connection | result | result | query, connection\nfunction ({query, connection}, {result}) {\n  // Code to execute SQL query using the provided connection\n  // Store the result in the 'result' output\n}",
+  "tokens": 595,
+  "completionTime": 1793,
   "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
   "prompt": "Run SQL query",
-  "score": 5,
-  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly handles errors and sends the result to the output stream.",
-  "redid": false
+  "score": 3,
+  "remarks": "The part is relevant to the request but lacks the actual implementation of the SQL query execution. The comments indicate what should be done but the code to do it is missing.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:03:23.101Z"
 }

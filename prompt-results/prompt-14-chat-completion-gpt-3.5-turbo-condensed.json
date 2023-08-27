@@ -1,10 +1,11 @@
 {
-  "result": "CSV parsing can be done without any external libraries by using built-in Node.js modules. Here's an example implementation:\n\n```javascript\nconst fs = require('fs');\n\nfunction parseCSV(filePath) {\n  const fileData = fs.readFileSync(filePath, 'utf-8');\n  const rows = fileData.split('\\n');\n  const headers = rows[0].split(',');\n\n  const data = [];\n  for (let i = 1; i < rows.length; i++) {\n    const row = rows[i].split(',');\n    if (row.length !== headers.length) {\n      throw new Error(`Row ${i} has incorrect number of columns`);\n    }\n    const rowData = {};\n    for (let j = 0; j < headers.length; j++) {\n      rowData[headers[j]] = row[j];\n    }\n    data.push(rowData);\n  }\n\n  return data;\n}\n```\n\nThis implementation reads the CSV file synchronously using the `fs` module, splits the file data into rows and headers, and then loops through each row to create an object with keys corresponding to the header names and values corresponding to the row values. The resulting array of objects represents the parsed CSV data. Note that this implementation assumes that the first row of the CSV file contains the header names.",
-  "tokens": 956,
-  "completionTime": 18594,
+  "result": "CSV Parser | csvData | parsedData | EXPLICIT | NONE\nfunction ({csvData}, {parsedData}) {\n  const rows = csvData.split('\\n');\n  const headers = rows[0].split(',');\n  const data = [];\n\n  for (let i = 1; i < rows.length; i++) {\n    const row = rows[i].split(',');\n    if (row.length === headers.length) {\n      const obj = {};\n      for (let j = 0; j < headers.length; j++) {\n        obj[headers[j]] = row[j];\n      }\n      data.push(obj);\n    }\n  }\n\n  parsedData.next(data);\n}",
+  "tokens": 830,
+  "completionTime": 3569,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
   "prompt": "parse a csv file without any libraries",
-  "score": 1,
-  "remarks": "Invalid metadata row CSV parsing can be done without any external libraries by using built-in Node.js modules. Here's an example implementation:",
-  "redid": false
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly parses the CSV data as per the prompt.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:50.916Z"
 }

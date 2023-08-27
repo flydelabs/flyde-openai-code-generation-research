@@ -218,20 +218,7 @@ function calculateCost(result: GeneratedPartWithScore) {
       }),
     ];
 
-    const p10 = [
-      `${name} - p10`,
-      ...generatorTypes.map((generatorName) => {
-        const costs = generatorToResultsMap.get(generatorName)!;
-        return formatValue(
-          calcPercentile(
-            costs.map((r) => valueExtractor(r)),
-            10
-          )
-        );
-      }),
-    ];
-
-    const percentiles = [40, 30, 20, 10].map((p) => {
+    const percentiles = [10, 20, 30, 40, 50, 60, 70, 80, 90].map((p) => {
       return [
         `${name} - p${p}`,
         ...generatorTypes.map((generatorName) => {

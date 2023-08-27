@@ -1,10 +1,11 @@
 {
-  "result": "Run SQL query | query,connection | result | result | query",
-  "tokens": 1044,
-  "completionTime": 1591,
+  "result": "ID | query, connection | result | IMPLICIT | NONE\n\nfunction ({query, connection}, {result}, {externalContext}) {\n  const { database } = externalContext;\n  database.query(query, connection)\n    .then((res) => result.next(res))\n    .catch((error) => onError(error));\n}",
+  "tokens": 1094,
+  "completionTime": 2045,
   "generatorName": "chat-completion-gpt-3.5-turbo-full",
   "prompt": "Run SQL query",
-  "score": 5,
-  "remarks": "The part is well-structured and uses Flyde's features correctly. It is relevant to the prompt and does not require any tweaks.",
-  "redid": false
+  "score": 4,
+  "remarks": "The function uses the onError method incorrectly. It should be accessed from the advanced context, not directly.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:03:14.987Z"
 }

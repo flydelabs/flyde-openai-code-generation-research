@@ -1,10 +1,11 @@
 {
-  "result": "POST Request | url,headers,params,data | data | IMPLICIT | NONE\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n}",
-  "tokens": 761,
-  "completionTime": 6640,
+  "result": "POST Request | url, headers, params, data | response | IMPLICIT | NONE\nfunction ({url, headers, params, data}, {response}) {\n  axios.post(url, data, { headers, params })\n    .then(res => response.next(res.data))\n    .catch(error => onError(error));\n}",
+  "tokens": 756,
+  "completionTime": 1953,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
   "prompt": "Send an HTTP POST request",
-  "score": 5,
-  "remarks": "The part correctly implements an HTTP POST request using the provided inputs and outputs the response data. It uses good names and properly uses Flyde's features.",
-  "redid": false
+  "score": 4,
+  "remarks": "The part is almost perfect, but it doesn't handle the 'onError' function correctly. It should be accessed from the 'advanced' context.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:36.171Z"
 }

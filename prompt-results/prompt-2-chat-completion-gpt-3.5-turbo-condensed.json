@@ -1,10 +1,11 @@
 {
-  "result": "ID: JSON String to Object Converter\nInputs: json\nOutputs: object\nCompletion Type: IMPLICIT\nReactive Inputs: NONE\n\nfunction ({json}, {object}) {\n  try {\n    const parsed = JSON.parse(json);\n    object.next(parsed);\n  } catch (error) {\n    onError(error);\n  }\n}",
-  "tokens": 761,
-  "completionTime": 5081,
+  "result": "JSON to Object | jsonString | object | IMPLICIT | NONE\nfunction ({jsonString}, {object}) {\n  try {\n    const parsedObject = JSON.parse(jsonString);\n    object.next(parsedObject);\n  } catch (error) {\n    onError(error);\n  }\n}",
+  "tokens": 748,
+  "completionTime": 1826,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
   "prompt": "JSON string to object converter",
-  "score": 1,
-  "remarks": "Invalid metadata row ID: JSON String to Object Converter",
-  "redid": false
+  "score": 5,
+  "remarks": "The part is well-written and does exactly what the prompt asked for. It uses good names and properly uses Flyde's features.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:58.982Z"
 }

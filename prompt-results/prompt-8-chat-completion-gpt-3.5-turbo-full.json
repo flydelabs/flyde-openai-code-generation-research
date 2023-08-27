@@ -1,10 +1,11 @@
 {
-  "result": "ID: Sum Prices\nInputs: list\nOutputs: sum\nCompletion Type: IMPLICIT\nReactive Inputs: NONE\n\n```\nfunction({list}, {sum}) {\n  const total = list.reduce((acc, curr) => acc + curr.price, 0);\n  sum.next(total);\n}\n```",
-  "tokens": 1104,
-  "completionTime": 4622,
+  "result": "ID | objects | sum | IMPLICIT | NONE\n\nfunction ({objects}, {sum}) {\n  const total = objects.reduce((acc, obj) => acc + obj.price, 0);\n  sum.next(total);\n}",
+  "tokens": 1085,
+  "completionTime": 1459,
   "generatorName": "chat-completion-gpt-3.5-turbo-full",
   "prompt": "Receive a list of objects and sum the 'price' property of each",
-  "score": 1,
-  "remarks": "Invalid metadata row ID: Sum Prices",
-  "redid": false
+  "score": 5,
+  "remarks": "The part correctly sums the 'price' property of each object in the list and emits the total sum. It uses good names and properly uses Flyde's features.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:04:23.304Z"
 }

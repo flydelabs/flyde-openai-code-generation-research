@@ -1,10 +1,11 @@
 {
-  "result": "Geolocate IP | ip | location | EXPLICIT | NONE\n\nfunction ({ip}, {location}) {\n  const url = `https://ipapi.co/${ip}/json/`;\n  return fetch(url)\n    .then((response) => response.json())\n    .then((data) => {\n      const { city, region, country_name } = data;\n      location.next(`${city}, ${region}, ${country_name}`);\n    });\n}",
-  "tokens": 790,
-  "completionTime": 6509,
+  "result": "IP to Location | ip | location | EXPLICIT | NONE\nasync function ({ip}, {location}) {\n  try {\n    const response = await axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=YOUR_API_KEY&ip=${ip}`);\n    const { city, region, country_name } = response.data;\n    const userLocation = `${city}, ${region}, ${country_name}`;\n    location.next(userLocation);\n  } catch (error) {\n    onError(error);\n  }\n}",
+  "tokens": 800,
+  "completionTime": 3052,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
   "prompt": "return the user's location based on their IP address",
   "score": 5,
-  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly fetches and processes the user's location based on their IP address.",
-  "redid": false
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly fetches the user's location based on the IP address.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:07.451Z"
 }

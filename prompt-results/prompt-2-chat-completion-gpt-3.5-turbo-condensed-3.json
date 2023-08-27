@@ -1,10 +1,11 @@
 {
-  "result": "JSONToObject | jsonString | jsonObject | IMPLICIT | NONE\nfunction ({jsonString}, {jsonObject}) {\n  try {\n    const obj = JSON.parse(jsonString);\n    jsonObject.next(obj);\n  } catch (error) {\n    onError(error);\n  }\n}",
-  "tokens": 478,
-  "completionTime": 2030,
+  "result": "ID: JSONStringToObject\nInputs: jsonString\nOutputs: jsonObject\nCompletion type: EXPLICIT\nReactive inputs: None\n\nfunction ({jsonString}, {jsonObject}) {\n  try {\n    const parsedObject = JSON.parse(jsonString);\n    jsonObject.next(parsedObject);\n  } catch (error) {\n    onError(error);\n  }\n}",
+  "tokens": 494,
+  "completionTime": 2185,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
   "prompt": "JSON string to object converter",
-  "score": 4,
-  "remarks": "The onError function is not defined in the function parameters. It should be accessed from the advanced context.",
-  "redid": false
+  "score": 1,
+  "remarks": "Invalid metadata row ID: JSONStringToObject",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:56.218Z"
 }

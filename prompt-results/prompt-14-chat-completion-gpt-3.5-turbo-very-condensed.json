@@ -1,10 +1,11 @@
 {
-  "result": "CSV Parser | csvData | parsedData | IMPLICIT | NONE\n\nfunction({csvData}, {parsedData}, {onError}) {\n  const rows = csvData.split('\\n');\n  const headers = rows[0].split(',');\n  const data = [];\n\n  for (let i = 1; i < rows.length; i++) {\n    const row = rows[i].split(',');\n    if (row.length !== headers.length) {\n      onError(new Error('Invalid CSV format'));\n      return;\n    }\n    const obj = {};\n    for (let j = 0; j < headers.length; j++) {\n      obj[headers[j]] = row[j];\n    }\n    data.push(obj);\n  }\n\n  parsedData.next(data);\n}",
-  "tokens": 702,
-  "completionTime": 12954,
+  "result": "CSV Parser | csvData | parsedData | EXPLICIT | csvData\nfunction ({ csvData }, { parsedData }) {\n  const rows = csvData.split(\"\\n\");\n  const headers = rows[0].split(\",\");\n  const data = [];\n\n  for (let i = 1; i < rows.length; i++) {\n    const row = rows[i].split(\",\");\n    if (row.length === headers.length) {\n      const rowData = {};\n      for (let j = 0; j < headers.length; j++) {\n        rowData[headers[j]] = row[j];\n      }\n      data.push(rowData);\n    }\n  }\n\n  parsedData.next(data);\n}",
+  "tokens": 686,
+  "completionTime": 3703,
   "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
   "prompt": "parse a csv file without any libraries",
   "score": 5,
-  "remarks": "The part correctly parses a CSV file without using any libraries. It handles errors properly and uses good names for inputs and outputs.",
-  "redid": false
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly parses the CSV data as per the prompt.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:01.775Z"
 }

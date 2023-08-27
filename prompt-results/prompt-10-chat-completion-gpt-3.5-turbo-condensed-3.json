@@ -1,10 +1,11 @@
 {
-  "result": "FilterObjects | map | array | array | map\nfunction ({map}, {array}) {\n  const filteredArray = Object.values(map).filter(obj => obj.hasOwnProperty('id'));\n  array.next(filteredArray);\n}",
-  "tokens": 484,
-  "completionTime": 1448,
+  "result": "FilterObjects | map | array | IMPLICIT | NONE\nfunction ({map}, {array}) {\n  const filteredArray = Object.values(map).filter(obj => obj.hasOwnProperty('id'));\n  array.next(filteredArray);\n}",
+  "tokens": 485,
+  "completionTime": 1330,
   "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
   "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
   "score": 5,
-  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It does the job perfectly.",
-  "redid": false
+  "remarks": "The part correctly transforms the map into an array and filters out objects without the 'id' property. It uses Flyde's features properly.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:00:56.251Z"
 }

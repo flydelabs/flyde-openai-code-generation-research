@@ -37,7 +37,6 @@ const completionBasedGenerators: Generator[] =
               { role: "user", content: prompt },
             ],
             temperature: 0.1,
-            max_tokens: 512,
             frequency_penalty: 0,
             presence_penalty: 0,
           },
@@ -62,7 +61,7 @@ const completionBasedGenerators: Generator[] =
       const now = Date.now();
       const promptId = `prompt-${idx + 1}-${generator.name}`;
 
-      if (doesPromptResultsExist(promptId)) {
+      if (doesPromptResultsExist(promptId) && generator.name.includes("ft")) {
         console.log(`Skipping prompt ${promptId}`);
         continue;
       }

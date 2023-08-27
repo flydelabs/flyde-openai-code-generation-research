@@ -1,10 +1,11 @@
 {
   "result": "POST Request | url,headers,params,data | data | IMPLICIT | NONE\n\n({ url, headers, params, data: body }, { data }) => {\n  const config: AxiosRequestConfig = { headers, params };\n  return axios.post(url, body, config).then((res) => data.next(res.data));\n}",
-  "tokens": 1099,
-  "completionTime": 5449,
+  "tokens": 1097,
+  "completionTime": 1937,
   "generatorName": "chat-completion-gpt-3.5-turbo-full",
   "prompt": "Send an HTTP POST request",
   "score": 5,
-  "remarks": "The part is well-written and does exactly what the prompt asked for. It uses good names and properly uses Flyde's features.",
-  "redid": false
+  "remarks": "The part is well-written and does exactly what the prompt asked for.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:01:37.945Z"
 }

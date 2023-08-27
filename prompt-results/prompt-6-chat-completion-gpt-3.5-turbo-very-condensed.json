@@ -1,10 +1,11 @@
 {
-  "result": "Throttle | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const lastExecTime = state.get(\"lastExecTime\");\n  const now = Date.now();\n  if (!lastExecTime || now - lastExecTime >= wait) {\n    result.next(value);\n    state.set(\"lastExecTime\", now);\n  } else {\n    const remainingTime = wait - (now - lastExecTime);\n    const timer = setTimeout(() => {\n      result.next(value);\n      state.set(\"lastExecTime\", Date.now());\n    }, remainingTime);\n    state.set(\"timer\", timer);\n    onCleanup(() => clearTimeout(timer));\n  }\n}",
-  "tokens": 694,
-  "completionTime": 10766,
+  "result": "Throttle | value, wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const lastValue = state.get(\"lastValue\");\n  const lastTime = state.get(\"lastTime\");\n\n  const now = Date.now();\n  if (!lastTime || now - lastTime >= wait) {\n    result.next(value);\n    state.set(\"lastValue\", value);\n    state.set(\"lastTime\", now);\n  }\n\n  if (lastTime) {\n    clearTimeout(state.get(\"timer\"));\n  }\n\n  const timer = setTimeout(() => {\n    result.next(value);\n    state.set(\"lastValue\", value);\n    state.set(\"lastTime\", now);\n  }, wait);\n\n  state.set(\"timer\", timer);\n  onCleanup(() => clearTimeout(state.get(\"timer\")));\n}",
+  "tokens": 714,
+  "completionTime": 4424,
   "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
   "prompt": "Throttle a value",
-  "score": 5,
-  "remarks": "The part correctly implements the throttle functionality. It uses the state to store the last execution time and a timer to delay the next execution if necessary. The part also correctly cleans up the timer when it's done.",
-  "redid": false
+  "score": 4,
+  "remarks": "The part is well-written and follows the prompt, but it emits the value twice when the wait time is over.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:04:04.639Z"
 }

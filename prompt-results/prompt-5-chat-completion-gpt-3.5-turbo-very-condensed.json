@@ -1,10 +1,11 @@
 {
-  "result": "Metadata:\n- ID: Debounce\n- Inputs: value, wait\n- Outputs: result\n- Completion type: IMPLICIT\n- Reactive inputs: value\n\nFunction:\n```typescript\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n```\n\nExplanation: This node takes in a `value` and a `wait` time in milliseconds. It outputs the `value` after the `wait` time has passed, but if another `value` is received before the `wait` time is up, the timer is reset and the output is delayed again. This is useful for scenarios where you want to wait for a user to finish typing before triggering an action. The `value` input is marked as reactive, meaning that if multiple values are received before the node completes, they will be queued and processed in order.",
-  "tokens": 775,
-  "completionTime": 43198,
+  "result": "Debounce | value, wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}",
+  "tokens": 632,
+  "completionTime": 2538,
   "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
   "prompt": "Debounce a value",
-  "score": 1,
-  "remarks": "Invalid metadata row Metadata:",
-  "redid": false
+  "score": 5,
+  "remarks": "The part is well-written and correctly implements the debounce functionality. It uses the state to store the timer and properly cleans up on completion.",
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:03:51.221Z"
 }

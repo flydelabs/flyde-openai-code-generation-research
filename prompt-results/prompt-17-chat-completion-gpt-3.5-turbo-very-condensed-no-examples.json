@@ -1,10 +1,11 @@
 {
-  "result": "metadata:\n  id: \"sendSlackMessage\"\n  inputs:\n    - name: \"channel\"\n      type: \"string\"\n    - name: \"message\"\n      type: \"string\"\n  outputs:\n    - name: \"success\"\n      type: \"boolean\"\n    - name: \"error\"\n      type: \"string\"\n  completion: \"success\"\n  reactiveInputs: []\n\nfunction sendSlackMessage(context: AdvancedContext): void {\n  const { channel, message, outputs } = context.inputs;\n\n  // Send message to Slack channel\n  slackClient.sendMessage(channel, message)\n    .then(() => {\n      outputs.success = true;\n      context.complete();\n    })\n    .catch((error) => {\n      outputs.error = error.message;\n      context.complete();\n    });\n}",
-  "tokens": 304,
-  "completionTime": 4315,
+  "result": "metadata:\n  id: \"sendSlackMessage\"\n  inputs: {\n    channel: string,\n    message: string\n  }\n  outputs: {\n    success: boolean\n  }\n  completion: \"success\"\n  reactiveInputs: []\n\nfunction sendSlackMessage(inputs) {\n  const { channel, message } = inputs;\n\n  // Code to send message to Slack channel\n\n  return {\n    success: true\n  };\n}",
+  "tokens": 231,
+  "completionTime": 2446,
   "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
   "prompt": "send a message to a slack channel",
   "score": 1,
   "remarks": "Invalid metadata row metadata:",
-  "redid": false
+  "redid": false,
+  "lastUpdated": "2023-08-27T15:02:52.721Z"
 }
