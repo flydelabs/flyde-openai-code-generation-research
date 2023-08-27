@@ -1,0 +1,9 @@
+{
+  "result": "Query | connection,query | result | IMPLICIT | NONE\nasync ({ connection, query }, { result }) => {\n    const res = await connection.value.query(query);\n    result.next(res);\n  }",
+  "tokens": 1070,
+  "completionTime": 883,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-full",
+  "prompt": "Run SQL query",
+  "score": 4,
+  "remarks": "The part is well written and does the job, but it assumes that the connection is an object with a 'value' property that has a 'query' method. It would be better to directly use the 'connection' input."
+}

@@ -1,0 +1,9 @@
+{
+  "result": "Metadata: Debounce | value | result | result | value\n\nFunction:\n```typescript\nfunction ({value}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, 500);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}\n```\nThis debounce node will wait for 500ms after receiving a value before emitting it. If a new value is received before the 500ms are up, the timer is reset and the debounce starts again.",
+  "tokens": 827,
+  "completionTime": 10010,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
+  "prompt": "Debounce a value",
+  "score": 4,
+  "remarks": "Missing wait input"
+}

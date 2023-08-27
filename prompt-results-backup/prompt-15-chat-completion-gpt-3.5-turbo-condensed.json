@@ -1,0 +1,9 @@
+{
+  "result": "Geolocate IP | ip | location | EXPLICIT | NONE\n\nfunction ({ip}, {location}) {\n  const url = `https://ipapi.co/${ip}/json/`;\n  return fetch(url)\n    .then((response) => response.json())\n    .then((data) => {\n      const { city, region, country_name } = data;\n      location.next(`${city}, ${region}, ${country_name}`);\n    });\n}",
+  "tokens": 790,
+  "completionTime": 6509,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
+  "prompt": "return the user's location based on their IP address",
+  "score": 5,
+  "remarks": "Great job"
+}

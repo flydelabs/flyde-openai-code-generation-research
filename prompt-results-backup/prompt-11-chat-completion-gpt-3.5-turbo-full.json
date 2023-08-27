@@ -1,0 +1,9 @@
+{
+  "result": "ID | obj,prop,val1,val2,val3 | output1,output2,output3,default | IMPLICIT | NONE\n\nfunction ({obj, prop, val1, val2, val3}, {output1, output2, output3, defaultOutput}, {onError}) {\n  const value = obj[prop];\n  if (value === val1) {\n    output1.next(obj);\n  } else if (value === val2) {\n    output2.next(obj);\n  } else if (value === val3) {\n    output3.next(obj);\n  } else {\n    defaultOutput.next(obj);\n  }\n}",
+  "tokens": 1220,
+  "completionTime": 36309,
+  "generatorName": "chat-completion-gpt-3.5-turbo-full",
+  "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
+  "score": 5,
+  "remarks": ""
+}

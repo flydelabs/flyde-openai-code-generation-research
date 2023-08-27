@@ -17,6 +17,12 @@ function formatModelName(name: string) {
       return "CC 3.5: M";
     case "chat-completion-gpt-3.5-turbo-very-condensed":
       return "CC 3.5: S";
+    case "chat-completion-gpt-3.5-turbo-condensed-3":
+      return "CC 3.5: M3";
+    case "chat-completion-gpt-3.5-turbo-very-condensed-2":
+      return "CC 3.5: S2";
+    case "chat-completion-gpt-3.5-turbo-very-condensed-no-examples":
+      return "CC 3.5: S0";
     case "chat-completion-gpt-4-full":
       return "CC 4: L";
     case "chat-completion-gpt-4-condensed":
@@ -31,6 +37,18 @@ function formatModelName(name: string) {
       return "FT Curie";
     case "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18":
       return "FT Davinci";
+    case "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-full":
+      return "FT CC 3.5: L";
+    case "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed":
+      return "FT CC 3.5: M";
+    case "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed":
+      return "FT CC 3.5: S";
+    case "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed-3":
+      return "FT CC 3.5: M3";
+    case "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-2":
+      return "FT CC 3.5: S2";
+    case "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples":
+      return "FT CC 3.5: S0";
     default: {
       throw new Error("Unknown model name: " + name);
     }
@@ -38,15 +56,20 @@ function formatModelName(name: string) {
 }
 
 const modelOrder = [
-  "FT Ada",
-  "FT Babbage",
-  "FT Curie",
-  "FT Davinci",
+  "FT CC 3.5: S0",
+  "CC 3.5: S0",
+  "FT CC 3.5: S2",
+  "CC 3.5: S2",
+  "FT CC 3.5: S",
   "CC 3.5: S",
-  "CC 3.5: M",
-  "CC 3.5: L",
   "CC 4: S",
+  "FT CC 3.5: M3",
+  "CC 3.5: M3",
+  "FT CC 3.5: M",
+  "CC 3.5: M",
   "CC 4: M",
+  "FT CC 3.5: L",
+  "CC 3.5: L",
   "CC 4: L",
 ];
 
@@ -62,6 +85,9 @@ function sortGeneratorNames(
   );
   const idxA = modelOrder.indexOf(niceNameA);
   const idxB = modelOrder.indexOf(niceNameB);
+  if (idxA === -1 || idxB === -1) {
+    throw new Error(`Unknown model name: [${niceNameA}] or [${niceNameB}]`);
+  }
   return idxA - idxB;
 }
 
@@ -78,7 +104,11 @@ function calculateCost(result: GeneratedPartWithScore) {
   } else if (generatorName.includes("ada")) {
     price1k = 0.0016;
   } else if (generatorName.includes("gpt-3.5")) {
-    price1k = 0.002;
+    if (generatorName.includes("ft")) {
+      price1k = 0.014;
+    } else {
+      price1k = 0.002;
+    }
   } else if (generatorName.includes("gpt-4")) {
     price1k = 0.06;
   } else {
@@ -94,6 +124,10 @@ function calculateCost(result: GeneratedPartWithScore) {
   const allResults: GeneratedPartWithScore[] = [];
   const promptResults = readdirSync(join(__dirname, "../../prompt-results"));
   for (const file of promptResults) {
+    if (!file.includes("gpt-3.5") && !file.includes("gpt-4")) {
+      console.log("Skipping", file);
+      continue;
+    }
     const fullPath = join(__dirname, "../../prompt-results", file);
     const content = readFileSync(fullPath, "utf-8");
     const result: GeneratedPartWithScore = JSON.parse(content);
@@ -146,7 +180,11 @@ function calculateCost(result: GeneratedPartWithScore) {
     ),
   ];
 
-  writeFileSync(join(__dirname, "../../results.csv"), toCsv(csvData), "utf-8");
+  writeFileSync(
+    join(__dirname, "../../results-ft.csv"),
+    toCsv(csvData),
+    "utf-8"
+  );
 
   function generateRows(
     name: string,
@@ -180,19 +218,34 @@ function calculateCost(result: GeneratedPartWithScore) {
       }),
     ];
 
-    const p80Row = [
-      `${name} - p80`,
+    const p10 = [
+      `${name} - p10`,
       ...generatorTypes.map((generatorName) => {
         const costs = generatorToResultsMap.get(generatorName)!;
         return formatValue(
           calcPercentile(
             costs.map((r) => valueExtractor(r)),
-            80
+            10
           )
         );
       }),
     ];
 
-    return [medianRow, p80Row, averageRow];
+    const percentiles = [40, 30, 20, 10].map((p) => {
+      return [
+        `${name} - p${p}`,
+        ...generatorTypes.map((generatorName) => {
+          const costs = generatorToResultsMap.get(generatorName)!;
+          return formatValue(
+            calcPercentile(
+              costs.map((r) => valueExtractor(r)),
+              p
+            )
+          );
+        }),
+      ];
+    });
+
+    return [averageRow, medianRow, ...percentiles];
   }
 })();

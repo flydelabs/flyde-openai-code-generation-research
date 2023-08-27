@@ -1,0 +1,9 @@
+{
+  "result": "Send Slack Message | token,channel,text | success,error | success,error | NONE\nasync function ({token, channel, text}, {success, error}) {\n  try {\n    const response = await axios.post('https://slack.com/api/chat.postMessage', {\n      channel,\n      text,\n    }, {\n      headers: { 'Authorization': `Bearer ${token}` }\n    });\n\n    if (response.data.ok) {\n      success.next(true);\n    } else {\n      error.next(response.data.error);\n    }\n  } catch (err) {\n    error.next(err.message);\n  }\n}",
+  "tokens": 1151,
+  "completionTime": 19411,
+  "generatorName": "chat-completion-gpt-4-full",
+  "prompt": "send a message to a slack channel",
+  "score": 5,
+  "remarks": "Great job"
+}

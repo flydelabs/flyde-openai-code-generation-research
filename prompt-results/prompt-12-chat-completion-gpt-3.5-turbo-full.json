@@ -5,5 +5,6 @@
   "generatorName": "chat-completion-gpt-3.5-turbo-full",
   "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
   "score": 1,
-  "remarks": "Invalid metadata row ID: Repeat"
+  "remarks": "Invalid metadata row ID: Repeat",
+  "redid": false
 }

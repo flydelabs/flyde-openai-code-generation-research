@@ -1,0 +1,9 @@
+{
+  "result": " Headless Browser | url | page | IMPLICIT | NONE\nfunction (input, output) {\n  const { url } = input;\n  const { page } = output;\n  \n  const headless = await new HeadlessBrowser(url);\n  page.next(headless.getPage());\n}",
+  "tokens": 100,
+  "completionTime": 968,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
+  "score": 2,
+  "remarks": "Invalid format, missing metadata, not extracting h1 tag"
+}

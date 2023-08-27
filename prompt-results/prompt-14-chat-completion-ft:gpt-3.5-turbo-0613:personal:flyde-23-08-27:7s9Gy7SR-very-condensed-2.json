@@ -1,0 +1,9 @@
+{
+  "result": "CSV Parser | csv | rows | rows | csv\nfunction ({ csv }, { rows }) {\n    const lines = csv.split(\"\\n\");\n    const result = [];\n    const headers = lines[0].split(\",\");\n    for (let i = 1; i < lines.length; i++) {\n      if (lines[i]) {\n        const obj = {};\n        const currentline = lines[i].split(\",\");\n        for (let j = 0; j < headers.length; j++) {\n          obj[headers[j]] = currentline[j];\n        }\n        result.push(obj);\n      }\n    }\n    rows.next(result);\n  }",
+  "tokens": 374,
+  "completionTime": 2199,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-2",
+  "prompt": "parse a csv file without any libraries",
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly parses a CSV file as per the prompt."
+}

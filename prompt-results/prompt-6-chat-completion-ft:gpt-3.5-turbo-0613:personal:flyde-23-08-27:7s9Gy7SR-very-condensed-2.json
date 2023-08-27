@@ -1,0 +1,9 @@
+{
+  "result": "Throttle | value,wait | result | result | value\nfunction ({ value, wait }, { result }, { state, onCleanup }) {\n    const lastValue = state.get(\"lastValue\");\n    const lastTime = state.get(\"lastTime\");\n    const timer = state.get(\"timer\");\n\n    if (timer) {\n      clearTimeout(timer);\n    }\n\n    const now = Date.now();\n\n    if (lastValue === value && now - lastTime < wait) {\n      const newTimer = setTimeout(() => {\n        result.next(value);\n      }, wait - (now - lastTime));\n\n      state.set(\"timer\", newTimer);\n      onCleanup(() => clearTimeout(newTimer));\n    } else {\n      result.next(value);\n      state.set(\"lastValue\", value);\n      state.set(\"lastTime\", now);\n    }\n  }",
+  "tokens": 411,
+  "completionTime": 3747,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-2",
+  "prompt": "Throttle a value",
+  "score": 4,
+  "remarks": "The part is well written and uses Flyde's features correctly. However, it doesn't handle the case where the value changes while it's waiting to emit the previous value."
+}

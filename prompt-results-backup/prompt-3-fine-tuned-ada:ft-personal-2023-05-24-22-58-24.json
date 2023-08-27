@@ -1,0 +1,9 @@
+{
+  "result": " Query | connection,collection,query,options | result | IMPLICIT | NONE\nfunction ({ conn, coll, query, opts }, { res }) {\n    const result = await conn\n      .db()\n      .collection(coll)\n      .count(query, opts);\n    res.next(result);\n  }",
+  "tokens": 97,
+  "completionTime": 1012,
+  "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
+  "prompt": "Run SQL query",
+  "score": 2,
+  "remarks": "Valid format but unrelated to SQL query"
+}

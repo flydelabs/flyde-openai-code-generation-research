@@ -1,0 +1,9 @@
+{
+  "result": "Run SQL Query | query,connection | result,error | result,error | NONE\nasync function ({query, connection}, {result, error}, {onError}) {\n  try {\n    const db = new Database(connection);\n    const data = await db.run(query);\n    db.close();\n    result.next(data);\n  } catch (err) {\n    onError(err);\n    error.next(err);\n  }\n}",
+  "tokens": 1110,
+  "completionTime": 14273,
+  "generatorName": "chat-completion-gpt-4-full",
+  "prompt": "Run SQL query",
+  "score": 5,
+  "remarks": "Great job"
+}

@@ -1,0 +1,9 @@
+{
+  "result": "Switch Property 4 | object,property,value1,value2,value3,default | output1,output2,output3,default | IMPLICIT | NONE\nfunction (inputs, outputs) {\n    const {\n      object,\n      property,\n      value1,\n      value2,\n      value3,\n      default: defaultOutput,\n    } = inputs;\n    const { output1, output2, output3, default: defaultOutputOutput } = outputs;\n\n    const value = object[property];\n    if (value === value1) {\n      output1.next(object);\n    } else if (value === value2) {\n      output2.next(object);\n    } else if (value === value3) {\n      output3.next(object);\n    } else {\n      defaultOutputOutput.next(object);\n    }\n  }",
+  "tokens": 913,
+  "completionTime": 2491,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed",
+  "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
+  "score": 5,
+  "remarks": "The part is well-written and fulfills the prompt perfectly. It uses good names and properly uses Flyde's features."
+}

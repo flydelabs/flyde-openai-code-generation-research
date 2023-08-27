@@ -1,0 +1,10 @@
+{
+  "result": "```typescript\nimport { createPart, createReactiveInput } from \"flyde\";\n\ntype Item = any;\n\nconst emitItemMultipleTimes = createPart<Item, Item[]>(\n  (item, { emit }) => {\n    const output: Item[] = [];\n\n    for (let i = 0; i < 5; i++) {\n      output.push(item);\n      emit(output);\n      await new Promise((resolve) => setTimeout(resolve, 200));\n    }\n\n    return output;\n  },\n  {\n    inputs: {\n      item: createReactiveInput<Item>(),\n    },\n    outputs: {\n      items: [],\n    },\n    completionType: \"explicit\",\n    reactiveInputs: [\"item\"],\n  }\n);\n\nexport default emitItemMultipleTimes;\n```\n\nUsage:\n```typescript\nimport emitItemMultipleTimes from \"./emitItemMultipleTimes\";\n\nconst item = \"example item\";\n\nemitItemMultipleTimes.run({ item }).then((result) => {\n  console.log(result.items); // [item, item, item, item, item]\n});\n```",
+  "tokens": 366,
+  "completionTime": 5505,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript",
+  "redid": false
+}

@@ -1,0 +1,9 @@
+{
+  "result": " Debounce | value,wait | result | result | value\nfunction (inputData, outputData, state) {\n  const { value, wait } = inputData;\n  const { result } = outputData;\n  const timer = state.get('timer');\n  if (timer) {\n    clearTimeout(timer);\n  }\n\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set('timer', newTimer);\n\n  state.onCleanup(() => {\n    clearTimeout(timer);\n  });\n}",
+  "tokens": 147,
+  "completionTime": 4146,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "Debounce a value",
+  "score": 4,
+  "remarks": "Function signature is incorrect"
+}

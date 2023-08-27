@@ -1,0 +1,10 @@
+{
+  "result": "```typescript\nimport puppeteer from 'puppeteer';\n\ntype Input = {\n  url: string;\n};\n\ntype Output = {\n  h1Tag?: string;\n};\n\nconst getH1TagFromWebsite = async (input: Input): Promise<Output> => {\n  const browser = await puppeteer.launch();\n  const page = await browser.newPage();\n  await page.goto(input.url);\n\n  const h1Tag = await page.evaluate(() => {\n    const h1Element = document.querySelector('h1');\n    return h1Element ? h1Element.textContent : undefined;\n  });\n\n  await browser.close();\n\n  return { h1Tag };\n};\n\nconst getH1TagFromWebsitePart: FPart<Input, Output> = {\n  id: 'getH1TagFromWebsite',\n  inputs: ['url'],\n  outputs: ['h1Tag'],\n  fn: getH1TagFromWebsite,\n};\n\nexport default getH1TagFromWebsitePart;\n```\nIn this example, we use the `puppeteer` library to launch a headless browser, navigate to the provided URL, and extract the text content of the first `h1` tag on the page. The `getH1TagFromWebsite` function is an asynchronous function that takes an `Input` object containing the URL and returns a `Promise` that resolves to an `Output` object containing the extracted `h1` tag text or `undefined` if no `h1` tag is found.\n\nThe `getH1TagFromWebsitePart` is a Flyde part that defines the metadata and function declaration for the `getH1TagFromWebsite` function. It specifies that the part has an ID of `'getH1TagFromWebsite'`, has an input of `'url'`, an output of `'h1Tag'`, and uses the `getH1TagFromWebsite` function to perform the desired action.",
+  "tokens": 547,
+  "completionTime": 9678,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript",
+  "redid": false
+}

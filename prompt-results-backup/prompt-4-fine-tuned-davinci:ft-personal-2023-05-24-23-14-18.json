@@ -1,0 +1,9 @@
+{
+  "result": " Head | array | head | IMPLICIT | NONE\nfunction (inputArray, outputHead) {\n  const [head] = inputArray;\n  outputHead.next(head);\n}",
+  "tokens": 54,
+  "completionTime": 1603,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "Get the first element of an array",
+  "score": 4,
+  "remarks": "Metadata and function signature mismatch"
+}

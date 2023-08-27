@@ -1,0 +1,10 @@
+{
+  "result": "metadata:\n  id: \"debounce\"\n  inputs:\n    - name: \"value\"\n      type: \"any\"\n      reactive: true\n    - name: \"delay\"\n      type: \"number\"\n  outputs:\n    - name: \"debouncedValue\"\n      type: \"any\"\n  completion: \"explicit\"\n\nfunction debounce(value: any, delay: number): Promise<any> {\n  return new Promise((resolve) => {\n    setTimeout(() => {\n      resolve(value);\n    }, delay);\n  });\n}",
+  "tokens": 246,
+  "completionTime": 2818,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "Debounce a value",
+  "score": 1,
+  "remarks": "Invalid metadata row metadata:",
+  "redid": false
+}

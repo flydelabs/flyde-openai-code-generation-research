@@ -1,0 +1,9 @@
+{
+  "result": "Get First Element | array | element | IMPLICIT | NONE\nfunction ({array}, {element}) {\n  element.next(array[0]);\n}",
+  "tokens": 1064,
+  "completionTime": 2791,
+  "generatorName": "chat-completion-gpt-3.5-turbo-full",
+  "prompt": "Get the first element of an array",
+  "score": 5,
+  "remarks": ""
+}

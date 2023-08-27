@@ -1,0 +1,9 @@
+{
+  "result": "Fetch H1 | url | h1 | IMPLICIT | NONE\nasync function ({url}, {h1}, {externalContext}) {\n  const browser = externalContext.get(\"browser\") || await puppeteer.launch();\n  externalContext.set(\"browser\", browser);\n\n  const page = await browser.newPage();\n  await page.goto(url);\n\n  const h1Element = await page.$(\"h1\");\n  if (h1Element) {\n    const h1Text = await page.evaluate((el) => el.textContent, h1Element);\n    h1.next(h1Text);\n  }\n\n  await page.close();\n}",
+  "tokens": 837,
+  "completionTime": 19331,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "receive the url of a website and return the h1 tag of the page if it exists, using a headless browser",
+  "score": 5,
+  "remarks": "Great job"
+}

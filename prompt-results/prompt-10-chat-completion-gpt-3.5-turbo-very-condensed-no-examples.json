@@ -1,0 +1,10 @@
+{
+  "result": "```typescript\nimport { F, Flyde } from 'flyde';\n\ntype ObjectWithId = {\n  id: string;\n  [key: string]: any;\n};\n\ntype Input = {\n  map: { [id: string]: ObjectWithId };\n};\n\ntype Output = {\n  array: ObjectWithId[];\n};\n\nconst transformMapToArray: F<Input, Output> = async (input, output) => {\n  const { map } = input;\n  const array = Object.values(map).filter(obj => obj.hasOwnProperty('id'));\n  output.array = array;\n};\n\nconst transformMapToArrayPart = new Flyde(transformMapToArray);\n\nexport default transformMapToArrayPart;\n```",
+  "tokens": 293,
+  "completionTime": 3647,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript",
+  "redid": false
+}

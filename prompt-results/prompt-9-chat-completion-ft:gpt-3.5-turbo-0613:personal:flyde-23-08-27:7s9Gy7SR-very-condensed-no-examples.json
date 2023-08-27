@@ -1,0 +1,9 @@
+{
+  "result": "```typescript\nimport { createFlydPart } from 'flyd-parts';\n\ntype SortByAge = (array: { age: number }[]) => { age: number }[];\n\nconst sortByAge: SortByAge = (array) =>\n  array.sort((a, b) => a.age - b.age);\n\nexport const sortArrayByAge = createFlydPart<SortByAge>({\n  metadata: {\n    inputs: ['array'],\n    outputs: ['sortedArray'],\n  },\n  async *execute(inputs, output, _context) {\n    const { array } = inputs;\n    const sortedArray = sortByAge(array);\n    output.sortedArray(sortedArray);\n  },\n});\n```",
+  "tokens": 286,
+  "completionTime": 2056,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples",
+  "prompt": "sort an array of objects by the 'age' property",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript"
+}

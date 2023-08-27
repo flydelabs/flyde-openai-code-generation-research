@@ -1,0 +1,9 @@
+{
+  "result": " Get Array Of Objects | object | array | IMPLICIT | NONE\nfunction ({ inputObject }, { outputArray }) {\n  const { input } = inputObject;\n  const { output } = outputArray;\n  output.next(input);\n}",
+  "tokens": 71,
+  "completionTime": 1850,
+  "generatorName": "fine-tuned-babbage:ft-personal-2023-05-24-22-40-27",
+  "prompt": "sort an array of objects by the 'age' property",
+  "score": 2,
+  "remarks": "Valid format but unrelated to request"
+}

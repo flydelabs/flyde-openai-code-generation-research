@@ -1,0 +1,10 @@
+{
+  "result": "```typescript\ntype Input = {\n  object: object;\n  propertyName: string;\n  value1: any;\n  value2: any;\n  value3: any;\n};\n\ntype Output = {\n  output1?: object;\n  output2?: object;\n  output3?: object;\n  default: object;\n};\n\ntype Context = {\n  input: Input;\n  output: Output;\n};\n\nconst processObject = async (context: Context): Promise<void> => {\n  const { object, propertyName, value1, value2, value3 } = context.input;\n\n  if (object[propertyName] === value1) {\n    context.output.output1 = object;\n  } else if (object[propertyName] === value2) {\n    context.output.output2 = object;\n  } else if (object[propertyName] === value3) {\n    context.output.output3 = object;\n  } else {\n    context.output.default = object;\n  }\n};\n\nexport default processObject;\n```",
+  "tokens": 399,
+  "completionTime": 5427,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript",
+  "redid": false
+}

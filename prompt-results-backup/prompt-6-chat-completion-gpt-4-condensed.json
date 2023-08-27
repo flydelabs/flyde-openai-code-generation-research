@@ -1,0 +1,9 @@
+{
+  "result": "Throttle | value,wait | throttled | throttled | value\nfunction ({value, wait}, {throttled}, {state, onCleanup}) {\n  const lastEmit = state.get(\"lastEmit\");\n  const now = Date.now();\n\n  if (!lastEmit || now - lastEmit >= wait) {\n    throttled.next(value);\n    state.set(\"lastEmit\", now);\n  } else {\n    const timer = setTimeout(() => {\n      throttled.next(value);\n      state.set(\"lastEmit\", Date.now());\n    }, wait - (now - lastEmit));\n\n    onCleanup(() => clearTimeout(timer));\n  }\n}",
+  "tokens": 828,
+  "completionTime": 23930,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "Throttle a value",
+  "score": 5,
+  "remarks": "Great implementation"
+}

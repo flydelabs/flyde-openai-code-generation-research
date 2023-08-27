@@ -1,0 +1,9 @@
+{
+  "result": "Throttle | value,wait | result | result | value\nfunction (inputs, outputs, adv) {\n    const { value, wait } = inputs;\n    const { result } = outputs;\n\n    const timer = adv.state.get(\"timer\");\n    if (timer) {\n      clearTimeout(timer);\n    }\n\n    const newTimer = setTimeout(() => {\n      result.next(value);\n    }, wait);\n\n    adv.state.set(\"timer\", newTimer);\n    adv.onCleanup(() => clearTimeout(timer));\n  }",
+  "tokens": 1131,
+  "completionTime": 1782,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-full",
+  "prompt": "Throttle a value",
+  "score": 5,
+  "remarks": "The part is well-written and correctly implements the throttle functionality. It uses the state to store the timer and properly cleans up on completion."
+}

@@ -1,0 +1,9 @@
+{
+  "result": "Filter By Property Value | object,property,value1,value2,value3 | output1,output2,output3,default | IMPLICIT | NONE\nfunction ({object, property, value1, value2, value3}, {output1, output2, output3, defaultOutput}) {\n  const propValue = object[property];\n  if (propValue === value1) {\n    output1.next(object);\n  } else if (propValue === value2) {\n    output2.next(object);\n  } else if (propValue === value3) {\n    output3.next(object);\n  } else {\n    defaultOutput.next(object);\n  }\n}",
+  "tokens": 737,
+  "completionTime": 21579,
+  "generatorName": "chat-completion-gpt-4-very-condensed",
+  "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
+  "score": 5,
+  "remarks": ""
+}

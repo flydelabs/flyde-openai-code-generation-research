@@ -1,0 +1,9 @@
+{
+  "result": " Remove | array,id | object | IMPLICIT | NONE\nfunction ({ inputData }, { outputData }) {\n  const { inputMap, id } = inputData;\n  const { outputArray } = outputData;\n  outputArray.next(inputMap.filter((id) => id !== id));\n}",
+  "tokens": 96,
+  "completionTime": 873,
+  "generatorName": "fine-tuned-babbage:ft-personal-2023-05-24-22-40-27",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 2,
+  "remarks": "Wrong part name, wrong inputs, wrong outputs, wrong function logic"
+}

@@ -1,0 +1,9 @@
+{
+  "result": "JsonToObject | json | object | IMPLICIT | NONE\nfunction (inputs, outputs) {\n    const { json, object } = inputs;\n    const { value } = outputs;\n    value.next(JSON.parse(json));\n  }",
+  "tokens": 471,
+  "completionTime": 930,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed-3",
+  "prompt": "JSON string to object converter",
+  "score": 2,
+  "remarks": "The part is in valid format but the function is using wrong input and output names. It should use 'json' from inputs and 'object' from outputs."
+}

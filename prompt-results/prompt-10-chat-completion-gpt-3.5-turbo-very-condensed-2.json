@@ -1,0 +1,10 @@
+{
+  "result": "FilterObjects | objects | filteredObjects | filteredObjects | objects\nfunction ({objects}, {filteredObjects}) {\n  const filteredArray = objects.filter(obj => obj.hasOwnProperty('id'));\n  filteredObjects.next(filteredArray);\n}",
+  "tokens": 304,
+  "completionTime": 1970,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-2",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 2,
+  "remarks": "The function is in valid format but it doesn't transform a map into an array and doesn't handle objects without 'id' property correctly.",
+  "redid": false
+}

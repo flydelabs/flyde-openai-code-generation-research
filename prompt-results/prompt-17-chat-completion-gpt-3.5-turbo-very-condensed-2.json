@@ -1,0 +1,10 @@
+{
+  "result": "SlackMessage | channel, message | success, error | explicit | channel, message\nfunction ({channel, message}, {success, error}, {externalContext}) {\n  externalContext.slack.sendMessage(channel, message)\n    .then(() => success.next())\n    .catch((err) => error.next(err));\n}",
+  "tokens": 310,
+  "completionTime": 2106,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-2",
+  "prompt": "send a message to a slack channel",
+  "score": 5,
+  "remarks": "The part is well written, uses good names and properly uses Flyde's features. It does the job well.",
+  "redid": false
+}

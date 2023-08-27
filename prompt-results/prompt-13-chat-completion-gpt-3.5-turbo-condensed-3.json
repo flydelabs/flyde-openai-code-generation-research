@@ -1,0 +1,10 @@
+{
+  "result": "HTTP POST | url, body | response | EXPLICIT | NONE\nasync function ({url, body}, {response}, {externalContext}) {\n  try {\n    const requestOptions = {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(body)\n    };\n    const res = await fetch(url, requestOptions);\n    const data = await res.json();\n    response.next(data);\n  } catch (error) {\n    externalContext.onError(error);\n  }\n}",
+  "tokens": 529,
+  "completionTime": 3190,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
+  "prompt": "Send an HTTP POST request",
+  "score": 4,
+  "remarks": "The part is well written and does the job, but it doesn't handle headers or parameters which might be needed in some cases.",
+  "redid": false
+}

@@ -1,0 +1,9 @@
+{
+  "result": "CSV Parser | csvData | parsedData | IMPLICIT | NONE\n\nfunction({csvData}, {parsedData}, {onError}) {\n  const rows = csvData.split('\\n');\n  const headers = rows[0].split(',');\n  const data = [];\n\n  for (let i = 1; i < rows.length; i++) {\n    const row = rows[i].split(',');\n    if (row.length !== headers.length) {\n      onError(new Error('Invalid CSV format'));\n      return;\n    }\n    const obj = {};\n    for (let j = 0; j < headers.length; j++) {\n      obj[headers[j]] = row[j];\n    }\n    data.push(obj);\n  }\n\n  parsedData.next(data);\n}",
+  "tokens": 702,
+  "completionTime": 12954,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
+  "prompt": "parse a csv file without any libraries",
+  "score": 5,
+  "remarks": "Great job"
+}

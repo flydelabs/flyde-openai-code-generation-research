@@ -1,0 +1,9 @@
+{
+  "result": "SQL Query | query,connection | result | result | query,connection\n```typescript\nimport { AdvancedContext } from \"flyd\";\n\ninterface Inputs {\n  query: string;\n  connection: Connection;\n}\n\ninterface Outputs {\n  result: Flyd.Stream<any>;\n}\n\nfunction runSqlQuery({ query, connection }: Inputs, { result }: Outputs, { onError }: AdvancedContext) {\n  connection.query(query, (err, res) => {\n    if (err) {\n      onError(err);\n    } else {\n      result.next(res);\n    }\n  });\n}\n```\nNote: `Connection` is a type from a SQL library like `mysql` or `pg`.",
+  "tokens": 682,
+  "completionTime": 11247,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed",
+  "prompt": "Run SQL query",
+  "score": 5,
+  "remarks": "Great job"
+}

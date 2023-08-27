@@ -1,0 +1,9 @@
+{
+  "result": "ID: Conditional Output\n\nInputs:\n- object\n- propertyName\n- value1\n- value2\n- value3\n\nOutputs:\n- output1\n- output2\n- output3\n- defaultOutput\n\nCompletion Type: IMPLICIT\n\nReactive Inputs: None\n\nFunction:\n```\nfunction ({object, propertyName, value1, value2, value3}, {output1, output2, output3, defaultOutput}) {\n  const propertyValue = object[propertyName];\n  if (propertyValue === value1) {\n    output1.next(object);\n  } else if (propertyValue === value2) {\n    output2.next(object);\n  } else if (propertyValue === value3) {\n    output3.next(object);\n  } else {\n    defaultOutput.next(object);\n  }\n}\n```",
+  "tokens": 918,
+  "completionTime": 12314,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
+  "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
+  "score": 1,
+  "remarks": "Invalid metadata row ID: Conditional Output"
+}

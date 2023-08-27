@@ -1,0 +1,9 @@
+{
+  "result": "```typescript\nimport { Flyde, AdvancedContext } from \"flyde\";\n\ntype SQLQueryPart = Flyde<\n  [string, string, string],\n  [string, string, string],\n  AdvancedContext\n>;\n\nconst sqlQuery: SQLQueryPart = {\n  metadata: {\n    id: \"sqlQuery\",\n    inputs: [\"query\", \"connectionString\", \"timeout\"],\n    outputs: [\"result\", \"error\", \"done\"],\n    completionType: \"done\",\n    reactiveInputs: [],\n  },\n  async execute(inputs, outputs, context) {\n    const [query, connectionString, timeout] = inputs;\n    const [resultOutput, errorOutput, doneOutput] = outputs;\n\n    // Execute the SQL query here\n\n    doneOutput.setValue(true);\n  },\n};\n\nexport default sqlQuery;\n```",
+  "tokens": 303,
+  "completionTime": 2405,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples",
+  "prompt": "Run SQL query",
+  "score": 1,
+  "remarks": "Invalid metadata row ```typescript"
+}

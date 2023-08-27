@@ -1,0 +1,9 @@
+{
+  "result": "SortByAge | array | sortedArray | IMPLICIT | NONE\nfunction (inputs, outputs) {\n    const { array, sortedArray } = inputs;\n    const { value } = outputs;\n    value.next(array.sort((a, b) => a.age - b.age));\n  }",
+  "tokens": 490,
+  "completionTime": 1108,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-condensed-3",
+  "prompt": "sort an array of objects by the 'age' property",
+  "score": 3,
+  "remarks": "The function is relevant but has some errors. The inputs and outputs are not correctly used. The sorted array should be sent to the 'sortedArray' output, not 'value'."
+}

@@ -1,0 +1,10 @@
+{
+  "result": "SlackMessage | channel,message | NONE | EXPLICIT | NONE\nasync function ({channel, message}, {}, {externalContext}) {\n  await externalContext.slack.sendMessage(channel, message);\n}",
+  "tokens": 466,
+  "completionTime": 1731,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
+  "prompt": "send a message to a slack channel",
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It is also relevant to the request.",
+  "redid": false
+}

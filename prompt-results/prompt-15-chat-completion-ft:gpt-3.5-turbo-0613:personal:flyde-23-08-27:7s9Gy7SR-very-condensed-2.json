@@ -1,0 +1,9 @@
+{
+  "result": "IP to Location | ip | location | location | ip\nasync function ({ ip }, { location }) {\n    const response = await fetch(`https://ipapi.co/${ip}/json/`);\n    const data = await response.json();\n    location.next(data);\n  }",
+  "tokens": 303,
+  "completionTime": 991,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-2",
+  "prompt": "return the user's location based on their IP address",
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It correctly fetches the user's location based on the IP address."
+}

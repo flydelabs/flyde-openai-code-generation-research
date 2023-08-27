@@ -1,0 +1,10 @@
+{
+  "result": "JSONToObject | jsonString | jsonObject | jsonObject | jsonString\nfunction ({jsonString}, {jsonObject}) {\n  try {\n    const obj = JSON.parse(jsonString);\n    jsonObject.next(obj);\n  } catch (error) {\n    jsonObject.error(error);\n  }\n}",
+  "tokens": 297,
+  "completionTime": 2096,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-2",
+  "prompt": "JSON string to object converter",
+  "score": 5,
+  "remarks": "The part is well-written, uses good names, and properly uses Flyde's features. It does the job perfectly.",
+  "redid": false
+}

@@ -1,0 +1,9 @@
+{
+  "result": "Round Robin | value | out1,out2,out3 | IMPLICIT | NONE\nfunction ({value}, {out1, out2, out3}, {state}) {\n  const current = state.get(\"current\") || 0;\n  switch (current) {\n    case 0:\n      out1.next(value);\n      state.set(\"current\", 1);\n      break;\n    case 1:\n      out2.next(value);\n      state.set(\"current\", 2);\n      break;\n    case 2:\n      out3.next(value);\n      state.set(\"current\", 0);\n      break;\n  }\n}",
+  "tokens": 824,
+  "completionTime": 20345,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "Round robin a value into one of 3 outputs",
+  "score": 5,
+  "remarks": "Great job"
+}

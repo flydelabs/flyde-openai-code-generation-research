@@ -5,5 +5,6 @@
   "generatorName": "chat-completion-gpt-3.5-turbo-full",
   "prompt": "receive an object, a property name and 3 values. If the value of the property is equal to the first value, output the object to output 1, if it's the second, output to output 2, if it's the third, output to output 3, otherwise, output to 'default' output",
   "score": 5,
-  "remarks": ""
+  "remarks": "The part is well-written and fulfills the prompt perfectly. It uses good names and properly uses Flyde's features.",
+  "redid": false
 }

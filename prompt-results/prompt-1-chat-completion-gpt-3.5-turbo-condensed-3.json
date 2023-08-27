@@ -1,0 +1,10 @@
+{
+  "result": "Concatenate | input1,input2 | output | output | input1, input2\nfunction ({input1, input2}, {output}) {\n  output.next(input1 + input2);\n}",
+  "tokens": 464,
+  "completionTime": 1925,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
+  "prompt": "Concatenate two inputs",
+  "score": 5,
+  "remarks": "The part is well written and does exactly what the prompt asked for. It uses good names and properly uses Flyde's features.",
+  "redid": false
+}

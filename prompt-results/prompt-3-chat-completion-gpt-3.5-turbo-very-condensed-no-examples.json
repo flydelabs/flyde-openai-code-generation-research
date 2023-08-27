@@ -1,0 +1,10 @@
+{
+  "result": "metadata: {\n  id: \"runSqlQuery\",\n  inputs: {\n    query: \"string\",\n    connection: \"string\"\n  },\n  outputs: {\n    result: \"any\"\n  },\n  completionType: \"explicit\",\n  reactiveInputs: [\"query\", \"connection\"]\n}\n\nfunction runSqlQuery(inputs: { query: string, connection: string }, context: AdvancedContext): Promise<{ result: any }> {\n  return new Promise<{ result: any }>((resolve, reject) => {\n    const { query, connection } = inputs;\n    const { state, globalState, onCleanup, onError, externalContext } = context;\n\n    // Perform SQL query using the provided query and connection\n    const result = performSqlQuery(query, connection);\n\n    // Resolve the promise with the result\n    resolve({ result });\n  });\n}",
+  "tokens": 310,
+  "completionTime": 4708,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "Run SQL query",
+  "score": 1,
+  "remarks": "Invalid metadata row metadata: {",
+  "redid": false
+}

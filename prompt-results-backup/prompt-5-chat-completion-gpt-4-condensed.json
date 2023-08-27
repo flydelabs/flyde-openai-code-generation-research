@@ -1,0 +1,9 @@
+{
+  "result": "Debounce | value,wait | result | result | value\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const timer = state.get(\"timer\");\n  if (timer) {\n    clearTimeout(timer);\n  }\n  const newTimer = setTimeout(() => {\n    result.next(value);\n  }, wait);\n\n  state.set(\"timer\", newTimer);\n  onCleanup(() => clearTimeout(timer));\n}",
+  "tokens": 778,
+  "completionTime": 14830,
+  "generatorName": "chat-completion-gpt-4-condensed",
+  "prompt": "Debounce a value",
+  "score": 5,
+  "remarks": "Great implementation and use of Flyde features"
+}

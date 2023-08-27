@@ -1,0 +1,9 @@
+{
+  "result": "Run SQL query | query,connection | result | result | query",
+  "tokens": 1044,
+  "completionTime": 1591,
+  "generatorName": "chat-completion-gpt-3.5-turbo-full",
+  "prompt": "Run SQL query",
+  "score": 5,
+  "remarks": ""
+}

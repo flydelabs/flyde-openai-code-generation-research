@@ -1,0 +1,9 @@
+{
+  "result": " Parse CSV | filePath,columns,encoding | data | IMPLICIT | NONE\nfunction ({ filePath, columns, encoding }, { data }) {\n  const { filename, columns } = filePath.split('/');\n  const { encoding } = columns.split(',');\n  const data = JSON.parse(fs.readFileSync(filename, encoding));\n  data.next(data);\n}",
+  "tokens": 105,
+  "completionTime": 2844,
+  "generatorName": "fine-tuned-davinci:ft-personal-2023-05-24-23-14-18",
+  "prompt": "parse a csv file without any libraries",
+  "score": 2,
+  "remarks": "Incorrect implementation, wrong variable usage"
+}

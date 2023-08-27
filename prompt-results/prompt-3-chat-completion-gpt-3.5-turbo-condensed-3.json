@@ -1,0 +1,10 @@
+{
+  "result": "ID: SQLQuery\nInputs: query\nOutputs: result\nCompletion type: EXPLICIT\nReactive inputs: query\n\nfunction ({query}, {result}, {externalContext}) {\n  const { database } = externalContext;\n  database.query(query, (error, data) => {\n    if (error) {\n      result.error(error);\n    } else {\n      result.next(data);\n    }\n  });\n}",
+  "tokens": 506,
+  "completionTime": 2662,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
+  "prompt": "Run SQL query",
+  "score": 1,
+  "remarks": "Invalid metadata row ID: SQLQuery",
+  "redid": false
+}

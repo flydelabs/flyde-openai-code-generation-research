@@ -1,0 +1,10 @@
+{
+  "result": "Repeat | item, times, delay | output | output | times\nfunction ({item, times, delay}, {output}, {state, onCleanup}) {\n  let count = 0;\n  const intervalId = setInterval(() => {\n    output.next(item);\n    count++;\n    if (count === times) {\n      clearInterval(intervalId);\n      output.complete();\n    }\n  }, delay);\n\n  onCleanup(() => clearInterval(intervalId));\n}",
+  "tokens": 346,
+  "completionTime": 2664,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-2",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 4,
+  "remarks": "The part is almost perfect, but the 'times' input is not needed as it's always 5 according to the prompt.",
+  "redid": false
+}

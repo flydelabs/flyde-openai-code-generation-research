@@ -1,0 +1,9 @@
+{
+  "result": " Emit 200 Times | item |  | IMPLICIT | NONE\nfunction (inputData, outputData) {\n  const { item } = inputData;\n  const { result } = outputData;\n  result.next(item);\n}",
+  "tokens": 76,
+  "completionTime": 792,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "receive an item and emit it 5 times, with 200ms delay between each time",
+  "score": 1,
+  "remarks": "Incorrect part name, no delay, emits only once"
+}

@@ -1,0 +1,9 @@
+{
+  "result": "Throttle | value,wait | result | result | value\n\nfunction ({value, wait}, {result}, {state, onCleanup}) {\n  const lastExecution = state.get(\"lastExecution\");\n  const now = Date.now();\n\n  if (!lastExecution || now - lastExecution >= wait) {\n    result.next(value);\n    state.set(\"lastExecution\", now);\n  } else {\n    const remainingTime = wait - (now - lastExecution);\n    const newTimer = setTimeout(() => {\n      result.next(value);\n      state.set(\"lastExecution\", Date.now());\n    }, remainingTime);\n\n    state.set(\"timer\", newTimer);\n    onCleanup(() => clearTimeout(newTimer));\n  }\n}",
+  "tokens": 836,
+  "completionTime": 11056,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed",
+  "prompt": "Throttle a value",
+  "score": 5,
+  "remarks": "Great job"
+}

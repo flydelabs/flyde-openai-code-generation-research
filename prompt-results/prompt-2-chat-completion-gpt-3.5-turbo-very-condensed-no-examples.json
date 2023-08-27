@@ -1,0 +1,10 @@
+{
+  "result": "metadata:\n  id: \"json-string-to-object-converter\"\n  inputs:\n    - name: \"jsonString\"\n      type: \"string\"\n  outputs:\n    - name: \"result\"\n      type: \"object\"\n  completionType: \"explicit\"\n  reactiveInputs: []\n\nfunction jsonToStringConverter(inputs, outputs) {\n  const { jsonString } = inputs;\n  const { result } = outputs;\n\n  try {\n    const parsedObject = JSON.parse(jsonString);\n    result.setValue(parsedObject);\n    result.setCompleted();\n  } catch (error) {\n    result.setError(error);\n  }\n}",
+  "tokens": 263,
+  "completionTime": 3500,
+  "generatorName": "chat-completion-gpt-3.5-turbo-very-condensed-no-examples",
+  "prompt": "JSON string to object converter",
+  "score": 1,
+  "remarks": "Invalid metadata row metadata:",
+  "redid": false
+}

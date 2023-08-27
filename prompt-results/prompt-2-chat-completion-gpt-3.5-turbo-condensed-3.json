@@ -1,0 +1,10 @@
+{
+  "result": "JSONToObject | jsonString | jsonObject | IMPLICIT | NONE\nfunction ({jsonString}, {jsonObject}) {\n  try {\n    const obj = JSON.parse(jsonString);\n    jsonObject.next(obj);\n  } catch (error) {\n    onError(error);\n  }\n}",
+  "tokens": 478,
+  "completionTime": 2030,
+  "generatorName": "chat-completion-gpt-3.5-turbo-condensed-3",
+  "prompt": "JSON string to object converter",
+  "score": 4,
+  "remarks": "The onError function is not defined in the function parameters. It should be accessed from the advanced context.",
+  "redid": false
+}

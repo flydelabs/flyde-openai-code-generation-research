@@ -1,0 +1,9 @@
+{
+  "result": " Send Message | channel,message | result | IMPLICIT | NONE\nfunction (inputData, outputData, adv) {\n  const { channel, message } = inputData;\n  const { result } = outputData;\n\n  const slackChannel = `${adv.slackChannel}`;\n  const message = `${channel}`;\n\n  slackChannel.next(message);\n  result.next(slackChannel);\n}",
+  "tokens": 108,
+  "completionTime": 1220,
+  "generatorName": "fine-tuned-curie:ft-personal-2023-05-24-22-48-46",
+  "prompt": "send a message to a slack channel",
+  "score": 2,
+  "remarks": "Incorrect function signature and usage of Flyde features"
+}

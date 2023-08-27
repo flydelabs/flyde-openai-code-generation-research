@@ -1,0 +1,9 @@
+{
+  "result": " Remove At | list,index | object | IMPLICIT | NONE\nfunction ({ inputList, indexOf }, { outputObject }) {\n    const filteredList = inputList.filter((obj) => obj.id === indexOf);\n    outputObject.next(filteredList);\n}",
+  "tokens": 92,
+  "completionTime": 781,
+  "generatorName": "fine-tuned-ada:ft-personal-2023-05-24-22-58-24",
+  "prompt": "Transform a map of id to objects into an array of objects and remove those without the 'id' property",
+  "score": 2,
+  "remarks": "Valid format but unrelated to request"
+}

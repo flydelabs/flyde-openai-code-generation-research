@@ -1,0 +1,9 @@
+{
+  "result": "First | array | element | IMPLICIT | NONE\n({ array }, { element }) => element.next(array[0])",
+  "tokens": 1057,
+  "completionTime": 696,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-full",
+  "prompt": "Get the first element of an array",
+  "score": 5,
+  "remarks": "Perfectly handles the task, uses good names and properly uses Flyde's features."
+}

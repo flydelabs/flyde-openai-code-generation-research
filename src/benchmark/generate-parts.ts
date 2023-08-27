@@ -25,7 +25,7 @@ export type Generator = {
 const fineTunedGenerators: Generator[] = fineTunedModels.map((model) => ({
   name: `fine-tuned-${model}`,
   generate: async (prompt: string) => {
-    const result = await openai.createCompletion(
+    const result = await openai.completions.create(
       {
         model,
         prompt: prompt + "\n\n###\n\n",
@@ -38,9 +38,9 @@ const fineTunedGenerators: Generator[] = fineTunedModels.map((model) => ({
       },
       { timeout: 25000 }
     );
-    const tokens = result.data.usage?.total_tokens ?? -1;
+    const tokens = result.usage?.total_tokens ?? -1;
     return {
-      result: result.data.choices[0].text ?? "",
+      result: result.choices[0].text ?? "",
       tokens,
     };
   },
@@ -51,7 +51,7 @@ const completionBasedGenerators: Generator[] =
     return ["gpt-3.5-turbo", "gpt-4"].map((model) => ({
       name: `chat-completion-${model}-${name}`,
       generate: async (prompt: string) => {
-        const result = await openai.createChatCompletion(
+        const result = await openai.chat.completions.create(
           {
             model,
             messages: [
@@ -66,9 +66,9 @@ const completionBasedGenerators: Generator[] =
           },
           { timeout: 25000 }
         );
-        const tokens = result.data.usage?.total_tokens ?? -1;
+        const tokens = result.usage?.total_tokens ?? -1;
         return {
-          result: result.data.choices[0].message?.content ?? "",
+          result: result.choices[0].message?.content ?? "",
           tokens,
         };
       },

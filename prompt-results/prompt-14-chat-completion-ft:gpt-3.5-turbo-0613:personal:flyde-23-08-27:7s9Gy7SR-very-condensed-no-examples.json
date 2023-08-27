@@ -1,0 +1,9 @@
+{
+  "result": "// Part 1: Parse CSV File\nconst parseCsvFile = async (context: AdvancedContext) => {\n  const { state, globalState } = context;\n  const { fileContent } = state;\n  const { csvData } = globalState;\n\n  if (!fileContent) {\n    throw new Error(\"File content is required\");\n  }\n\n  const lines = fileContent.split(\"\\n\");\n  const headers = lines[0].split(\",\");\n  const data = lines.slice(1).map((line) => line.split(\",\"));\n\n  csvData.push({ headers, data });\n\n  return {\n    csvData,\n  };\n};\n\nconst parseCsvFilePart: Part = {\n  id: \"parseCsvFile\",\n  inputs: [\n    { id: \"fileContent\", type: \"string\" },\n    { id: \"csvData\", type: \"array\" },\n  ],\n  outputs: [{ id: \"csvData\", type: \"array\" }],\n  completionType: \"output\",\n  fn: parseCsvFile,\n};",
+  "tokens": 354,
+  "completionTime": 3154,
+  "generatorName": "chat-completion-ft:gpt-3.5-turbo-0613:personal:flyde-23-08-27:7s9Gy7SR-very-condensed-no-examples",
+  "prompt": "parse a csv file without any libraries",
+  "score": 1,
+  "remarks": "Invalid metadata row // Part 1: Parse CSV File"
+}
